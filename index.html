@@ -1,470 +1,455 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr" data-active-lang="en">
+<html lang="he" dir="rtl" data-active-lang="he">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Merger Pro — Professional PDF Management</title>
-    <meta name="description" content="PDF Merger Pro - Professional PDF management with full Hebrew support. Merge, sign, edit & bundle documents.">
+    <title>PDF Merger Pro — ניהול PDF מקצועי</title>
+    <meta name="description" content="PDF Merger Pro - Professional PDF management. Merge, sign, edit, fill forms & bundle documents. Free download.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&family=Rubik:wght@400;500;600;700&family=DM+Sans:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --navy: #0A1942;
-            --blue: #0D47A1;
-            --blue-light: #1565C0;
-            --accent: #FB8C00;
-            --accent-light: #FFB74D;
-            --green: #43A047;
-            --bg: #FAFAF7;
-            --bg-alt: #F0F4F8;
-            --text: #1A1A2E;
-            --text-secondary: #4A5568;
-            --text-muted: #718096;
-            --shadow: 0 4px 20px rgba(10,25,66,0.08);
-            --shadow-card: 0 8px 32px rgba(10,25,66,0.12);
-            --radius: 16px;
-            --font-body: 'DM Sans', sans-serif;
-            --font-display: 'Plus Jakarta Sans', sans-serif;
-        }
+        :root{--navy:#0A1942;--blue:#0D47A1;--blue-light:#1565C0;--blue-accent:#2196F3;--orange:#FB8C00;--orange-light:#FFB74D;--green:#43A047;--purple:#8E24AA;--bg-cream:#FAFAF7;--bg-section:#F0F4F8;--text-primary:#1A1A2E;--text-secondary:#4A5568;--text-muted:#718096;--shadow-soft:0 4px 20px rgba(10,25,66,0.08);--shadow-card:0 8px 32px rgba(10,25,66,0.12);--shadow-heavy:0 20px 60px rgba(10,25,66,0.15);--radius:16px;--radius-sm:10px;--font-body:'Heebo',sans-serif;--font-display:'Rubik',sans-serif}
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:var(--font-body);color:var(--text-primary);background:var(--bg-cream);overflow-x:hidden;-webkit-font-smoothing:antialiased}
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
-        body { font-family: var(--font-body); color: var(--text); background: var(--bg); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        .lang-toggle{position:fixed;top:20px;left:20px;z-index:1000;display:flex;background:rgba(255,255,255,0.15);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);border-radius:50px;overflow:hidden}
+        .lang-btn{padding:8px 18px;font-size:14px;font-weight:600;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,0.7);transition:all .3s;font-family:var(--font-body)}
+        .lang-btn.active{background:white;color:var(--navy);border-radius:50px}
+        .scrolled .lang-toggle{background:rgba(10,25,66,0.9);border-color:rgba(255,255,255,0.1)}
 
-        /* ── Language Toggle ── */
-        .lang-toggle {
-            position: fixed; top: 20px; left: 20px; z-index: 1000;
-            display: flex; background: rgba(255,255,255,0.15); backdrop-filter: blur(12px);
-            border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; overflow: hidden;
-        }
-        .lang-btn {
-            padding: 8px 20px; font-size: 14px; font-weight: 600; cursor: pointer;
-            border: none; background: transparent; color: rgba(255,255,255,0.7);
-            transition: all .3s; font-family: var(--font-body);
-        }
-        .lang-btn.active { background: white; color: var(--navy); border-radius: 50px; }
-        body.scrolled .lang-toggle { background: rgba(10,25,66,0.9); border-color: rgba(255,255,255,0.1); }
+        [data-lang="en"]{display:none}
+        html[data-active-lang="en"] [data-lang="he"]{display:none}
+        html[data-active-lang="en"] [data-lang="en"]{display:block}
+        html[data-active-lang="en"] span[data-lang="en"]{display:inline}
 
-        /* ── Language switching ── */
-        [data-lang="he"] { display: none; }
-        html[data-active-lang="he"] [data-lang="en"] { display: none; }
-        html[data-active-lang="he"] [data-lang="he"] { display: initial; }
+        .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--navy) 0%,var(--blue) 50%,var(--blue-light) 100%);overflow:hidden}
+        .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 20% 80%,rgba(251,140,0,0.15),transparent),radial-gradient(ellipse 60% 40% at 80% 20%,rgba(33,150,243,0.2),transparent)}
+        .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px;animation:gridShift 20s linear infinite}
+        @keyframes gridShift{0%{transform:translate(0,0)}100%{transform:translate(60px,60px)}}
+        .hero-content{position:relative;z-index:2;text-align:center;padding:40px 24px;max-width:900px}
+        .hero-icon{width:100px;height:100px;border-radius:24px;margin:0 auto 24px;box-shadow:0 8px 32px rgba(0,0,0,0.3)}
+        .hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.15);border-radius:50px;padding:8px 20px;margin-bottom:28px;color:var(--orange-light);font-size:14px;font-weight:500;animation:fadeInDown .8s ease}
+        .hero-badge .dot{width:8px;height:8px;background:var(--orange);border-radius:50%;animation:pulse 2s ease infinite}
+        @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.5)}}
+        @keyframes fadeInDown{from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+        .hero h1{font-family:var(--font-display);font-size:clamp(2.2rem,5vw,3.8rem);font-weight:800;color:white;line-height:1.15;margin-bottom:20px;animation:fadeInUp .8s ease .2s both}
+        .hero h1 .accent{background:linear-gradient(135deg,var(--orange),var(--orange-light));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+        .hero p{font-size:clamp(1rem,2vw,1.25rem);color:rgba(255,255,255,0.85);line-height:1.7;max-width:650px;margin:0 auto 36px;animation:fadeInUp .8s ease .4s both}
+        .btn{display:inline-flex;align-items:center;gap:10px;padding:16px 36px;border-radius:50px;font-weight:600;font-size:16px;text-decoration:none;transition:all .3s;cursor:pointer;border:none}
+        .btn-orange{background:linear-gradient(135deg,var(--orange),#F57C00);color:white;box-shadow:0 4px 20px rgba(251,140,0,0.4)}
+        .btn-orange:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(251,140,0,0.5)}
+        .btn-white{background:white;color:var(--navy);box-shadow:var(--shadow-card)}
+        .btn-white:hover{transform:translateY(-2px);box-shadow:var(--shadow-heavy)}
 
-        /* ── Hero ── */
-        .hero {
-            background: linear-gradient(135deg, var(--navy) 0%, #1a3a8a 50%, var(--blue-light) 100%);
-            color: white; padding: 120px 20px 80px; text-align: center; position: relative; overflow: hidden;
-        }
-        .hero::before {
-            content: ''; position: absolute; top: -50%; right: -20%; width: 600px; height: 600px;
-            background: radial-gradient(circle, rgba(251,140,0,0.15) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .hero::after {
-            content: ''; position: absolute; bottom: -30%; left: -10%; width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(33,150,243,0.1) 0%, transparent 70%);
-            border-radius: 50%;
-        }
-        .hero-content { position: relative; z-index: 2; max-width: 800px; margin: 0 auto; }
-        .hero-icon {
-            width: 100px; height: 100px; border-radius: 24px; margin: 0 auto 30px;
-            background: rgba(255,255,255,0.1); border: 2px solid rgba(255,255,255,0.2);
-            display: flex; align-items: center; justify-content: center; font-size: 42px;
-        }
-        .hero h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 16px; letter-spacing: -1px; }
-        .hero p { font-size: 1.15rem; opacity: 0.85; max-width: 550px; margin: 0 auto 35px; line-height: 1.7; }
-        .cta-btn {
-            display: inline-block; background: var(--accent); color: white; padding: 16px 40px;
-            border-radius: 50px; text-decoration: none; font-weight: 700; font-size: 1.1rem;
-            transition: all .3s; box-shadow: 0 4px 20px rgba(251,140,0,0.4);
-        }
-        .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 30px rgba(251,140,0,0.5); }
+        section{padding:80px 24px}.container{max-width:1100px;margin:0 auto}
+        .section-title{font-family:var(--font-display);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:700;text-align:center;margin-bottom:16px}
+        .section-subtitle{text-align:center;color:var(--text-secondary);font-size:1.1rem;max-width:600px;margin:0 auto 48px;line-height:1.7}
 
-        /* ── Sections ── */
-        .section { padding: 80px 20px; max-width: 1000px; margin: 0 auto; }
-        .section-title {
-            font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
-            font-weight: 700; text-align: center; margin-bottom: 50px; color: var(--navy);
-        }
+        .reveal{opacity:0;transform:translateY(30px);transition:all .7s ease}.reveal.visible{opacity:1;transform:translateY(0)}
 
-        /* ── Features ── */
-        .features-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px; margin-top: 40px;
-        }
-        .feature-card {
-            background: white; border-radius: var(--radius); padding: 30px;
-            box-shadow: var(--shadow); transition: all .3s; border: 1px solid rgba(10,25,66,0.04);
-        }
-        .feature-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-card); }
-        .feature-icon { font-size: 36px; margin-bottom: 16px; }
-        .feature-card h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
-        .feature-card p { color: var(--text-secondary); line-height: 1.6; font-size: 0.95rem; }
+        /* Who Section */
+        .who-section{background:var(--bg-section)}
+        .who-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;max-width:1000px;margin:0 auto}
+        .who-card{background:white;border-radius:var(--radius);padding:32px 24px;text-align:center;box-shadow:var(--shadow-soft);transition:all .3s}
+        .who-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card)}
+        .who-card .emoji{font-size:48px;margin-bottom:16px;display:block}
+        .who-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px;color:var(--navy)}
+        .who-card p{color:var(--text-secondary);font-size:.95rem;line-height:1.6}
 
-        /* ── Hebrew Section ── */
-        .hebrew-section { background: var(--bg-alt); padding: 80px 20px; }
-        .hebrew-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .hebrew-feature {
-            background: white; border-radius: 12px; padding: 24px;
-            display: flex; align-items: center; gap: 16px; box-shadow: var(--shadow);
-        }
-        .hebrew-feature .icon { font-size: 28px; flex-shrink: 0; }
-        .hebrew-feature span { font-weight: 600; color: var(--navy); }
+        /* Features */
+        .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+        .feature-card{background:white;border-radius:var(--radius);padding:32px;box-shadow:var(--shadow-soft);transition:all .3s;border:1px solid rgba(0,0,0,0.04)}
+        .feature-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card)}
+        .feature-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px}
+        .feature-card h3{font-size:1.15rem;font-weight:700;margin-bottom:10px;color:var(--navy)}
+        .feature-card p{color:var(--text-secondary);font-size:.95rem;line-height:1.7}
+        .feature-card .tag{display:inline-block;background:var(--bg-section);color:var(--blue);font-size:.75rem;font-weight:600;padding:4px 10px;border-radius:20px;margin-top:12px}
 
-        /* ── Pricing ── */
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; }
-        .pricing-card {
-            background: white; border-radius: var(--radius); padding: 36px;
-            box-shadow: var(--shadow); text-align: center; border: 2px solid transparent;
-            transition: all .3s; position: relative;
-        }
-        .pricing-card.popular { border-color: var(--accent); }
-        .pricing-card.popular::before {
-            content: attr(data-badge); position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
-            background: var(--accent); color: white; padding: 4px 20px; border-radius: 20px;
-            font-size: 0.8rem; font-weight: 700;
-        }
-        .pricing-card h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; color: var(--navy); }
-        .price { font-size: 2.5rem; font-weight: 800; color: var(--blue); margin: 16px 0 8px; }
-        .price small { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
-        .pricing-features { list-style: none; margin: 20px 0; }
-        .pricing-features li { padding: 8px 0; color: var(--text-secondary); font-size: 0.95rem; }
-        .pricing-features li::before { content: '✓ '; color: var(--green); font-weight: 700; }
+        /* Steps */
+        .steps-section{background:var(--bg-section)}
+        .steps{display:flex;flex-wrap:wrap;justify-content:center;gap:32px;counter-reset:step}
+        .step{flex:1;min-width:220px;max-width:300px;text-align:center;position:relative}
+        .step-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:white;font-size:1.4rem;font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 4px 16px rgba(13,71,161,0.3)}
+        .step h3{font-weight:700;margin-bottom:8px;color:var(--navy)}.step p{color:var(--text-secondary);font-size:.9rem;line-height:1.6}
 
-        /* ── Privacy Policy ── */
-        .privacy-section { background: var(--bg-alt); padding: 80px 20px; }
-        .privacy-container { max-width: 800px; margin: 0 auto; background: white; border-radius: var(--radius); padding: 40px; box-shadow: var(--shadow); }
-        .privacy-container h2 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
-        .privacy-date { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 30px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-        .privacy-highlight {
-            background: #e8f0fe; border-left: 4px solid var(--blue); padding: 16px 20px;
-            border-radius: 0 10px 10px 0; margin: 20px 0; font-weight: 500; color: var(--navy);
-        }
-        .privacy-container h3 { font-family: var(--font-display); color: var(--navy); font-size: 1.15rem; margin: 28px 0 10px; }
-        .privacy-container p, .privacy-container li { color: var(--text-secondary); line-height: 1.8; margin-bottom: 10px; }
-        .privacy-container ul { padding-left: 24px; }
+        /* Pricing */
+        .pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;max-width:950px;margin:0 auto}
+        .pricing-card{background:white;border-radius:var(--radius);padding:36px 28px;text-align:center;box-shadow:var(--shadow-soft);border:2px solid transparent;transition:all .3s;position:relative}
+        .pricing-card.featured{border-color:var(--orange);transform:scale(1.04)}
+        .pricing-card.featured::before{content:'';position:absolute;top:-1px;left:20%;right:20%;height:4px;background:linear-gradient(90deg,var(--orange),var(--orange-light));border-radius:0 0 4px 4px}
+        .pricing-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:linear-gradient(135deg,var(--orange),#F57C00);color:white;padding:5px 20px;border-radius:20px;font-size:.8rem;font-weight:700;white-space:nowrap}
+        .pricing-card h3{font-size:1.2rem;font-weight:700;margin-bottom:8px;color:var(--navy)}
+        .pricing-price{font-size:2.8rem;font-weight:800;color:var(--blue);margin:12px 0 4px}
+        .pricing-period{color:var(--text-muted);font-size:.9rem;margin-bottom:20px}
+        .pricing-features{list-style:none;margin-bottom:24px}
+        .pricing-features li{padding:8px 0;color:var(--text-secondary);font-size:.95rem;border-bottom:1px solid #f0f0f0}
+        .pricing-features li::before{content:'✓';color:var(--green);font-weight:700;margin-inline-end:8px}
+        .pricing-btn{display:block;padding:14px;border-radius:50px;font-weight:600;text-decoration:none;transition:all .3s;font-size:1rem}
+        .pricing-btn.primary{background:linear-gradient(135deg,var(--orange),#F57C00);color:white}
+        .pricing-btn.secondary{background:var(--bg-section);color:var(--blue)}
 
-        /* ── FAQ ── */
-        .faq-list { max-width: 700px; margin: 0 auto; }
-        .faq-item { background: white; border-radius: 12px; margin-bottom: 12px; box-shadow: var(--shadow); overflow: hidden; }
-        .faq-q {
-            padding: 20px 24px; cursor: pointer; font-weight: 600; color: var(--navy);
-            display: flex; justify-content: space-between; align-items: center; transition: background .2s;
-        }
-        .faq-q:hover { background: #f8f9fb; }
-        .faq-q::after { content: '+'; font-size: 1.4rem; color: var(--blue); transition: transform .3s; }
-        .faq-item.open .faq-q::after { transform: rotate(45deg); }
-        .faq-a { padding: 0 24px; max-height: 0; overflow: hidden; transition: all .3s; color: var(--text-secondary); line-height: 1.7; }
-        .faq-item.open .faq-a { padding: 0 24px 20px; max-height: 300px; }
+        /* Security */
+        .security-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;max-width:900px;margin:0 auto}
+        .security-item{text-align:center;padding:24px}
+        .security-item .icon{font-size:36px;margin-bottom:12px;display:block}
+        .security-item h4{font-weight:700;margin-bottom:6px;color:var(--navy)}
+        .security-item p{color:var(--text-secondary);font-size:.9rem}
 
-        /* ── Footer ── */
-        .footer {
-            background: var(--navy); color: rgba(255,255,255,0.7); padding: 40px 20px;
-            text-align: center; font-size: 0.9rem;
-        }
-        .footer a { color: var(--accent-light); text-decoration: none; }
-        .footer a:hover { text-decoration: underline; }
-        .footer-links { margin-top: 12px; }
-        .footer-links a { margin: 0 12px; }
+        /* FAQ */
+        .faq-list{max-width:700px;margin:0 auto}
+        .faq-item{background:white;border-radius:var(--radius-sm);margin-bottom:12px;box-shadow:var(--shadow-soft);overflow:hidden}
+        .faq-q{padding:20px 24px;font-weight:600;cursor:pointer;display:flex;justify-content:space-between;align-items:center;transition:background .3s}
+        .faq-q:hover{background:var(--bg-section)}
+        .faq-q .arrow{transition:transform .3s;font-size:.8rem;color:var(--text-muted)}
+        .faq-item.open .arrow{transform:rotate(180deg)}
+        .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+        .faq-item.open .faq-a{max-height:300px;padding:0 24px 20px}
+        .faq-a p{color:var(--text-secondary);line-height:1.7;font-size:.95rem}
 
-        /* ── Reveal Animation ── */
-        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.6s ease; }
-        .reveal.visible { opacity: 1; transform: none; }
+        /* CTA */
+        .cta-section{background:linear-gradient(135deg,var(--navy),var(--blue));text-align:center;padding:80px 24px}
+        .cta-section h2{font-family:var(--font-display);color:white;font-size:clamp(1.6rem,3vw,2.4rem);margin-bottom:16px}
+        .cta-section p{color:rgba(255,255,255,0.8);margin-bottom:32px;font-size:1.1rem}
 
-        /* ── Responsive ── */
-        @media (max-width: 600px) {
-            .hero { padding: 100px 16px 60px; }
-            .section { padding: 60px 16px; }
-            .privacy-container { padding: 24px 20px; }
-            .lang-toggle { top: 12px; left: 12px; }
-        }
+        footer{text-align:center;padding:40px 24px;color:var(--text-muted);font-size:.85rem}
+        footer a{color:var(--blue);text-decoration:none;margin:0 12px}
+        footer .footer-logo{margin-bottom:16px}
+
+        @media(max-width:768px){.hero h1{font-size:2rem}.features-grid{grid-template-columns:1fr}.pricing-card.featured{transform:none}.steps{flex-direction:column;align-items:center}.lang-toggle{top:12px;left:12px}}
     </style>
 </head>
 <body>
 
 <!-- Language Toggle -->
 <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('en')">English</button>
-    <button class="lang-btn" onclick="setLang('he')">עברית</button>
+    <button class="lang-btn active" onclick="setLang('he')">עברית</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
 </div>
 
-<!-- Hero -->
+<!-- HERO -->
 <section class="hero">
+    <div class="hero-grid"></div>
     <div class="hero-content">
-        <div class="hero-icon">📄</div>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgAAAAIACAYAAAD0eNT6AAA6UUlEQVR4nO3dd5wdVf3/8c/cuyV7N2WzCaRviCEhIUVKIBCICEKKiSBSLPAVQUwQjILoD/Sn4NfCFwUbyBelaET8YRcRpISQhg0IAUJCJ2HThPRks5tsufP7Y7nJ3c0tZ2bOzJyZeT193MdDslPO3Xt3Pu85M+eMJQDgg4ZL/1WZ959WkcWK/bsfy+nel679eV1Hx7pBswNet9Q6TranuqyO/Xldbv+/N951QluhBVKKOwAAPwR1MHRCV0HQXahU1tXx/v3ktY1RKP46thHI950AAMAX3c46TChMYbQh6BCQW9+E33c+HW0K43fphgm/+7Jn/yIEAADhM+qsyMU2yi0bVuGyJdwwoHP/fvwOE332L0IAABAco86MAl7WbQHT9TsLKgzo3o/bbYVV/CP1HY/STSMAIkjxZsByP3OyjK59Od2fyvJuj7l+H6vdbD+IMOHHek63G+SNf6rLKu2rVPe/iEiFaosAwAC2BHvi4nR/5ZZ3236/37cJZ675olb8dQl0f1wCAOCrEG8GNOnubx3bM/HmPt28vMcwPyfdo0HcUj77FyEAADBHkDf5ORVkF67KunELAkEMDzT9Wn7g338CAICgmXJHtZ8Heb9DQG79qAeBoIYHhvVZmzpyRUS4CTDyMoMuiPoBAElh5Z1vWMUPPb4clErsz+GGfFo8uofiftPn9nGxmikh0OvyQV9m0nLzX050v3UJQYFHbFjdOhyLFGWzA4AIIcCZbgFB5/BAncu5WV7XDYc69tnl3wkAEZQZTLFHzMWiF0DEt0On1jaaq9+0ub09rO5Xl7/OsGD82b8IASBUFHwkTpi9ACX253JjGrfVfdPJOjQrBgI/r6ebXvxLLevq7F+EABAoCj4gMeoFECEE+KNAIIhK8Xe6vdDO/kUIAL7LDL6Qog/kU+wFECEEdG4+wYdp25Z+0+f2Ul3azR40Lx9a8RchABiBog+UEWYvQJl9utyg5u0V2kWCDtd24UNokTAQ5MRBJnX9d/mZ0+IvQgDQhqIPOBB2L0CZfbrcoObtFdtNjA/bRQp/Ie+GgSgWfyfL+3b2L0IA8IzCD7gUu14AkUAPqXEKAg4Kf3f9ps/t6XRvLnYTRtd/uWU9nf2LEABcoegDmhACNOwuwodxD4W/EIUwQPHPE+FvTvAo/IBmsbwUIBLaoTUKYUBz0S+kSBCIXfEXIQD4jsIP+CjsXoAy+/WwUR+26WT3Bh3eAyj6heQFgbCLv9PlfT/7Fwn9G2q2zOD/ovADfjOhF6DMfj1u2KftOhRkM4w5cnY2pN/0ubWuVnT/cy/LB3L2L2LMN9MsmSEUfiBQir0AIoQA7bw0zegj5cGN6zdNKQiYWvy7/Nxr8Rcx+lsZPAo/EBJTegHK7Nvjhn3aLg5W+lBeIgiEWfzLLa/17F9EJFV+kWSg+AMhsrPd/rv4n2N0/1BtiXLro0Htd7z1sZ/tKbJymAIt/iJEUgo/YJLYXwrYvwOft59E7g7l7/YG+PGEQWO7/nMS+y2k8AMGcnApQCTqIUAkwYdgjfQcyvtNm5vRuBNfir8IAcAzij9gMJPuByizf0078Hn7caZ5IqGDQ0DYDxjyrfiLJOyblxnySQo/EAUHhYASi8bmQTyJOhx75O+hvN+0ORmXO4lM8RdJ0E2AFH8gQrrfFFhq0SDu3QpkIhtuEiwvmN/R1kd/1uxiNd8uE/hR/EUSEgAo/kDElfkLjk8IECEIFBLg7+Tdz3nroz9rcbKW071o3p4rse5zovADEefgUkDnj+NyOaDLDgPen0kCPoQXCXn9ps+tKbWW0704+blfZ/8iMf5mUfyBmDDtfgCREOfZj+0hO09Ih+4yPTxFQoDu+wQCK/4iMf02ZYZS/IFY6TI/QJlFgzysEQQ0MrPw5+s3rUsI8PUBQ34Xf5GYfYso/EBMmXgpYP/Owj6Mhr1/L0I+ZLu8r6PftLk93OzNyc8JAA5Q/IGYIwQoMqkt3Rl0mPZ4U6fDEGBc8Rcx+5uiLDP0IoO+VQB8Y3IIEDEsCOSE2SYDD80aR3P0mzZHJQQYWfxFYhAAKP5AwhACNNLR1ggdgn0YylkmBBhb/EUiHgAo/kBCmR4CRCIWBGLO5zkcioQAo4u/SIQnAqL4Awl20OODyywexllqYBMHoaQAPoetj92xt/tey6wSevEXiWgAoPgDOIipIYAgEI6Af/d5IcCIWf5URK6PiuIPYL/ulwJEzLwcsH/nkTvkRk+IgcsWW/pPm1tdcpFuwjr7F4lYAKD4AzhI1EKACEHADyH3tOT3MBUJAUYVf5EIBYDM0E9R/AEUFsUQIEIQ0MGASyyFLi/1nzanussi3YRd/EUiEgAywyj+AMpwEQI6FzHgMEgQcM7Qwp+v/xlzqsXQ4i8SgQBA8QegLMohQIQgoMKAwi+ieFOpLdJ/2pyq/H8ypfiLGB4AKP4AHIt6CBAhCBRiSOEXUS/+ObkQYFLxFzE4AFD8AbgWhxCQk+QwYFDRz3Fa/HOaG39u3AdpXINEKP4ANHAZAjoXM/LQmIwwYGDRF3Ewj0Shxd6duKp53XyjPkCjGiNC8QegmcNpgw8sZtzhsas4hQFDi36O6+LffcZKMSsEGNMQEZHMsIvN/hYAiKa4hoB8UQoEhhf8fDqLf07zul8Y8WFVhN0AAPCdne0aAnIH6zKH4dzBPxJBoFBRNSEURKjY59PR5W86A74dnTj7B+C7ON4X4JbOcBDRIl9MEMXfhF6A0BsgQvEHECAPIaBzUSMOm/CBowdGaTjzDzsEhP5NpvgDCAW9AcgTVpd/mCEg/HsA+DsCEIqs6xAQqXsDUJLjs/7uH7mdjWwdC7XZmQbO/gGEzOMlgc7FI1oBEsxR4e9cocC/6bnZr7kxnF6A0L61mYZLKP4AzMG9AYkR9LV+FWHMFBjKN5biD8BI9AbEmkln/YUEHQIKfNsBIKEKHdxtKVwIim3i3f/BHI4/k2KfeUTG96sKPKpy9g8gEgr1BojQIxAhWs74RQIt/EH2AgT6zaT4A4gUTSHgwGqEAb+57n0xoPjnBBUCwh8GCACmyh38uwcBxamED9ocwwd9E4fCH7TAvoWc/QOIPHoEjBPXwh9EL0CAPQB80QFEXG7Oe209AgcQBtTZ3X5zDlcu8u+5wp+czyGQd5pp+DRn/wDipVhvgIjnIyth4GCeR1aUWt2Qs/7umhvv9vWL4Pu3LDOc4g8gxnwMAp2bSG4Y0DKcMoKFP1/zW/6FAG4CBAAvit0oKOL60kDXTXStYHEOBFrnT4h44Q+Cr98kzv4BJE6pHgER7UfdKAcC7RMmldtcRAu/X70A9AAAgE6legREtPQKdN3cwVXPxFDg6+yIMS38fvPtW8LZfzI0vGd42E1ADDS++VbYTfBXwL0C5fgREAKf/jhhRd+PXgCeBQDXKP7QJfbfJTtbuiDZea8gmuPD/wJqePnfU7nfNfbzJXdmhl/K2X/MNbynIewmIIYa32wMuwnBKdcrIJKkIenFqVSThBT85rfu0vqNoAcAjlH84ZdEfbdyZ6qqPQNJOa1Sfc8qvz+UpD1fcvYfb4k6QCM0ieoJ6E6lZ2D/sv41IzBOKgbFXmsvAKMAAMAk+UWuXBgoVjxNDAZuTw0p+r7RegmAs38A0Ci/m9tJIezejR7EpQRd+3T7nhNCZ53V2wNgYuoEED0cS4roVhCdXC7wm9vPrHuR57MPDJcAACCqip0hmxQMcjibN462AJA57DN0/wPQhNNAT+wyh2M/AkLZAs9nqkvmsM/YzWvv9PwLpQcAAJKGs3GIppsAOfsHACA4OuqugReKAACA3wgAAAAkkOcAQPc/AADB81p/uQkQgWhoYAphUzQ2JniaXQD7aQgADO1AaRR/szQ0NEQgBHBcAfzm6RJA5rA5dP+jJIq/mfhcgHjwUoe5CRAAgATydgmAXjqU0djYyNmmgYy/BMCxBfCd6x6AzAi6/6HG+GKTMHweQLy4rceMAkAgKDoAYBbuAQAAIIE89ABwkQ6AXzi+AH5z1QOQGTGX6/8AABjCTV3mEgAAAAlEAAAAIIEIAAAAJJDjAMD1fwAAzOO0PjMPAALBbIDmYE4GACJuAoDF8Bw4Q/E3SySeBshxBvAdPQDwFcW/tEfnX7Qz7DYgXP9euanP5AmDPH0Pakd+to+u9iA5uAkQCAnFHzn/XrnJUwHf88btfJfgmKMAkHnPZdwACEeM72oOCcUf3RECoIOTOk0PAHxHCOiK4o9iCAEIEvcAIBCEgE4vPfF1DtAoyes9AXveuH0n9wRABT0AAGAYrz0BzW/+dKyutiC+CAAAYCBCAPzmMABYvBL/AhAUPSEg7GMGL1OP0/QAAIDBvIYAoBgCAAAYjhAAPygHgMzIz9qh92rwCv8FIBSuQ0DYxwxegb8yIz+rNBcAPQAAEBH0BEAn5gFAIHgmAKCHjmcHACL0ACAAFH9AL3oCoIODHgAuAMM5ij/gD/WeAI7dKIxLAEAE/PvlLZzxGWLymP7GdL9zOQBecAkAvuIZAN5R/M1i2ufB5QC4RQCA7wgB7plWbNDJtM+FEAA3uASAQBACAH9xOQBO0QMAGMyk6804wNTPhZ4AOEEAAAxnarFJKtM/D0IAVKlfArAYSgKExfSiA/d877bn2I0i6AEAACCBCAAAACQQAQAAgAQiAAAAkEDMA4BA8EwAADALPQDwHcUfAMzD0wDhK4o/EDaO3SiMSwBABJg293ySMScD4oJLAPAVzwDwjuJvFj4PxAUBAL4jBLhHsTETnwviwMFUwD62ArFHCABCwrEbRdADABiM681m4nNBHBAAAMNRbMzC54G4YBQAEAEUHQC6MQ8AAMQax24UxiUAAAASiAAAAEACEQAAAEggAgAAAAlEAAAAIIEIAAAAJJCDqYAZSgKEhbnnzRG5ORk4dqMIegAAw1H8zcLngbggAAAGo9iYic8FcUAAAAAggQgAgMEid705IfhcEAcEAMBwFBuz8HkgLngaIBABFB0AuvE0QACINY7dKIxLAAAAJBABAACABCIAAACQQA6mAvaxFQAAf3DsRhH0AAAAkEAEAAAAEohhgEAEMPe8OaI3JwPHbhRGDwBgOIq/Wfg8EBcEAMBgFBsz8bkgDggAAAAkEAEAMFj0rjcnA58L4oAAABiOYmMWPg/EBU8DBCKAogNAN4YBAkCscexGYUwFDABxxrEbRXAPAAAACUQAAAAggQgAAAAkkPI9AFxGAoDo4diNYugBAAAggQgAAAAkEPMAAECscexGYfQAAACQQAQAAAASiAAAAEACEQAAAEggngUAAHHGsRtF0AMAAEACMQwQAGKNYzcKowcAAIAEIgAAAJBABAAAABKIAAAAQAIRAAAASCACAAAACcQwQACINY7dKIweAAAAEoipgAEgzjh2owh6AAAASCACAAAACUQAAAAggQgAAAAkEMMAASDWOHajMHoAAABIIAIAAAAJRAAAACCBCAAAACQQAQAAgARiKmAAiDOO3SiCYYAAEGscu1EYlwAAAEggAgAAAAlEAAAAIIEIAAAAJBABAACABCIAAACQQAQAAAASiHkAACDWOHajMHoAAABIIKYCBoA449iNIugBAAAggQgAAAAkEAEAAIAEIgAAAJBADAMEgFjj2I3C6AEAACCBCAAAACQQAQAAgAQiAAAAkEAEAAAAEoipgAEgzjh2owiGAQJArHHsRmFcAgAAIIEIAAAAJBABAACABCIAAACQQAQAAAASiAAAAEACMQwQAGKNYzcKowcAAIAEIgAAAJBATAUMAHHGsRtF0AMAAEACEQAAAEggAgAAAAnEMEAAiDWO3SiMHgAAABKIAAAAQAIRAAAASCACAAAACUQAAAAggQgAAAAkEFMBA0CccexGEcwDAACxxrEbhXEJAACABCIAAACQQAQAAAASiAAAAEACEQAAAEggAgAAAAnEMEAAiDWO3SiMHgAAABKIAAAAQAIxFTAAxBnHbhRBDwAAAAlEAAAAIIEIAAAAJBDDAAEg1jh2ozB6AAAASCACABxZt7097CYAADQgAMAxQgAARB8BAK4QAgAg2ggAcI0QAADR5WAUAHAwQgAARBPDAAEg1jh2ozCeBQAAccaxG0VwDwAAAAlEAAAAIIEIAAAAJBABAACABCIAAACQQAQAAAASiHkAACDWOHajMHoAAABIIAIAAAAJRAAAACCBmAoYAOKMYzeKoAcAAIAEIgAAAJBADAMEgFjj2I3C6AEAACCBCAAAACQQAQAAgAQiAAAAkEAEAAAAEogAAABAAjEMEABijWM3CmMqYACIM47dKIJLAAAAJBABAACABCIAAAHqOelbfcJuA+LNsqwTwm4DooEAAASMEAC/UPzhBAEACAEhALpR/OEUwwCBkPSc9O0+Tc98bWfY7UD0FSv+tcd+66Wg24LocBAAAOjWc9K3++xZ/vWxYbcD8UPxRzlcAgBCxoEauvGdggoCAGAADtjQhe8SVHEJADAEB24AQWIqYAAAEohLAAAAJBDDAAEASCB6AAAASCACAAAACUQAAAAggQgAAAAkEAEAAIAEIgAAAJBABAAAABKIeQAAAEggpgIGACCBuAQAAEACEQAAAEggAgAAAAlEAAAAIIEIAAAAJBDDAAEASCB6AAAASCACAAAACUQAAAAggQgAAAAkEFMBAwCQQPQAAACQQAwDBAAggegBAAAggQgAAAAkEAEAAIAEIgAAAJBABAAAABKIAAAAULbj/K+E3QRowjBAAIAjO87/itT97sawmwGP6AEAADi24/xrw24CPGIqYACAKzvOv1bqfk9PQFTRAwAAcG3HefQERBUBAADgCSEgmggAAADPCAHRQwAAAGhBCIgWhgECALTZcd61Uvf774bdDCigBwAAoNWO864JuwlQ4KAHAFHBHx8A3Zye1e847xp6Agyn3K/fc/J3bT8bAu+2U/gBGKYvISAUTf++pmx95xJATFD8AZiIY5O5CAAxwB8YAJNxjDITAQAA4DtCgHnUA4DFy8QXf1QAomL7edeEfsxMzEuBgx6AsN8NL9efMgAYYvu510j4x80kvMrjEgAAIFDbz/0/YTcBQgAAAASs7x++F3YTIAQAAECAKP7mIABEHH9MAKKC45VZQp0KOG1ltW2rwybLAICpKP7m8bVqpq1syVdU92Ua/rAAmIxjlJm0DQNMW/ZBr/CHQUSnfV5fff9wk9KnCABB6jw2hX+MTN6rPNeXAOJwVt39PUT9MkIuBGw/98shtwRA3Lg5vnBiYjZHASAORb+U/PcX5TDAHx2AsHEcMl/ZANB2s6RFRPr/Kd7Fv7u4hAEACFrfP96k2guNEBUMALmi7zed3w9b47a6IwwAgJq+f+TMPyq6BAA/Cn9QIbDUfnSGg1wYIAgAQFcU/2ip0Fn0Te3xKdQur6GAXgEAOIDiHz0ObgI8uIyaWvBVdG+7l0DQOaSQIAAgmfr+8eawmwAXHA8DjHLRLyX/fbkNA1weAJA0FP/oUg0AVlwLfyFewwBBAEASUPyjrVQASFLNL8pLGCAIAIgrin/0FQoAFP4icr8YggCAJKP4x0OuIjmbQDjh3P6y4j6TIoD4o/jHR4WEWPQtS98IfdsO52047RWgNwAAYAL1UQAebgMsXuj1Fe1izQsqGDgPAgwdBACEx/XTAIvReVavQ6H2+BkK3PQIEAIAAEHzHABMK/gqurfZj0BgCSEAAGAuVwEgikW/lPz3ozMMOOkN4N4AAECQlANA3Ip+MX6EAadBgBAAAPCbSgDw9S46HRv3K5rkwoDOIEAIAACYIJCZAP2+D9/vRwHrDAKqvQFcEgAA+Kl7AChR4dSLn0mzCel86l/+UEOvYUC9N8AmBAAAtOs+E6ArVreXyXS11bJsz/dFqO6fGQQBALqlxGUdjErBL8fr+9ARAlT2TQgAAOjkuG85DkW/GLfvLajeAEIAAEAX1WGAloeZgCPH7SOAvd4sqHJfACMEAAA6lKskcT7hV+LmF+ClN0Blf/QEAAC8KhYAEl/4u3P6C/F6WYAQAADwk4NhgP6wNIzUtwNsttOH/ViW7dslAS4HAADcygUAhQrlddy7f48ELrYFP4OBkyCQu3/CTRAoHwKYJwAA4JzrYYDlWGJ3eYUhiDY4uTTg9pIAlwMAALppPXUMu+CX42f7CAEAgCjxHABML/rF+NFu1d4AtzcIEgIAALq4CgBRLfrF6H4/fvYGEAIAADo4CgBxKvrF6HqPhAAAgMlUA4AV98LfnY4g4OSSgJttl0IIAACUUm4q4AN1JklzAec5MNzP/ftXmeLXspwPEyy/3WR+ZgCA8ooFgGArh5cH6bicZMepXG+A2yCgFgKcTxpUartMFAQAKKZQAPBx9hwfLiMU26ZPwcAS27gQUAohAABQSH4A0F8x/Sj4bvetsah66Q1QmUHQaQhgymAAgFO5qqCxOtoHXibxoV1ebhIs9wt3emMgV/sBAE7omwrYxKJfjMa2ehktEGQIYFQAACCft35hU8/2VWlsvykhoBRCAAAgp9wwwDx5pWp/UdLUeeBhXW3lcf/Fea/D/fQ/8c/JEEGeHggAUOEgAIimM2W9Cm3PUytz79FlEHB7g2D5EKB+Y6DKaAMAQLIpzwTotvhb3V5B0LJPj5cG3FwS0Pn74X4AAEApKgHAcV0KuuCX46k9AYeAktuL6r0WAADjWG03S3Wxn3X/h4F/vbml5MZMqfgKbFe11N0bdHo5oFzTnMwRUGpb3AsAAPHTtOwLSkWiWAVwVLEsK1rFX8Rtm91eBtE7pt9JTwCXAgAAhRQKAMplMYqFvzvn78GMEAAAgBcOpwLuXCTqRb+Q3HtydmnAzZ3+eqb41TU0kGGBAJBMjqYCjsMZfznO3qObO/01TkXMTYEAAJcqRP001tfS76Ywun0qn4rOM2y1VjjvCVB/oqCuMf08NhgAkE9lIiDtVVbXWXCh7egMBeqXBcILAUwQBABwo9xpn7Zqmntoju6x8UHsR+2SgN/vq8TPNFwKYEQAACRLqQBwUM3ZNPvqjJONB1X0g9i/HyEgjN9LzG/hAIBEa1r2eeXDfLFhgJ7qRJhFvxgdbVK7QdC/EEAvAABAl+4BIHaFvztdQaC0cEJAkNsAAESbw3kApGD1O1DAolNa9j/912Wb1UYJONm299+dk7kBimFeAABIBkfzAHQXhTP+cry8B509AUFfCohOVAMA+CElDmvBpllfzIiEcwObn6IWAgAAyNe0dJ6jeq4yD8BB/ChUbs5IdbfCydj8LuspTxqkj665AQphYiAkSX3vHnLcuIH2UaMPscceVm8PPbSnPeiQntI7U2X3qK6QyoqUNLe0SVNLm9XU3Co7m1rlzY07rVcbt1uvNW6X1Wu2Wa+8tc0K+hgAeOU0AGicF0D/NvTMmGe/uy2HE/uUDAHqEwW5DSFumDwx0L3fnNlx1ikjHQ9L+OIPl6TvvH+llvTyhxtnt08/8TDHv6LPfGdB+jePvaLUBrfv04snn9tgzfzCn8v+7etoW0fWlrb2rDTvbZPtu/Zam7bskbc27bJWvbnVeualt61nXnrbamsPfvTJgPqMXDBzbHb2ySOyx44ZYKdSpf/metVWSa/aKlukVkREJh05oMv34p3tzbLk2fWpxcvXW4/9663Uf7bu8a/xgCZOAoDnquR3WcvfvtfCpr8Q6w8BfhbwqPYCzP3IxKyOADBicB/7jMnDTc1HkZFOWZKuSkuPqrTU9+5hjxxaJycfNWT/77WpuVX++uSa1J1/Xpl6evV/fE++Rwzva3/lU8dnzzplZLYire/7fWjfjJz3gdHZ8z4wWjqydsdj/1qbmv/gauvRf65NdWT5GsFMqn8BXf4wN866utbJTjxPLOCCjn06foSv5uGBXiT1ZsAjhve1T6x+4Pq2jcse9rKdy86ZmC13VljM3pfv+VHT0nlnt7/z9BIvbfBLx87XVzUtnXd2y/M//lrYbemZqZKPTzsi+8Tt57b//n9mtw/uX+vLH0mv2iq55Uundvx7/ifazzltlNbi3106ZcnMKSOyv71hVscfvvuhdt92BORxev1fRC0AFNmoVfaV+5/Ksn69vLbBUnyv+5e3dLVb/Xcc5u/Xv5d78+bNm9m2cenf3O67tqZKLpw5VkO/tL/v0zuz2jZjymH2wtvO3ju6od7W+V066b1D7Kfmf6L94g+Ny6Zdhjq3MvbW9e1bX3xKbDsb/t8Ur3i/nPPlWQDum+MfL23S2xNgXi9AMVGdGXDWrFnHHDYw09ax/eXn3ax/4cwx2d61VbqbBQVDB9ZVPPqjmbsH9urYpmN7F84cm/3rD85qH3poz1D64e325qa9q372Py0v3v7tMPYPlOLoWQAqvBR+y7KVX6734Xo9nccP1e75YLrxTQtrXqVSKeuKK66Y3rZxyUNO17UskblnT4xm8omJ/v361txw8fDXss1vb/CynUvPGp+9/drTOiorDLiXpWNfS9hNALor9pdRtiZsnPXFLvcBuDnD9lLUPa0r7oqeo8l6DKmqOp4REEWXXHLJqdV716zM7t3ytpP1Tj+uwR7VUJfMX5pBzjvnrGPGVSy5w27d6aon4JzTRmV/cNUpHbrbBZioaennXFWcQqMA1DdkOV3Bv4KUv13VMfCWOO+QdzI6QMfQwCCHBRYS2mgAj2+5rq6u9sILL5j684eW/q165EcuVl3vsnMn6i0a5d5HmEGxXBIOOcSefeaMcSt++Pu7exz56S87WW/MYfX2/15zaoebEN7R0ZF96qmnXl+0aNGqpUuXrl6/fv22LVu27Nq2bVtTJpOprq+v71lfX99z2LBh/Y4//vjDJ0+ePGrSpEkje/fuXVNywyZeF0XiuZoIKJ/qdzrIM9HcvlSCgJsQYCKv7yMuv4d88+bNm3HH3cddV3XY7I9b6aoe5ZYfObTOPuN4c4f+TZ069bonn3zy5bDbUUihttXU1FTV1dXVjhkzZvCMGTOOmjNnzul1dXXKI4hmzZp1zFe/+tX7srsbX0/1ajhcZZ1UypI7v3p6R6ZHpaP2t7e3d9x7773Lbrjhhj+/9tprmwots3PnzuadO3c2r1mz5p3ly5e/ef/99z8tIpJOp1NTp04de+65557w8Y9//KT6+vqejnYOhKR7AHCUUTd+8Is9h/ztB02llgmzC1o1CDgtflHrBfA6M2BUjRs3btip7ztxxN/XP7WkctDJ08stf9lHJmRNuXQTBy0tLa0tLS2tmzZt2r5o0aJVP/rRj/62ePHib4wePXqQyvojR44cKCLSvuW5f1UpBoCLZ4/LHjX6EEcHncbGxi0f/vCHb1qxYsWa/f9opVLpXsNHpetGT0j3OfxIq7qun1XZs7dVmelld7Tus9ubd0vbnqbsvh1bsrvXvrbsubWvLln2pfuuvvrqez760Y9O+fKXv3zm+PHjhzlpB+BG0xJ33f8ibp4GeNDyxVfrLMDhH1FVnpLnPAS4f5LgwVvSo3Sb3O8nyk8InDdv3szFF17+28pBU0sGgJ6ZSrlwho6hf93p//7XHPXFG9J9Ro7VvmENCrYt29Zqtzfv2dH89vrPX3/3S4/c912lAFBbW1udyWSq925dtbxqxFkXllu+qjIl13xykqPP8Kmnnnp99uzZN27evHmXiIhYqXTlgONPqWyYfm6q5tCC7bQqKjJWRSYjPfoPSPUaPlL6v3eyiIjY2WzHzjdW3/f4in/ce9+J3/jIWTPGzZgx46i8NZ00DfBdLgC4LP4lFjDs5jOVs2C/egJ0TRPstyheBti0adP2QYMG9S328zPPPHNSwyFXzX97xysr03VHTCi23H/NHJvtmSnebbxjx4491dXVlTU1NYwPdCpVWWVV9alKV/Xp+8+3rQk7du9trevVQ+lLX1dXl9n09ub/qCx73gdGZwc5mEjonXfe2Xn22WfflCv+VnX9ITXj51yb6jnsParb6MJKpdJ1o8an60aNl5EfufjBF5c/+aeHr7vf1baAALg5revyh7vhg1d1ud7ldZien1TaZkYpPpjnoX6GfiZeLV269KVVq1atK/bzVCplXX755dPbNhQfEtg59G9CyTPHn//854taW1uZ1c2jbNaW9e/sUT7u7N69e6/d0bpXsq37yi174cwxjs7+L7jggls2bty4XUQk3euwUZljr7nZdfHvLlVRWTFg8qmZSV/9UY8jL/1yqmbgUC3bBfI0LbnCU2lw+jjgkstGpcjoDAHKY/UDShZJfKTwT37yk0dK/fzSSy/9QFXz689n9259p9DPp00ebo8c2qfoLy6bzdrl9gF1qn8Le/bs2bd79+4WERG7vaXk03UO7ZuRKRMGKX/5n3jiiRcff/zxlSIiVmWvPj3Gz7nWquzZW3V9dZZVccjRU6qPuOAK/dsGvHHSAxBI8bfELvvSsh+jegLML9omzwp4zz33LN2+Y1fRM8S+ffvWXnDBJ05q37i04PMBLjtnQsmhfw8++ODyNWvWFAwPcCadsqRhQC+lL/wzzzzzxoEVq0sOs3v/sUMcPbvhpptueiD3/3uM/dRVVlWfeuWVgZjQcmfXhg9e1cvL+k6Lu64woDO0qO3P6378Z+olkFKam5v3zf9/D6wqtcy8efNmtm36x+Pdu5JHDauzPzCpoeQHeMstt3h6sBAOOG3SMLuX4jTLDz/88AoREStd1cNK9ygZAI47cqDyH/PWrVt3P/roo8+LiKTrjpiQ7jvmvarrAqbw2v0voj4PgPbpQrSdyedtx81d+aVuDgz2pjj/bwaM83DA2+7+3QtfuOyCY4qdBU6YMKHhlJOPH/7PjU8vrRx00hm5f//sORNLDv1btWrVuoULF64UERErndbbameWLVv2zbz/bHOzjd8ueDV16XceD+V9DO5fa3//yqlKEy3t27evbf78+YtFRFK9ho8st/zEw/sr/6k++eSTL9t25225VcNOP1t1PSBuPDwNsKv1M7/Y68B0V6Vf1v7N6n35sV3Vp+2p7lvX0wLD+P0G/1L31rqNux7+59qS3+d58+bNaNuw+KHc9nvXVssnph9R8trGrbfeuv/av5WqcDa7jA/v0zv/PoPu26+urJAB9bUy9agh9rfmntjx9C8/3j5icPF7LfJ95zvf+dPbb7+9U0QkXT/umHLtHD5IvRMyN2GRVVnbK11/5FHhf8958XL20nH2L+J9JkBHjQjiBrXcPpz0BkTpzNiSKNwxEI7b/7gyNeukEUUL+llnnXXc0H5X/XLzjldfTNeNHv/JD47N1tYUr+nbt2/f86tf/WqpiEiqdlCDWKloToaQp/2dp5Y0Lbn81opDj39fj7GfukrXdnX0TuQ8+uijz9944433i4hIqqKycsAJp5VaPpWyZFA/9eF/a9eu3Swi0jlfAVM/IbnKBYBSfxwH/6zE0kHfne509jwdlwK8z9uv8TJAsQZ72HxozwVQYYksWbHBWr1mm3XkiPqC7z6dTqcuv/zy6V/7/m8eqqw/Yvycs8eXPPu/++67n2hubt4nIlI55P0fdNMmXR+ndoa27f7773/6ggsuuKWtra1DRKRq+IxzreredaXWydRUiJMbALdt29YkIpLuc/hYld/B/OvO6Djn1MM93QX7X994LH3/kjcM/eNBUrn9Qhb8s1k/o/DNgGENTXO636CGMZp+zmF480r66Z9WlvxOX3rppadVNL26Yvqx9TtGDO5dcujfbbfd9oiIiFWR6Vk5YPL7NTcVeTZv3rzr8ssvv+vss8++KRe60vVHHl3VMP2ccutmqp11ZOYCgNWj36GuGguEqGnx5doO0aUOllp2Eva4dH03G0ZLsTAT9ufht98seDW1fXfxOWP69evX6xMf/9iUy84aVfIZFg888MAzua7iikFTTpd0VbXmpkJEnnvuubVXXnnl/JEjR867/fbbH8v9e0X/906uGTfnGj9uvMzdAGhVZDyNXnJi76o7b2pafPnZ7ZtX/COofQLleJ4JsLv8XgBTio2TdnjtBQjmPgcU07KvXe556KWS3+vrr7/+vNNOPnpAqWVuueWWv4mIiGVZlUNOmamxichTWVmZtm3bzs2yaFX27F09+mNze4yfe61q6GrZ5+wJzn379u3Zua9antqHSNF59i9SPAB43omXQljq/scw2pPfLv+ZEZqi7I77X0x1ZIv/HhsaGvqXWn/lypWNixYtWiUiUtFv4vEpuop9M27cuGE//vGPL356+XPfP/ID8+ZlTvjmTysHv2+Gk200722TbPGHbRwk73G9ZGkkmtNRAEp/MOtnXNVr2CM/3K19w92Wc14q1fZS+uE9Ktsov4z3fagoth1vUcpMByJi49tN1t/+vjb1oanFRwSUcuutt+6f+Kdy6Gmz3L9nvXfaTZ069brcEDY9zPksJ4wbM3Dxb79VP+0Lf614fUPJqzMH6ciK/GdrszVY8UFAw4cP7y8iYre3NOn6e3bGnN87oqNp8We1f3H8uivV4fDAAHYiwV2SMOXSR5LdXuZmwGK2bdvWdO+99y4TEUnVDhmerhtd9AmC0OuQfn2qfvffJ23JWDuVnv6Xr/E/6ucbU6ZMOUJExG7b4yxpADFTqAfAa8qwRETWzbiq97BHfrhLaWGPO/PjEb5+rY9gLHtuo/Xim1ut8e/p5yiN3XXXXQtbWlpaRUQqh75/lj+t86bm6KtvSPc5fGzY7ciX3zuRTqdT9fX1PSdOnDj8/PPPP/Hiiy8+tbKyUulmvlEjR/S/8aIhf//c/76RTWUGDFbd/wuvb7FOGK82HfBJJ53UGQD2bVN6vsOnvrkg/alvLkjvXX3399vfeebJ/J/Ztv071TYCbvlx9i+i8WFAbvjd0e1pmzGu8So9FMXevskPBerup3960VEvQEdHR/a22257VKTzBrHKAZNP8adl8dbR0ZHdvHnzroULF66cO3fuHccdd9y1GzZs2Ka6/sUXXXjScb2fvc/u2Nuius7Tq99R/osdNGhQ31NOOeXIjp1vvqK6DhBHXmcCLKlUL4AfV9WS1PGu8n6jNMOhH373+Gupb86Z3FHfu4fS8n/5y1+ebmxs3CIiUjnopDMkVan21Brs16V3ws5m7fbmpleb1q+d/cmvLlp6/08+2KtXr5IP9cn5/o3XzT5x9ry7q8d88nMqyy9avj6Vte2OlGJyv+qqq2YtPf+iu5QWflePIz99tRz56au7/bOnWQ+Bcvw6+xfRfw+AUkPVbrtx/hhg9RsJzYgKxY9VZrQv6lr2tcsvywwJzLf/qX9WKlU5mKF/nlmplFXZs3e675iJr2dP/NjXbltUfIKGbo499tj3fGjKoKaOna+vVln+7W3N8tSqt5UPlB/60IcmHTPh8L4dO14r+RRJIM66Hxy1J411M67qnT+Or9yzcCzL7hyL7/BnqtvX8SrXBtVleJV4uVFgO3f8ZVXJIYE5zz///FtLlixZLSJS0f+9x1s19Yd4blOA79PkzyD3+sWCjYeseHmj8hnz9ddff27rG3/4hWp7f/XIy8phL5VKWb/5zW+u7LHjX48E+jsK+++KV6Refp79i6j3AHhqxLrpV/VW24namW9gd/P7+qtHENa/02Q9+OSast/zrkP/Tp3tb6uSybZFvnH3s0qXAEREJk6cOPzMDxxT3755xb9Ulv/d46+lNu9Qvm1ADj/88IH33PqVk6tbN72pvBIQkKZF/hZ/Eb2XAMo0tnTUsRSW8bK87vV5+f1yo/C2bi9zM+DWrVt3//rXv+4c+tdz6GHputHj/G6Tv9s07zPIvZ5YvsF6arV6V/3Xv/71c1rXPvRbESnbpba3NSs3/3qFo6mDZ8+efczDP/6wPaCuoiWY31HYf1e8ovPyX2BPp1o3/crewbyloH51iIq/v7DJeuH1rUW/FnfeeefCvXv3tomIVA491cihf3Hy3XuWKxfpo48+esSsU4/p1775+X+rLH/H/atSL61VHnAgIiLHHXt0w/L5H+v46iePbutdy32fCF/TossCKWO+jgJQ5bZLnzH5UHXSnD9UdOx4bVXLiu9/rdgyVmVtr8oBxxs79G/ZsmXfzPtPT3efX/a9xelfP/JKKI+nfeypddbyVzZbxx5xiNIf/nXXXXfuQ6d+5M6KQ446odyy7R1ZufSGJyqe+MlZrdVVlcrvr0/vntVf+dTxMu/8o1qXrNiYXvzsBuvpl96xtuxska0791r7Wjukd22V1PWqtg/tWyPvPby/fcbkhuiMiQUKCDQANE6/sk/Doz/aGeQ+gZx03ahxqZ7DRmSb1q0p9PPKwVPPkFRlZdDtSqLv/erZ1G+/PV3pKT6TJk0aOeN9E/o8se6Fpyv6Tzyu3PIvvL7V+tKt/0jfevUpjs8semaqrFknHZadddJhTlcFtAjq7F8khB4AQgDClDnu//4g7DaYYN9Lv7y1adH8xdVjL5pXOfDE04Le/9/+sTb1wutbsxMPV5up8brrrjv3kTM++guVACAiMv+hlyv6Z9q2Xv/Z05VuQAZMEGTxFwnwHgAAyPfdXy1XPv5Mnjx51BlTxtR2bH1xueo6N//+jX5f+d59b9i2g0cFAgkSSgBonH5lnzD2C8Acf31yTWr1mm3KZzzXXXfdua1rH3I09/5PHtk15qOXf/fp7du373HeQn0IISgn6LN/kRB7ADpDQOdwB1tS4maYhNv1eEXl5VRU2xO2cD4D27bke/euUD4GTZky5Yj3H/ee6o5tq1c42c/Dr9SfdOzsa/714IMPPuviDXmycuXKxosuuui2Bx544JnOfwn7b4qXia8wir9I8AGgSwpunP4FX3oCiNpANPx58ZupV97arnzwu/766x33AoiIbK6eNOO8rzxkn3b6jO8tW7bsJafrO7Fz587mX/ziF4tOPvnkr0+cOPFL99xzz5K2trbcDY+hHOhhrqZFc0P7Tui8CdAWN19uK7eyJU6GA3od/qf8kBz+XKMhF6ZNY2KbutPdRgfby4otN/16Requr56mNCJg6tSpY6cePSz97x0vv5DuO2aik2ZVHHr0CU/tHTHqtI987qdHDpafX3LJJaeeeeaZk0aMGHGok+0U8tJLL2144oknXnzooYeeXbhw4crW1tb2/J+neg4ZXtUw7ayKQ957fCS+E0gEq+1myeT/d6llVbbnZpmGx36888APy4eAcsVfJUaoBIBS21EJIErLFN2Jt/Yd2H7h7ai1v7AOO7iOo70rf/a99s3P/rPcchUDJp3cY9xnuj+pzRd7ll55gd3e0lxuuR5HXnJlxUC1Rwqrvk/dqsdeNK9y0JSSowCctK3mmC/fkK5792mATti23fzUf38+u2fTepXF03Wjjqw55kvfcbyfd3Vsf/XF1jUP3Nex47XVY8aMGXLCCSeMOuaYY0aMGjVq0LBhw/oNGDCgrqampqqmpqaqtbW1fdeuXc27du1q2bVrV8uWLVt2vfzyyxtXrVq1btWqVetefPHFdTt37jzo+2BV1GQqDjn6xIrBJ5+e7jNyjNu2Ir6angjv7F/k4B4Ad2fxzhy0j8ZpX+iTCwG5wlQoCHgpWjrpKv4A3mVZVtXwmeftXf3zH6os3rHjtdUd2199Md139Hg3u0v3HT2+pu+XvpNtWr/2jU3/WPjqbx98ev78+YvdbCtfqnbQ0HTfIyZU9JswKd13zERJVRgx2RrME3bxFzm4B0CkeABQbazr5fJ7AtxQLf6q3f/FtmfC2X/nPhSWiXgPABCUbPN/NnTsfPOV7O7GN7Mt72y0927farfu2iHZtlY727pPrIoKq6JHxkrXZKSiR41V2bN3KjNwSKrn4IZUbefLqqjpfjwFDmJC8RcJdypgrb0NSbvxT9dlDgCdUpmBQ1KZgUOkzCURIC6c9ACU+5mTZYou3/DYLY57AZwWf67/c/YPAGFoemKOMWdmhY7mXk+mHdfj/P9onPZ5R0MD/Sj+pfdnzGcHAIgQk4q/iH/zAAQSAoIu/sr7ISQAAPKYVvxFnAcAPy+123mvoiGgy0I+NsRvTAwKAMlgYvEXKR4AdJQnL9uwRcRunPb53vkF39MGNZz9B3Nmb+T3BADggqnFX8TdJQAnddhzkFg37fOeH+fppPh7vwHC/8+azgMAMJ/JxV+k8CiALj93+O9Ot6Ns2IJbdrlZz+mZv5ex/46WM3gEQKl9MAoAAMprWmh28RdxHwDK/UzH8gcZtuBWRyFAV/Hv/Jm+AFD6+n/4AaDU9gkAAFBa08LPGF/8RcpfAihdE53xfjngjHnKlwNMLf6lmf2dofgDQGlRKf4i3ocBugkBnoJAuRBg25bW4m+aKLUVAJIkSsVfRC0A+FFzfAkBfozzD+7avz5MAQwAwYpa8RdR7wHQeSkgfz3XPQK5EJA743db9HR0/esRxOiByH0/AcB4USz+IvpmAtQxfbCTMGCLiL3ujHm9vO5Uh6DO/oN51DEAQFVUi7+IswBQrjboq6flX/utn/Y5VyGg/JuJ19m/V9wACABdRbn4i3QOA6wRZxWo3LKh/EKGPnbbbtVldRZ/5S6LkpcovI3NV90PTwEEAD2aFl4a6eIv4s9MgH5P1V/Q+mlXlO0JUGmYqdfJozBDIQAkQRyKv8iBHgARfyb2MaY3QOns2WFzTTv7L7UvJgACAG/iUvhz8gOASJxCwIIDISDM4i9C9z8ARF3T4/Eq/iIHXwLwY3a/cC4JnHFFL9Udx6H4l14/dt9bAAhMHIu/yME9ACLuzth13kSoQ5eaOWTBbU3FF3TeHBMDgF9n/yL0AABIprgW/pxCR3Y3J5xOHxHsR69A0e1uOOOKnoVXiEfx9xPFH0ASxb34ixQfBeA2BLh9NoDv6+aHAFuskIt/cOj+BwBnklD8RQpfAujyc7fbdbleEOzBC27f43glp8sbcOd/5zbo/gcAFU2Pf9rk2qWdl8cBl1sv7N7r7va3aeMZn611uqKj5TUUfx28nv1T/AEkRdKKv0j5HoD9y3ndj8f1vShZv8v1Bugt/iKmnf2X2hcBAEDcJbHw56gGABE9RTzIX7Sj2l0oCIRV/J3s28vEP+X2QwAAEFdJLvw5Oh8GpLoNPy8PuN5+98sC+hsY9PMFvKH4A4grin8nJz0AXdbT3hJ32/QjSNiDFtze7HglTdf9dY004OY/AOiKwt+V2wAgYvad/m51qYmDHlcLAiZ1/Xdug2v/AJDTtIDCX4jVdrP0kHgO93OqaO0d9PhPiwaBMIp/uf0SAABApGnBJXGqUdrlAoCIt2Ie5V+yct3tHgTiWPxFCAAAoo3CryY/AIhEe7ifU67vHxj0+E+bdRZ/p43xeud/qf1R/AFEFYXfme4BQCR6w/2c0jWaQUREBi74WcvBPw7n6YKc/QNIGoq+e4UCwP6f6di+hm3oorXwd3cgCJhd/Evtk+IPICoo/N6VCgAiegt4GB+WzmGCSk/lFREZuOCOvbo22GV5zv4BJBhFX69yAUDEnDH/qnyZG8DtMqXCAGf/AFAaRd8/KgFg/7K+tsSciYDcbF9puYEL7twfBkwq/iIEAADmaFpwMUU/AFbbzVIt6sU3SR+K1uJfaJ0BC+7cV3bBMqMN6PoHEHUU/HDkAoCIs+Ie5w/L0cm5zu0XCgSc/QOIGwq+GfIDwP5/c7K+zsaEzO/C72Y9+9AFd7UW3hDFH4D5mh6j2JuqUAAQcV7Yo/wBOy7KhuzHFhE5ZMHdbV42RAAA4AUFPrqKBQARd0U9Sl8Erd33mtdTKv5et1X5JelwsB0AQIxUlPhZrnA4Kepu1glakIXfzboUfwCA70oFgBxbnBf0/MJjQhgIsoDrWjeI7QEAEkolAIh4O7PvXrSCCAS+Tvvr4/qBzFzI2T8AQDUA5Ojo4i9UmHRvz4swCr/KekGMUgAAJITTAJCj+1q/CQUrzF6DwIo/Z/8AABH3ASDHtGv9TgX9sCA362lrI8UfAJBTIe5u8iskCiMAckwo/CrrahtBQPEHAOTL9QDoCgG5beWYFAbCekqg23WDmqAIAJBA/x+z7Izlp0FypQAAAABJRU5ErkJggg==" alt="PDF Merger Pro" class="hero-icon">
+        <div class="hero-badge"><span class="dot"></span>
+            <span data-lang="he">הורדה חינם ● ללא פרסומות</span>
+            <span data-lang="en">Free Download ● No Ads</span>
+        </div>
         <h1>
-            <span data-lang="en">PDF Merger Pro</span>
-            <span data-lang="he">PDF Merger Pro</span>
+            <span data-lang="he">כל מה שצריך ל-PDF<br>ב<span class="accent">אפליקציה אחת</span></span>
+            <span data-lang="en">Everything You Need for PDF<br>in <span class="accent">One App</span></span>
         </h1>
         <p>
-            <span data-lang="en">Professional PDF management — merge, sign, edit & bundle documents. Built for lawyers, accountants, and professionals.</span>
-            <span data-lang="he">ניהול PDF מקצועי — איחוד, חתימה, עריכה וחוברות מסמכים. נבנה עבור עורכי דין, רואי חשבון ואנשי מקצוע.</span>
+            <span data-lang="he">מיזוג, עריכה, חתימה דיגיטלית, מילוי טפסים וחוברת מסמכים מקצועית — הכל מהטלפון. בלי מדפסת, בלי מחשב, בלי סורק.</span>
+            <span data-lang="en">Merge, edit, sign, fill forms & create professional document bundles — all from your phone. No printer, no computer needed.</span>
         </p>
-        <a href="https://play.google.com/store/apps/details?id=com.legaldan.pdfmergerpro" class="cta-btn">
-            <span data-lang="en">Download on Google Play</span>
-            <span data-lang="he">הורד מ-Google Play</span>
+        <a href="#" class="btn btn-orange">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 20.5v-17C3 2.67 3.67 2 4.5 2c.28 0 .55.08.79.22l14.22 8.5c.55.33.74 1.04.41 1.59-.11.18-.25.33-.41.41l-14.22 8.5c-.55.33-1.26.14-1.59-.41-.14-.24-.2-.5-.2-.79z"/></svg>
+            <span data-lang="he">הורדה חינם מ-Google Play</span>
+            <span data-lang="en">Free Download on Google Play</span>
         </a>
     </div>
 </section>
 
-<!-- Features -->
-<section class="section" id="features">
-    <h2 class="section-title reveal">
-        <span data-lang="en">Everything You Need for PDF</span>
-        <span data-lang="he">כל מה שצריך לניהול PDF</span>
-    </h2>
-    <div class="features-grid">
-        <div class="feature-card reveal">
-            <div class="feature-icon">🔗</div>
-            <h3><span data-lang="en">Merge PDFs</span><span data-lang="he">איחוד PDF</span></h3>
-            <p><span data-lang="en">Combine multiple PDF files into one. Drag to reorder pages easily.</span><span data-lang="he">אחד מספר קבצי PDF לקובץ אחד. גרור לשינוי סדר העמודים.</span></p>
-        </div>
-        <div class="feature-card reveal">
-            <div class="feature-icon">✂️</div>
-            <h3><span data-lang="en">Split & Edit</span><span data-lang="he">פיצול ועריכה</span></h3>
-            <p><span data-lang="en">Split PDFs, rotate pages, delete or extract specific pages.</span><span data-lang="he">פצל קבצים, סובב עמודים, מחק או חלץ עמודים ספציפיים.</span></p>
-        </div>
-        <div class="feature-card reveal">
-            <div class="feature-icon">✍️</div>
-            <h3><span data-lang="en">Digital Signature</span><span data-lang="he">חתימה דיגיטלית</span></h3>
-            <p><span data-lang="en">Sign documents with your finger. Place signatures anywhere with drag & drop.</span><span data-lang="he">חתום על מסמכים עם האצבע. מקם חתימות בכל מקום בגרירה.</span></p>
-        </div>
-        <div class="feature-card reveal">
-            <div class="feature-icon">🖼️</div>
-            <h3><span data-lang="en">Images to PDF</span><span data-lang="he">תמונות ל-PDF</span></h3>
-            <p><span data-lang="en">Convert images to PDF format. Perfect for receipts and documents.</span><span data-lang="he">המר תמונות לפורמט PDF. מושלם לקבלות ומסמכים.</span></p>
-        </div>
-        <div class="feature-card reveal">
-            <div class="feature-icon">📑</div>
-            <h3><span data-lang="en">Document Bundle</span><span data-lang="he">חוברת מסמכים</span></h3>
-            <p><span data-lang="en">Create professional bundles with cover page, table of contents, and numbered appendices.</span><span data-lang="he">צור חוברות מקצועיות עם דף שער, תוכן עניינים ונספחים ממוספרים.</span></p>
-        </div>
-        <div class="feature-card reveal">
-            <div class="feature-icon">📝</div>
-            <h3><span data-lang="en">Form Filling</span><span data-lang="he">מילוי טפסים</span></h3>
-            <p><span data-lang="en">Fill government forms and add text directly on any PDF document.</span><span data-lang="he">מלא טפסים ממשלתיים והוסף טקסט ישירות על כל מסמך PDF.</span></p>
+<!-- WHO IS IT FOR -->
+<section class="who-section reveal">
+    <div class="container">
+        <h2 class="section-title">
+            <span data-lang="he">למי זה מתאים?</span>
+            <span data-lang="en">Who Is It For?</span>
+        </h2>
+        <p class="section-subtitle">
+            <span data-lang="he">לא צריך מדפסת, מחשב או סורק. הכל נעשה כאן, ישירות מהטלפון.</span>
+            <span data-lang="en">No printer or computer required. Everything happens right here, directly from your phone.</span>
+        </p>
+        <div class="who-grid">
+            <div class="who-card reveal">
+                <span class="emoji">👨‍👩‍👧‍👦</span>
+                <h3><span data-lang="he">לכל אזרח</span><span data-lang="en">For Everyone</span></h3>
+                <p><span data-lang="he">מלא טפסים של הרשויות, ביטוח לאומי, עירייה, בנקים — ושלח חזרה ישירות מהטלפון. בלי מדפסת.</span><span data-lang="en">Fill government forms, insurance, municipality, bank documents — and send back directly from your phone. No printer needed.</span></p>
+            </div>
+            <div class="who-card reveal">
+                <span class="emoji">⚖️</span>
+                <h3><span data-lang="he">עורכי דין</span><span data-lang="en">Lawyers</span></h3>
+                <p><span data-lang="he">חוברת מסמכים לפי התקנות עם תוכן עניינים, דפי שער לנספחים ועימוד מחדש אוטומטי. מוכן להגשה.</span><span data-lang="en">Court-ready document bundles with automatic TOC, appendix cover pages, and re-pagination. Ready to file.</span></p>
+            </div>
+            <div class="who-card reveal">
+                <span class="emoji">🎓</span>
+                <h3><span data-lang="he">סטודנטים</span><span data-lang="en">Students</span></h3>
+                <p><span data-lang="he">הכן חוברת אקדמית מסודרת עם נספחים ממוספרים, תוכן עניינים וכריכה — להגשת עבודות ותזות.</span><span data-lang="en">Create organized academic bundles with numbered appendices, TOC, and cover pages — for thesis and paper submissions.</span></p>
+            </div>
+            <div class="who-card reveal">
+                <span class="emoji">💼</span>
+                <h3><span data-lang="he">מנהלים ועצמאים</span><span data-lang="en">Managers & Freelancers</span></h3>
+                <p><span data-lang="he">אחד מסמכים, חתום דיגיטלית, ערוך ושלח — הכל בדרך לפגישה. חוסך זמן ומדפסת.</span><span data-lang="en">Merge documents, sign digitally, edit and send — all on the go. Saves time and a trip to the printer.</span></p>
+            </div>
         </div>
     </div>
 </section>
 
-<!-- Hebrew Support -->
-<section class="hebrew-section" id="hebrew">
-    <h2 class="section-title reveal">
-        <span data-lang="en">Full Hebrew Support</span>
-        <span data-lang="he">תמיכה מלאה בעברית</span>
-    </h2>
-    <div class="hebrew-grid">
-        <div class="hebrew-feature reveal">
-            <div class="icon">🔤</div>
-            <span><span data-lang="en">Right-to-Left (RTL) interface</span><span data-lang="he">ממשק ימין-לשמאל (RTL)</span></span>
-        </div>
-        <div class="hebrew-feature reveal">
-            <div class="icon">📄</div>
-            <span><span data-lang="en">Hebrew text in PDFs</span><span data-lang="he">טקסט עברי ב-PDF</span></span>
-        </div>
-        <div class="hebrew-feature reveal">
-            <div class="icon">🏛️</div>
-            <span><span data-lang="en">Israeli legal formatting</span><span data-lang="he">פורמט משפטי ישראלי</span></span>
-        </div>
-        <div class="hebrew-feature reveal">
-            <div class="icon">📋</div>
-            <span><span data-lang="en">Government form support</span><span data-lang="he">תמיכה בטפסים ממשלתיים</span></span>
+<!-- FEATURES -->
+<section id="features" class="reveal">
+    <div class="container">
+        <h2 class="section-title">
+            <span data-lang="he">6 כלים מקצועיים</span>
+            <span data-lang="en">6 Professional Tools</span>
+        </h2>
+        <p class="section-subtitle">
+            <span data-lang="he">כל מה שצריך לניהול מסמכים — במקום אחד</span>
+            <span data-lang="en">Everything you need for document management — in one place</span>
+        </p>
+        <div class="features-grid">
+
+            <div class="feature-card reveal">
+                <div class="feature-icon" style="background:rgba(33,150,243,0.1)">📝</div>
+                <h3><span data-lang="he">מילוי טפסים ועבודה על PDF</span><span data-lang="en">Fill Forms & Work on PDF</span></h3>
+                <p><span data-lang="he">מלא טפסי PDF של כל הרשויות — ביטוח לאומי, עירייה, בנקים, מס הכנסה — הוסף טקסט, חתימה, ושלח חזרה. הכל מהטלפון.</span><span data-lang="en">Fill PDF forms from any authority — government, banks, insurance — add text, signature, and send back. All from your phone.</span></p>
+                <span class="tag"><span data-lang="he">מתאים לכולם</span><span data-lang="en">For Everyone</span></span>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon" style="background:rgba(251,140,0,0.1)">📚</div>
+                <h3><span data-lang="he">חוברת מסמכים מקצועית</span><span data-lang="en">Professional Document Bundle</span></h3>
+                <p><span data-lang="he">יצירת חוברת עם תוכן עניינים אוטומטי, דפי שער לנספחים, מספור נספחים (א', ב', ג'...), עימוד מחדש — מתאים לבתי משפט, אקדמיה ועסקים.</span><span data-lang="en">Create bundles with automatic TOC, appendix cover pages, numbered appendices, re-pagination — perfect for courts, academia, and business.</span></p>
+                <span class="tag"><span data-lang="he">עורכי דין · סטודנטים · מנהלים</span><span data-lang="en">Lawyers · Students · Managers</span></span>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon" style="background:rgba(67,160,71,0.1)">✂️</div>
+                <h3><span data-lang="he">עריכה מתקדמת של PDF</span><span data-lang="en">Advanced PDF Editing</span></h3>
+                <p><span data-lang="he">מחיקת עמודים, חילוץ, סיבוב, גזירה, השחרה של מידע רגיש, פיצול לקבצים נפרדים ועוד — עריכה מלאה ישירות מהטלפון.</span><span data-lang="en">Delete pages, extract, rotate, crop, redact sensitive info, split into separate files and more — full editing directly from your phone.</span></p>
+                <span class="tag"><span data-lang="he">עריכה מלאה</span><span data-lang="en">Full Editing</span></span>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon" style="background:rgba(13,71,161,0.1)">🔗</div>
+                <h3><span data-lang="he">איחוד קבצים</span><span data-lang="en">Merge Files</span></h3>
+                <p><span data-lang="he">אחד מספר קבצי PDF לקובץ אחד. שנה סדר בגרירה, צפה בתצוגה מקדימה ושתף מיד.</span><span data-lang="en">Combine multiple PDF files into one. Reorder by dragging, preview the result, and share instantly.</span></p>
+                <span class="tag"><span data-lang="he">גרור ושחרר</span><span data-lang="en">Drag & Drop</span></span>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon" style="background:rgba(142,36,170,0.1)">✍️</div>
+                <h3><span data-lang="he">חתימה דיגיטלית</span><span data-lang="en">Digital Signature</span></h3>
+                <p><span data-lang="he">צייר חתימה בצבע כחול נייבי (כמו עט), מקם בדיוק על המסמך, שנה גודל ושמור לשימוש חוזר.</span><span data-lang="en">Draw your signature in navy blue (like a real pen), place precisely on documents, resize, and save for reuse.</span></p>
+                <span class="tag"><span data-lang="he">חתימה כמו עט אמיתי</span><span data-lang="en">Looks Like Real Ink</span></span>
+            </div>
+
+            <div class="feature-card reveal">
+                <div class="feature-icon" style="background:rgba(121,85,72,0.1)">🖼️</div>
+                <h3><span data-lang="he">תמונות ל-PDF</span><span data-lang="en">Images to PDF</span></h3>
+                <p><span data-lang="he">המר תמונות מכל פורמט (JPG, PNG, HEIC) לקובץ PDF מקצועי. בחר מספר תמונות ואחד לקובץ אחד.</span><span data-lang="en">Convert images from any format (JPG, PNG, HEIC) to a professional PDF. Select multiple images and combine into one file.</span></p>
+                <span class="tag"><span data-lang="he">כל הפורמטים</span><span data-lang="en">All Formats</span></span>
+            </div>
+
         </div>
     </div>
 </section>
 
-<!-- Pricing -->
-<section class="section" id="pricing">
-    <h2 class="section-title reveal">
-        <span data-lang="en">Simple Pricing</span>
-        <span data-lang="he">מחירון פשוט</span>
-    </h2>
-    <div class="pricing-grid">
-        <div class="pricing-card reveal">
-            <h3><span data-lang="en">Free</span><span data-lang="he">חינם</span></h3>
-            <div class="price">₪0</div>
-            <ul class="pricing-features">
-                <li><span data-lang="en">1 use per tool per day</span><span data-lang="he">שימוש אחד בכל כלי ליום</span></li>
-                <li><span data-lang="en">All 6 tools available</span><span data-lang="he">כל 6 הכלים זמינים</span></li>
-                <li><span data-lang="en">Full Hebrew support</span><span data-lang="he">תמיכה מלאה בעברית</span></li>
-            </ul>
+<!-- HOW IT WORKS -->
+<section class="steps-section reveal">
+    <div class="container">
+        <h2 class="section-title">
+            <span data-lang="he">פשוט לשימוש</span>
+            <span data-lang="en">Simple to Use</span>
+        </h2>
+        <p class="section-subtitle">
+            <span data-lang="he">שלושה צעדים — וסיימת</span>
+            <span data-lang="en">Three steps — and you're done</span>
+        </p>
+        <div class="steps">
+            <div class="step reveal">
+                <div class="step-num">1</div>
+                <h3><span data-lang="he">בחר כלי</span><span data-lang="en">Choose a Tool</span></h3>
+                <p><span data-lang="he">6 כלים מקצועיים זמינים במסך הבית</span><span data-lang="en">6 professional tools available on the home screen</span></p>
+            </div>
+            <div class="step reveal">
+                <div class="step-num">2</div>
+                <h3><span data-lang="he">בחר קבצים</span><span data-lang="en">Select Files</span></h3>
+                <p><span data-lang="he">העלה PDF או תמונות מהמכשיר</span><span data-lang="en">Upload PDF or images from your device</span></p>
+            </div>
+            <div class="step reveal">
+                <div class="step-num">3</div>
+                <h3><span data-lang="he">שמור ושתף</span><span data-lang="en">Save & Share</span></h3>
+                <p><span data-lang="he">צפה בתוצאה, שמור או שלח ישירות</span><span data-lang="en">Preview the result, save or share directly</span></p>
+            </div>
         </div>
-        <div class="pricing-card popular reveal" data-badge="Best Value">
-            <h3><span data-lang="en">Yearly</span><span data-lang="he">שנתי</span></h3>
-            <div class="price">₪97<small><span data-lang="en"> / year</span><span data-lang="he"> / שנה</span></small></div>
-            <ul class="pricing-features">
-                <li><span data-lang="en">Unlimited use of all tools</span><span data-lang="he">שימוש ללא הגבלה בכל הכלים</span></li>
-                <li><span data-lang="en">Priority support</span><span data-lang="he">תמיכה מועדפת</span></li>
-                <li><span data-lang="en">All future features</span><span data-lang="he">כל הפיצ'רים העתידיים</span></li>
-            </ul>
+    </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="reveal">
+    <div class="container">
+        <h2 class="section-title">
+            <span data-lang="he">תוכניות ומחירים</span>
+            <span data-lang="en">Plans & Pricing</span>
+        </h2>
+        <p class="section-subtitle">
+            <span data-lang="he">התחל בחינם — שדרג כשתרצה</span>
+            <span data-lang="en">Start free — upgrade when you want</span>
+        </p>
+        <div class="pricing-grid">
+
+            <div class="pricing-card reveal">
+                <h3><span data-lang="he">חינם</span><span data-lang="en">Free</span></h3>
+                <div class="pricing-price">
+                    <span data-lang="he">₪0</span><span data-lang="en">$0</span>
+                </div>
+                <div class="pricing-period">
+                    <span data-lang="he">לנצח</span><span data-lang="en">Forever</span>
+                </div>
+                <ul class="pricing-features">
+                    <li><span data-lang="he">שימוש בכל הכלים</span><span data-lang="en">Access all tools</span></li>
+                    <li><span data-lang="he">שימוש אחד לכל יומיים</span><span data-lang="en">One use per 48 hours</span></li>
+                    <li><span data-lang="he">חוברת מסמכים — פעם אחת</span><span data-lang="en">Document bundle — one time</span></li>
+                </ul>
+                <a href="#" class="pricing-btn secondary">
+                    <span data-lang="he">הורד חינם</span><span data-lang="en">Download Free</span>
+                </a>
+            </div>
+
+            <div class="pricing-card featured reveal">
+                <div class="pricing-badge">
+                    <span data-lang="he">משתלם ביותר</span><span data-lang="en">Best Value</span>
+                </div>
+                <h3><span data-lang="he">מנוי שנתי</span><span data-lang="en">Yearly</span></h3>
+                <div class="pricing-price">
+                    <span data-lang="he">₪97</span><span data-lang="en">$24.99</span>
+                </div>
+                <div class="pricing-period">
+                    <span data-lang="he">לשנה · פחות מ-₪8.10 לחודש</span><span data-lang="en">per year · less than $2.10/month</span>
+                </div>
+                <ul class="pricing-features">
+                    <li><span data-lang="he">גישה בלתי מוגבלת לכל הכלים</span><span data-lang="en">Unlimited access to all tools</span></li>
+                    <li><span data-lang="he">חוברות מסמכים ללא הגבלה</span><span data-lang="en">Unlimited document bundles</span></li>
+                    <li><span data-lang="he">תמיכה מועדפת</span><span data-lang="en">Priority support</span></li>
+                    <li><span data-lang="he">עדכונים חינם</span><span data-lang="en">Free updates</span></li>
+                </ul>
+                <a href="#" class="pricing-btn primary">
+                    <span data-lang="he">שדרג עכשיו</span><span data-lang="en">Upgrade Now</span>
+                </a>
+            </div>
+
+            <div class="pricing-card reveal">
+                <h3><span data-lang="he">מנוי חודשי</span><span data-lang="en">Monthly</span></h3>
+                <div class="pricing-price">
+                    <span data-lang="he">₪9.70</span><span data-lang="en">$2.49</span>
+                </div>
+                <div class="pricing-period">
+                    <span data-lang="he">לחודש · ללא התחייבות</span><span data-lang="en">per month · cancel anytime</span>
+                </div>
+                <ul class="pricing-features">
+                    <li><span data-lang="he">גישה מלאה לכל הכלים</span><span data-lang="en">Full access to all tools</span></li>
+                    <li><span data-lang="he">חוברות מסמכים ללא הגבלה</span><span data-lang="en">Unlimited document bundles</span></li>
+                    <li><span data-lang="he">ביטול בכל עת</span><span data-lang="en">Cancel anytime</span></li>
+                </ul>
+                <a href="#" class="pricing-btn secondary">
+                    <span data-lang="he">התחל מנוי</span><span data-lang="en">Start Subscription</span>
+                </a>
+            </div>
+
         </div>
-        <div class="pricing-card reveal">
-            <h3><span data-lang="en">7-Day Pass</span><span data-lang="he">גישה ל-7 ימים</span></h3>
-            <div class="price">₪30</div>
-            <ul class="pricing-features">
-                <li><span data-lang="en">Full access for 7 days</span><span data-lang="he">גישה מלאה ל-7 ימים</span></li>
-                <li><span data-lang="en">All tools unlimited</span><span data-lang="he">כל הכלים ללא הגבלה</span></li>
-                <li><span data-lang="en">One-time payment</span><span data-lang="he">תשלום חד פעמי</span></li>
-            </ul>
+        <p style="text-align:center;margin-top:20px;color:var(--text-muted);font-size:.85rem">
+            <span data-lang="he">💡 גם גישה ל-7 ימים ב-₪30 זמינה באפליקציה</span>
+            <span data-lang="en">💡 7-Day Pass for $7.99 also available in the app</span>
+        </p>
+    </div>
+</section>
+
+<!-- SECURITY -->
+<section class="reveal" style="background:var(--bg-section)">
+    <div class="container">
+        <h2 class="section-title">
+            <span data-lang="he">אבטחה ופרטיות</span>
+            <span data-lang="en">Security & Privacy</span>
+        </h2>
+        <div class="security-grid" style="margin-top:40px">
+            <div class="security-item reveal">
+                <span class="icon">🔒</span>
+                <h4><span data-lang="he">עיבוד מקומי</span><span data-lang="en">Local Processing</span></h4>
+                <p><span data-lang="he">הכל מתבצע על המכשיר שלך. שום מסמך לא נשלח לשרת.</span><span data-lang="en">Everything runs on your device. No document is ever sent to a server.</span></p>
+            </div>
+            <div class="security-item reveal">
+                <span class="icon">🛡️</span>
+                <h4><span data-lang="he">הצפנת AES</span><span data-lang="en">AES Encryption</span></h4>
+                <p><span data-lang="he">נתוני רכישה מוצפנים בהצפנה צבאית.</span><span data-lang="en">Purchase data encrypted with military-grade encryption.</span></p>
+            </div>
+            <div class="security-item reveal">
+                <span class="icon">📵</span>
+                <h4><span data-lang="he">ללא מעקב</span><span data-lang="en">No Tracking</span></h4>
+                <p><span data-lang="he">אין אנליטיקס, אין פרסומות, אין איסוף מידע.</span><span data-lang="en">No analytics, no ads, no data collection.</span></p>
+            </div>
+            <div class="security-item reveal">
+                <span class="icon">📱</span>
+                <h4><span data-lang="he">קישור למכשיר</span><span data-lang="en">Device Binding</span></h4>
+                <p><span data-lang="he">הרכישה מוצמדת למכשיר שלך לאבטחה מקסימלית.</span><span data-lang="en">Purchase tied to your device for maximum security.</span></p>
+            </div>
         </div>
     </div>
 </section>
 
 <!-- FAQ -->
-<section class="section" id="faq" style="background: var(--bg-alt); max-width: 100%; padding: 80px 20px;">
-    <h2 class="section-title reveal">
-        <span data-lang="en">Frequently Asked Questions</span>
-        <span data-lang="he">שאלות נפוצות</span>
-    </h2>
-    <div class="faq-list">
-        <div class="faq-item reveal">
-            <div class="faq-q">
-                <span><span data-lang="en">Is my data safe?</span><span data-lang="he">האם המידע שלי בטוח?</span></span>
-            </div>
-            <div class="faq-a">
-                <span data-lang="en">Yes. All processing happens locally on your device. We never upload your documents to any server.</span>
-                <span data-lang="he">כן. כל העיבוד מתבצע מקומית על המכשיר שלך. אנחנו אף פעם לא מעלים את המסמכים שלך לשרת.</span>
-            </div>
-        </div>
-        <div class="faq-item reveal">
-            <div class="faq-q">
-                <span><span data-lang="en">Does the app work offline?</span><span data-lang="he">האם האפליקציה עובדת אופליין?</span></span>
-            </div>
-            <div class="faq-a">
-                <span data-lang="en">Yes! All PDF tools work completely offline. Internet is only needed for purchases.</span>
-                <span data-lang="he">כן! כל כלי ה-PDF עובדים לגמרי אופליין. אינטרנט נדרש רק לרכישות.</span>
-            </div>
-        </div>
-        <div class="faq-item reveal">
-            <div class="faq-q">
-                <span><span data-lang="en">Can I use it for legal documents?</span><span data-lang="he">אפשר להשתמש למסמכים משפטיים?</span></span>
-            </div>
-            <div class="faq-a">
-                <span data-lang="en">Absolutely. The Document Bundle feature was designed specifically for legal professionals, with cover pages, table of contents, and numbered appendices.</span>
-                <span data-lang="he">בהחלט. פיצ'ר חוברת המסמכים תוכנן במיוחד לאנשי מקצוע משפטיים, עם דפי שער, תוכן עניינים ונספחים ממוספרים.</span>
-            </div>
-        </div>
-        <div class="faq-item reveal">
-            <div class="faq-q">
-                <span><span data-lang="en">What can I do for free?</span><span data-lang="he">מה אפשר לעשות בחינם?</span></span>
-            </div>
-            <div class="faq-a">
-                <span data-lang="en">You get one free use per tool per day. For unlimited access, choose a yearly subscription or a 7-day pass.</span>
-                <span data-lang="he">מקבלים שימוש חינמי אחד בכל כלי ליום. לגישה ללא הגבלה, בחר מנוי שנתי או גישה ל-7 ימים.</span>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Privacy Policy -->
-<section class="privacy-section" id="privacy">
-    <div class="privacy-container reveal">
-        <h2>
-            <span data-lang="en">Privacy Policy</span>
-            <span data-lang="he">מדיניות פרטיות</span>
+<section id="faq" class="reveal">
+    <div class="container">
+        <h2 class="section-title">
+            <span data-lang="he">שאלות נפוצות</span>
+            <span data-lang="en">FAQ</span>
         </h2>
-        <p class="privacy-date">
-            <span data-lang="en">Last Updated: February 2026</span>
-            <span data-lang="he">עדכון אחרון: פברואר 2026</span>
-        </p>
+        <div class="faq-list" style="margin-top:40px">
 
-        <div class="privacy-highlight">
-            <span data-lang="en"><strong>Key Point:</strong> PDF Merger Pro processes all documents locally on your device. We do not upload, store, or access your files on any server.</span>
-            <span data-lang="he"><strong>נקודה מרכזית:</strong> PDF Merger Pro מעבד את כל המסמכים מקומית על המכשיר שלך. אנחנו לא מעלים, שומרים או ניגשים לקבצים שלך בשום שרת.</span>
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">אפשר למלא טפסים של ביטוח לאומי, עירייה וכו'?</span><span data-lang="en">Can I fill government forms (social security, municipality, etc.)?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">בהחלט! תפתח את הטופס בסביבת העבודה, תוסיף טקסט בכל מקום, תחתום ותשלח חזרה — הכל מהטלפון בלי צורך במדפסת.</span><span data-lang="en">Absolutely! Open the form in the workspace, add text anywhere, sign and send back — all from your phone without needing a printer.</span></p></div></div>
+
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">מה כוללת חוברת המסמכים?</span><span data-lang="en">What does the document bundle include?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">תוכן עניינים אוטומטי, דפי שער לנספחים, מספור נספחים (א', ב', ג'...), עימוד מחדש של כל העמודים, ותמיכה במסמך ראשי ומשני. מתאים להגשה לבתי משפט, לעבודות אקדמיות ולדוחות עסקיים.</span><span data-lang="en">Automatic table of contents, appendix cover pages, numbered appendices, full re-pagination, and support for primary and secondary documents. Perfect for court filings, academic papers, and business reports.</span></p></div></div>
+
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">מה ההבדל בין התוכניות?</span><span data-lang="en">What's the difference between plans?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">הגרסה החינמית נותנת גישה לכל הכלים עם שימוש אחד לכל יומיים (חוברת מסמכים — פעם אחת). המנוי מוריד את כל ההגבלות — שימוש ללא הגבלה בכל הכלים.</span><span data-lang="en">The free version gives access to all tools with one use per 48 hours (document bundle — one time only). The subscription removes all limits — unlimited use of all tools.</span></p></div></div>
+
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">אפשר לבטל מנוי?</span><span data-lang="en">Can I cancel my subscription?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">בוודאי. בטל דרך Google Play בכל עת. אחרי הביטול תמשיך ליהנות מגישה עד סוף התקופה ששילמת עליה.</span><span data-lang="en">Of course. Cancel through Google Play anytime. After cancellation, you'll keep access until the end of your paid period.</span></p></div></div>
+
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">המסמכים שלי בטוחים?</span><span data-lang="en">Are my documents safe?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">לחלוטין. כל העיבוד מתבצע על המכשיר שלך בלבד. אין שרתים, אין ענן, אין מעקב. המסמכים שלך נשארים אצלך.</span><span data-lang="en">Absolutely. All processing happens on your device only. No servers, no cloud, no tracking. Your documents stay with you.</span></p></div></div>
+
         </div>
-
-        <h3><span data-lang="en">1. Local Processing (No Data Collection)</span><span data-lang="he">1. עיבוד מקומי (ללא איסוף מידע)</span></h3>
-        <p>
-            <span data-lang="en">All PDF processing — including merging, splitting, signing, and editing — is performed entirely on your device. Your documents never leave your phone.</span>
-            <span data-lang="he">כל עיבוד ה-PDF — כולל איחוד, פיצול, חתימה ועריכה — מתבצע כולו על המכשיר שלך. המסמכים שלך לעולם לא עוזבים את הטלפון.</span>
-        </p>
-        <ul>
-            <li><span data-lang="en"><strong>No Document Uploads:</strong> Your PDF files, documents, and signatures are processed entirely on your smartphone. We do not upload, store, or monitor your documents on any external servers.</span><span data-lang="he"><strong>אין העלאת מסמכים:</strong> קבצי ה-PDF, המסמכים והחתימות שלך מעובדים כולם בטלפון שלך. אנחנו לא מעלים, שומרים או מנטרים את המסמכים שלך בשום שרת חיצוני.</span></li>
-            <li><span data-lang="en"><strong>No Personal Information:</strong> The app does not collect or store personally identifiable information (PII) such as your name, phone number, or physical address.</span><span data-lang="he"><strong>אין מידע אישי:</strong> האפליקציה לא אוספת ולא שומרת מידע מזהה אישית (PII) כמו שם, מספר טלפון או כתובת.</span></li>
-        </ul>
-
-        <h3><span data-lang="en">2. Information We May Collect</span><span data-lang="he">2. מידע שאנו עשויים לאסוף</span></h3>
-        <p><span data-lang="en">While we do not collect your personal documents, minimal data may be collected for operational purposes:</span><span data-lang="he">בעוד שאנחנו לא אוספים את המסמכים האישיים שלך, מידע מינימלי עשוי להיאסף לצרכים תפעוליים:</span></p>
-        <ul>
-            <li><span data-lang="en"><strong>Installation Source:</strong> We may save information regarding the source of the installation (e.g., an affiliate link) solely for managing our affiliate program.</span><span data-lang="he"><strong>מקור התקנה:</strong> אנו עשויים לשמור מידע לגבי מקור ההתקנה (למשל, קישור שותפים) אך ורק לצורך ניהול תוכנית השותפים שלנו.</span></li>
-            <li><span data-lang="en"><strong>Technical Logs:</strong> Basic technical information (like device model or crash reports) may be collected via Google Play Services to improve app stability.</span><span data-lang="he"><strong>לוגים טכניים:</strong> מידע טכני בסיסי (כמו דגם מכשיר או דוחות קריסה) עשוי להיאסף דרך Google Play Services לשיפור יציבות האפליקציה.</span></li>
-        </ul>
-
-        <h3><span data-lang="en">3. Third-Party Services</span><span data-lang="he">3. שירותי צד שלישי</span></h3>
-        <p><span data-lang="en">PDF Merger Pro uses Google Play Services for distribution and in-app purchases. Please refer to <a href="https://policies.google.com/privacy" target="_blank">Google's Privacy Policy</a> for information on how they handle data.</span><span data-lang="he">PDF Merger Pro משתמש ב-Google Play Services להפצה ולרכישות בתוך האפליקציה. אנא עיין ב<a href="https://policies.google.com/privacy" target="_blank">מדיניות הפרטיות של Google</a> למידע על אופן הטיפול שלהם במידע.</span></p>
-
-        <h3><span data-lang="en">4. Data Security</span><span data-lang="he">4. אבטחת מידע</span></h3>
-        <p><span data-lang="en">Since all document processing occurs locally on your device, your files are protected by your device's own security measures. We recommend keeping your device updated and using screen lock protection.</span><span data-lang="he">מכיוון שכל עיבוד המסמכים מתבצע מקומית על המכשיר שלך, הקבצים שלך מוגנים על ידי אמצעי האבטחה של המכשיר עצמו. אנו ממליצים לעדכן את המכשיר ולהשתמש בנעילת מסך.</span></p>
-
-        <h3><span data-lang="en">5. Your Consent</span><span data-lang="he">5. הסכמתך</span></h3>
-        <p><span data-lang="en">By using PDF Merger Pro, you consent to this privacy policy and the local processing of your files.</span><span data-lang="he">השימוש ב-PDF Merger Pro מהווה הסכמה למדיניות פרטיות זו ולעיבוד המקומי של הקבצים שלך.</span></p>
-
-        <h3><span data-lang="en">6. Changes to This Policy</span><span data-lang="he">6. שינויים במדיניות זו</span></h3>
-        <p><span data-lang="en">We may update this policy from time to time. Changes will be posted on this page with an updated date.</span><span data-lang="he">אנו עשויים לעדכן מדיניות זו מעת לעת. שינויים יפורסמו בדף זה עם תאריך מעודכן.</span></p>
-
-        <h3><span data-lang="en">7. Contact Us</span><span data-lang="he">7. צור קשר</span></h3>
-        <p><span data-lang="en">If you have any questions about this privacy policy, contact us at:</span><span data-lang="he">אם יש לך שאלות לגבי מדיניות פרטיות זו, צור קשר:</span></p>
-        <p style="text-align:center; font-weight: 600; color: var(--navy);">📧 mergerpro8@gmail.com</p>
     </div>
 </section>
 
-<!-- Footer -->
-<footer class="footer">
-    <p>© 2026 LegalDan Software. All rights reserved.</p>
-    <div class="footer-links">
-        <a href="#privacy">
-            <span data-lang="en">Privacy Policy</span>
-            <span data-lang="he">מדיניות פרטיות</span>
-        </a>
-        <a href="mailto:mergerpro8@gmail.com">
-            <span data-lang="en">Contact</span>
-            <span data-lang="he">צור קשר</span>
-        </a>
+<!-- CTA -->
+<section class="cta-section">
+    <h2><span data-lang="he">מוכן להתחיל?</span><span data-lang="en">Ready to Get Started?</span></h2>
+    <p><span data-lang="he">הורד חינם ותראה בעצמך. בלי כרטיס אשראי, בלי התחייבות.</span><span data-lang="en">Download free and see for yourself. No credit card, no commitment.</span></p>
+    <a href="#" class="btn btn-white">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 20.5v-17C3 2.67 3.67 2 4.5 2c.28 0 .55.08.79.22l14.22 8.5c.55.33.74 1.04.41 1.59-.11.18-.25.33-.41.41l-14.22 8.5c-.55.33-1.26.14-1.59-.41-.14-.24-.2-.5-.2-.79z"/></svg>
+        <span data-lang="he">הורד עכשיו מ-Google Play</span>
+        <span data-lang="en">Download Now on Google Play</span>
+    </a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="footer-logo">
+        <img src="data:image/png;base64,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sTETnwviwMFUwD62ArFHCABCwrEbRdADABiM681m4nNBHBAAAMNRbMzC54G4YBQAEAEUHQC6MQ8AAMQax24UxiUAAAASiAAAAEACEQAAAEggAgAAAAlEAAAAIIEIAAAAJJCDqYAZSgKEhbnnzRG5ORk4dqMIegAAw1H8zcLngbggAAAGo9iYic8FcUAAAAAggQgAgMEid705IfhcEAcEAMBwFBuz8HkgLngaIBABFB0AuvE0QACINY7dKIxLAAAAJBABAACABCIAAACQQA6mAvaxFQAAf3DsRhH0AAAAkEAEAAAAEohhgEAEMPe8OaI3JwPHbhRGDwBgOIq/Wfg8EBcEAMBgFBsz8bkgDggAAAAkEAEAMFj0rjcnA58L4oAAABiOYmMWPg/EBU8DBCKAogNAN4YBAkCscexGYUwFDABxxrEbRXAPAAAACUQAAAAggQgAAAAkkPI9AFxGAoDo4diNYugBAAAggQgAAAAkEPMAAECscexGYfQAAACQQAQAAAASiAAAAEACEQAAAEggngUAAHHGsRtF0AMAAEACMQwQAGKNYzcKowcAAIAEIgAAAJBABAAAABKIAAAAQAIRAAAASCACAAAACcQwQACINY7dKIweAAAAEoipgAEgzjh2owh6AAAASCACAAAACUQAAAAggQgAAAAkEMMAASDWOHajMHoAAABIIAIAAAAJRAAAACCBCAAAACQQAQAAgARiKmAAiDOO3SiCYYAAEGscu1EYlwAAAEggAgAAAAlEAAAAIIEIAAAAJBABAACABCIAAACQQAQAAAASiHkAACDWOHajMHoAAABIIKYCBoA449iNIugBAAAggQgAAAAkEAEAAIAEIgAAAJBADAMEgFjj2I3C6AEAACCBCAAAACQQAQAAgAQiAAAAkEAEAAAAEoipgAEgzjh2owiGAQJArHHsRmFcAgAAIIEIAAAAJBABAACABCIAAACQQAQAAAASiAAAAEACMQwQAGKNYzcKowcAAIAEIgAAAJBATAUMAHHGsRtF0AMAAEACEQAAAEggAgAAAAnEMEAAiDWO3SiMHgAAABKIAAAAQAIRAAAASCACAAAACUQAAAAggQgAAAAkEFMBA0CccexGEcwDAACxxrEbhXEJAACABCIAAACQQAQAAAASiAAAAEACEQAAAEggAgAAAAnEMEAAiDWO3SiMHgAAABKIAAAA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" alt="PDF Merger Pro" width="48" height="48" style="border-radius:12px;opacity:.8">
     </div>
+    <div style="margin-bottom:12px">
+        <a href="/cdn-cgi/l/email-protection#dcb1b9aebbb9aeacaeb3e49cbbb1bdb5b0f2bfb3b1"><span data-lang="he">צור קשר</span><span data-lang="en">Contact</span></a>
+        <a href="#features"><span data-lang="he">פיצ'רים</span><span data-lang="en">Features</span></a>
+        <a href="#pricing"><span data-lang="he">מחירים</span><span data-lang="en">Pricing</span></a>
+        <a href="#faq"><span data-lang="he">שאלות</span><span data-lang="en">FAQ</span></a>
+    </div>
+    <p>© 2026 LegalDan Software. All rights reserved.</p>
+    <p style="margin-top:8px;font-size:12px"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="761b13041113040604194e36111b171f1a5815191b">[email&#160;protected]</a></p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 function setLang(lang) {
     const html = document.documentElement;
     html.setAttribute('data-active-lang', lang);
     html.setAttribute('lang', lang);
     html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
     document.body.style.fontFamily = lang === 'he' ? "'Heebo', sans-serif" : "'DM Sans', sans-serif";
-    document.querySelectorAll('.section-title, h1, h2, h3, .feature-card h3, .pricing-card h3, .privacy-container h2, .privacy-container h3').forEach(el => {
-        el.style.fontFamily = lang === 'he' ? "'Rubik', sans-serif" : "'Plus Jakarta Sans', sans-serif";
-    });
+    document.documentElement.style.setProperty('--font-display', lang === 'he' ? "'Rubik', sans-serif" : "'Plus Jakarta Sans', sans-serif");
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
     document.querySelectorAll('.pricing-features').forEach(ul => ul.style.textAlign = lang === 'he' ? 'right' : 'left');
-    // Update popular badge text
-    const badge = document.querySelector('.pricing-card.popular');
-    if (badge) badge.setAttribute('data-badge', lang === 'he' ? 'הכי משתלם' : 'Best Value');
 }
-
-// Scroll observer for reveal animations
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-}, { threshold: 0.15 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-// FAQ toggle
-document.querySelectorAll('.faq-q').forEach(q => {
-    q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
-});
-
-// Smooth scroll
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) target.scrollIntoView({ behavior: 'smooth' });
-    });
-});
-
-// Scroll detection for lang toggle background
-window.addEventListener('scroll', () => {
-    document.body.classList.toggle('scrolled', window.scrollY > 50);
-});
-</script>
-</body>
-</html>
+const observer = new IntersectionObserver(e => { e.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') }) }, { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(e => observer.observe(e));
+document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function(e)
