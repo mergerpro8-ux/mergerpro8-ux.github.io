@@ -1,71 +1,453 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PDF Merger Pro - Privacy Policy</title>
+    <title>Privacy Policy - Pdf-LegalDan Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --navy: #0A1942;
+            --navy-light: #1a2d5e;
+            --accent: #3b82f6;
+            --accent-light: #dbeafe;
+            --bg: #fafbfe;
+            --text: #1e293b;
+            --text-muted: #64748b;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+        }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f7fa; color: #333; line-height: 1.8; }
-        .header { background: linear-gradient(135deg, #0a1942 0%, #1a3a8a 100%); color: white; padding: 50px 20px; text-align: center; }
-        .header h1 { font-size: 2rem; margin-bottom: 5px; }
-        .header p { opacity: 0.8; }
-        .container { max-width: 700px; margin: -20px auto 40px; background: white; border-radius: 12px; box-shadow: 0 2px 20px rgba(0,0,0,0.08); padding: 35px 30px; }
-        .date { color: #888; font-size: 0.85rem; margin-bottom: 25px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
-        h2 { color: #0a1942; font-size: 1.2rem; margin: 25px 0 10px; }
-        p, li { margin-bottom: 10px; }
-        ul { padding-left: 25px; }
-        .highlight { background: #e8f0fe; border-left: 4px solid #1a3a8a; padding: 15px; border-radius: 0 8px 8px 0; margin: 15px 0; }
-        .contact { background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 25px; text-align: center; }
-        .contact a { color: #1a3a8a; }
-        .footer { text-align: center; padding: 20px; color: #888; font-size: 0.8rem; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: var(--navy);
+            color: white;
+            padding: 2.5rem 1.5rem 3rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 140%;
+            height: 200%;
+            background: radial-gradient(ellipse at 30% 50%, rgba(59,130,246,0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse at 70% 30%, rgba(59,130,246,0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .app-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.6rem;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 50px;
+            padding: 0.4rem 1.2rem 0.4rem 0.5rem;
+            margin-bottom: 1.2rem;
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .app-badge .icon {
+            width: 28px;
+            height: 28px;
+            background: var(--accent);
+            border-radius: 7px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.55rem;
+            letter-spacing: 0.5px;
+        }
+
+        .header h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .header .subtitle {
+            color: rgba(255,255,255,0.6);
+            font-size: 0.95rem;
+        }
+
+        .container {
+            max-width: 740px;
+            margin: -1.5rem auto 3rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            padding: 2.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03);
+        }
+
+        .effective-date {
+            display: inline-block;
+            background: var(--accent-light);
+            color: var(--accent);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.3rem 0.9rem;
+            border-radius: 20px;
+            margin-bottom: 1.8rem;
+        }
+
+        .section {
+            margin-bottom: 2rem;
+        }
+
+        .section:last-child {
+            margin-bottom: 0;
+        }
+
+        .section h2 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 1.35rem;
+            font-weight: 400;
+            color: var(--navy);
+            margin-bottom: 0.8rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--accent-light);
+        }
+
+        .section p {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .section ul {
+            padding-left: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .section li {
+            font-size: 0.95rem;
+            color: var(--text);
+            margin-bottom: 0.4rem;
+            line-height: 1.6;
+        }
+
+        .section a {
+            color: var(--accent);
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f0f7ff, #eef2ff);
+            border-left: 3px solid var(--accent);
+            border-radius: 0 10px 10px 0;
+            padding: 1rem 1.3rem;
+            margin: 1rem 0;
+        }
+
+        .highlight-box p {
+            color: var(--navy);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 2rem 1.5rem 3rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        .footer .company {
+            font-weight: 600;
+            color: var(--text);
+            margin-bottom: 0.3rem;
+        }
+
+        .lang-toggle {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1.2rem;
+        }
+
+        .lang-btn {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 0.35rem 0.9rem;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+        }
+
+        .lang-btn.active {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+
+        .he { display: none; }
+        html[lang="he"] .en { display: none; }
+        html[lang="he"] .he { display: block; }
+        html[lang="he"] .card { direction: rtl; text-align: right; }
+        html[lang="he"] .section ul { padding-left: 0; padding-right: 1.5rem; }
+        html[lang="he"] .highlight-box { border-left: none; border-right: 3px solid var(--accent); border-radius: 10px 0 0 10px; }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.7rem; }
+            .card { padding: 1.5rem; }
+            .container { padding: 0 1rem; }
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>PDF Merger Pro</h1>
-        <p>Privacy Policy</p>
-    </div>
-    <div class="container">
-        <p class="date">Last Updated: February 2026</p>
 
-        <div class="highlight">
-            <strong>Key Point:</strong> PDF Merger Pro processes all documents locally on your device. We do not upload, store, or access your files on any server.
+<div class="header">
+    <div class="header-content">
+        <div class="app-badge">
+            <div class="icon">MERG</div>
+            <span>Pdf-LegalDan Pro</span>
+        </div>
+        <h1 class="en">Privacy Policy</h1>
+        <h1 class="he">מדיניות פרטיות</h1>
+        <p class="subtitle en">Your privacy matters to us</p>
+        <p class="subtitle he">הפרטיות שלך חשובה לנו</p>
+    </div>
+</div>
+
+<div class="container">
+    <div class="card">
+        <div class="lang-toggle">
+            <button class="lang-btn active" onclick="setLang('en')">English</button>
+            <button class="lang-btn" onclick="setLang('he')" style="margin-left:0.5rem">עברית</button>
         </div>
 
-        <h2>1. Local Processing</h2>
-        <p>All PDF processing including merging, splitting, signing, and editing is performed entirely on your device. Your documents never leave your phone.</p>
+        <span class="effective-date en">Effective: February 16, 2026</span>
+        <span class="effective-date he">בתוקף מ: 16 בפברואר 2026</span>
 
-        <h2>2. Information We Do Not Collect</h2>
-        <ul>
-            <li>We do not collect your documents or files</li>
-            <li>We do not collect personal information (name, email, phone)</li>
-            <li>We do not track your location</li>
-            <li>We do not use analytics or tracking tools</li>
-        </ul>
+        <!-- ENGLISH -->
+        <div class="en">
+            <div class="section">
+                <h2>Introduction</h2>
+                <p>Pdf-LegalDan Pro ("the App"), also available as PDF Merger Pro on Google Play, is developed and operated by LegalDan Software ("we", "us", or "our"). This Privacy Policy explains how we handle information when you use our App.</p>
+                <div class="highlight-box">
+                    <p>We do not collect, store, or transmit any personal data. All PDF processing happens entirely on your device.</p>
+                </div>
+            </div>
 
-        <h2>3. In-App Purchases</h2>
-        <p>PDF Merger Pro offers optional subscriptions through Google Play Billing. Payment processing is handled entirely by Google. We do not store or access your payment information.</p>
+            <div class="section">
+                <h2>Information We Do Not Collect</h2>
+                <p>Our App is designed with a privacy-first approach. We do not collect:</p>
+                <ul>
+                    <li>Personal information (name, email, phone number)</li>
+                    <li>Document contents or PDF files</li>
+                    <li>Usage analytics or behavioral data</li>
+                    <li>Location data</li>
+                    <li>Device identifiers for tracking purposes</li>
+                    <li>Contacts, photos, or other personal files (beyond files you explicitly select for PDF processing)</li>
+                </ul>
+            </div>
 
-        <h2>4. Third-Party Services</h2>
-        <p>The app uses Google Play Services for distribution and billing. Please refer to Google Privacy Policy for details on their data practices.</p>
+            <div class="section">
+                <h2>Local Processing Only</h2>
+                <p>All PDF operations — including merging, splitting, editing, signing, and bundling — are performed entirely on your device. Your documents are never uploaded to external servers or cloud services.</p>
+                <p>The App does not require an internet connection to perform its core PDF functions.</p>
+            </div>
 
-        <h2>5. Data Security</h2>
-        <p>Since all processing happens locally on your device, your documents are protected by your device own security measures. We have no access to your files.</p>
+            <div class="section">
+                <h2>Device Storage</h2>
+                <p>The App stores the following data locally on your device:</p>
+                <ul>
+                    <li><strong>Purchase status:</strong> Encrypted record of your subscription or pass status, stored securely using AES encryption.</li>
+                    <li><strong>App preferences:</strong> Language setting (Hebrew/English) and display preferences.</li>
+                    <li><strong>Saved signatures:</strong> Digital signatures you create are stored locally and never transmitted.</li>
+                </ul>
+                <p>This data remains on your device and is not accessible to us or any third party.</p>
+            </div>
 
-        <h2>6. Children Privacy</h2>
-        <p>PDF Merger Pro is designed for users aged 18 and above. We do not knowingly collect information from children under 18.</p>
+            <div class="section">
+                <h2>In-App Purchases</h2>
+                <p>The App offers optional subscriptions and passes through Apple's App Store and Google Play Store. All payment processing is handled entirely by Apple or Google. We do not receive, process, or store any payment information such as credit card numbers or billing details.</p>
+                <p>For information about how Apple or Google handles your payment data, please refer to their respective privacy policies:</p>
+                <ul>
+                    <li><a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a></li>
+                    <li><a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a></li>
+                </ul>
+            </div>
 
-        <h2>7. Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date.</p>
+            <div class="section">
+                <h2>Security</h2>
+                <p>We implement the following security measures to protect your data:</p>
+                <ul>
+                    <li>AES-CBC encryption with HMAC integrity verification for stored data</li>
+                    <li>Device binding to prevent unauthorized access</li>
+                    <li>Root/jailbreak detection for enhanced security</li>
+                    <li>No external network communication for PDF processing</li>
+                </ul>
+            </div>
 
-        <h2>8. Contact Us</h2>
-        <div class="contact">
-            <p>If you have questions about this Privacy Policy:</p>
-            <p><strong>Email:</strong> <a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a></p>
-            <p><strong>Developer:</strong> LegalDan Software</p>
+            <div class="section">
+                <h2>File Access Permissions</h2>
+                <p>The App may request permission to access your device's photo library. This permission is used solely to allow you to select images for PDF conversion. We do not access files beyond those you explicitly choose.</p>
+            </div>
+
+            <div class="section">
+                <h2>Children's Privacy</h2>
+                <p>Our App does not knowingly collect any information from children under the age of 13. Since we do not collect any personal data from any user, the App is safe for all ages (rated 4+).</p>
+            </div>
+
+            <div class="section">
+                <h2>Third-Party Services</h2>
+                <p>The App does not integrate any third-party analytics, advertising, or tracking services. The only third-party interaction is with Apple's App Store or Google Play for in-app purchase processing.</p>
+            </div>
+
+            <div class="section">
+                <h2>Changes to This Policy</h2>
+                <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date. We encourage you to review this page periodically.</p>
+            </div>
+
+            <div class="section">
+                <h2>Contact Us</h2>
+                <p>If you have any questions or concerns about this Privacy Policy or our practices, please contact us:</p>
+                <p><strong>Email:</strong> <a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a></p>
+                <p><strong>Developer:</strong> LegalDan Software</p>
+            </div>
+        </div>
+
+        <!-- HEBREW -->
+        <div class="he">
+            <div class="section">
+                <h2>מבוא</h2>
+                <p>Pdf-LegalDan Pro ("האפליקציה"), זמינה גם בשם PDF Merger Pro ב-Google Play, פותחה ומופעלת על ידי LegalDan Software ("אנחנו"). מדיניות פרטיות זו מסבירה כיצד אנו מטפלים במידע כאשר אתם משתמשים באפליקציה שלנו.</p>
+                <div class="highlight-box">
+                    <p>אנחנו לא אוספים, מאחסנים או מעבירים נתונים אישיים. כל עיבוד ה-PDF מתבצע במלואו על המכשיר שלכם.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>מידע שאנחנו לא אוספים</h2>
+                <p>האפליקציה שלנו תוכננה בגישת פרטיות מלאה. אנחנו לא אוספים:</p>
+                <ul>
+                    <li>מידע אישי (שם, אימייל, מספר טלפון)</li>
+                    <li>תוכן מסמכים או קבצי PDF</li>
+                    <li>נתוני שימוש או התנהגות</li>
+                    <li>נתוני מיקום</li>
+                    <li>מזהי מכשיר למטרות מעקב</li>
+                    <li>אנשי קשר, תמונות או קבצים אישיים אחרים (מעבר לקבצים שאתם בוחרים במפורש לעיבוד PDF)</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>עיבוד מקומי בלבד</h2>
+                <p>כל פעולות ה-PDF — כולל מיזוג, פיצול, עריכה, חתימה וחיבור — מתבצעות במלואן על המכשיר שלכם. המסמכים שלכם לעולם אינם מועלים לשרתים חיצוניים או לשירותי ענן.</p>
+                <p>האפליקציה אינה דורשת חיבור לאינטרנט לביצוע פונקציות ה-PDF המרכזיות.</p>
+            </div>
+
+            <div class="section">
+                <h2>אחסון במכשיר</h2>
+                <p>האפליקציה מאחסנת את הנתונים הבאים באופן מקומי על המכשיר שלכם:</p>
+                <ul>
+                    <li><strong>סטטוס רכישה:</strong> רשומה מוצפנת של מצב המנוי או הכרטיסייה שלכם, מאוחסנת בהצפנת AES.</li>
+                    <li><strong>העדפות אפליקציה:</strong> הגדרת שפה (עברית/אנגלית) והעדפות תצוגה.</li>
+                    <li><strong>חתימות שמורות:</strong> חתימות דיגיטליות שאתם יוצרים מאוחסנות מקומית ולעולם אינן מועברות.</li>
+                </ul>
+                <p>נתונים אלה נשארים על המכשיר שלכם ואינם נגישים לנו או לצד שלישי כלשהו.</p>
+            </div>
+
+            <div class="section">
+                <h2>רכישות בתוך האפליקציה</h2>
+                <p>האפליקציה מציעה מנויים וכרטיסיות אופציונליים דרך App Store של Apple ו-Google Play Store. כל עיבוד התשלומים מתבצע באופן מלא על ידי Apple או Google. אנחנו לא מקבלים, מעבדים או מאחסנים מידע על אמצעי תשלום.</p>
+            </div>
+
+            <div class="section">
+                <h2>אבטחה</h2>
+                <p>אנו מיישמים את אמצעי האבטחה הבאים:</p>
+                <ul>
+                    <li>הצפנת AES-CBC עם אימות שלמות HMAC</li>
+                    <li>קישור למכשיר למניעת גישה לא מורשית</li>
+                    <li>זיהוי Root/Jailbreak לאבטחה מוגברת</li>
+                    <li>אין תקשורת רשת חיצונית לעיבוד PDF</li>
+                </ul>
+            </div>
+
+            <div class="section">
+                <h2>הרשאות גישה לקבצים</h2>
+                <p>האפליקציה עשויה לבקש הרשאה לגשת לגלריית התמונות שלכם. הרשאה זו משמשת אך ורק כדי לאפשר לכם לבחור תמונות להמרה ל-PDF. אנחנו לא ניגשים לקבצים מעבר לאלה שאתם בוחרים במפורש.</p>
+            </div>
+
+            <div class="section">
+                <h2>פרטיות ילדים</h2>
+                <p>האפליקציה שלנו אינה אוספת ביודעין מידע כלשהו מילדים מתחת לגיל 13. מכיוון שאנו לא אוספים נתונים אישיים מאף משתמש, האפליקציה בטוחה לכל הגילאים (דירוג 4+).</p>
+            </div>
+
+            <div class="section">
+                <h2>שירותי צד שלישי</h2>
+                <p>האפליקציה אינה משלבת שירותי אנליטיקה, פרסום או מעקב של צד שלישי. האינטראקציה היחידה עם צד שלישי היא עם App Store של Apple או Google Play לעיבוד רכישות בתוך האפליקציה.</p>
+            </div>
+
+            <div class="section">
+                <h2>שינויים במדיניות</h2>
+                <p>אנו עשויים לעדכן מדיניות פרטיות זו מעת לעת. כל שינוי יפורסם בדף זה עם תאריך תוקף מעודכן.</p>
+            </div>
+
+            <div class="section">
+                <h2>יצירת קשר</h2>
+                <p>אם יש לכם שאלות או חששות בנוגע למדיניות פרטיות זו, אנא צרו איתנו קשר:</p>
+                <p><strong>אימייל:</strong> <a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a></p>
+                <p><strong>מפתח:</strong> LegalDan Software</p>
+            </div>
         </div>
     </div>
-    <div class="footer">© 2026 LegalDan Software. All rights reserved.</div>
+</div>
+
+<div class="footer">
+    <p class="company">LegalDan Software</p>
+    <p>&copy; 2026 LegalDan Software. All rights reserved.</p>
+</div>
+
+<script>
+function setLang(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'he' ? 'rtl' : 'ltr';
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+    event.target.classList.add('active');
+}
+</script>
+
 </body>
 </html>
