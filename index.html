@@ -122,4 +122,413 @@
         /* Privacy Policy */
         .privacy-section{background:white}
         .privacy-content{max-width:800px;margin:0 auto}
-        .privacy-date{display:inline-block;background:var(--bg-section);
+        .privacy-date{display:inline-block;background:var(--bg-section);color:var(--blue);font-size:.8rem;font-weight:600;padding:4px 14px;border-radius:20px;margin-bottom:24px}
+        .privacy-block{margin-bottom:20px}
+        .privacy-block h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--bg-section)}
+        .privacy-block p{color:var(--text-secondary);font-size:.9rem;line-height:1.7;margin-bottom:6px}
+        .privacy-block ul{padding-inline-start:1.4rem;margin-bottom:8px}
+        .privacy-block li{color:var(--text-secondary);font-size:.9rem;line-height:1.6;margin-bottom:3px}
+        .privacy-highlight{background:var(--bg-section);border-inline-start:3px solid var(--blue-accent);border-radius:0 8px 8px 0;padding:12px 16px;margin:12px 0}
+        .privacy-highlight p{color:var(--navy);font-weight:500;font-size:.9rem;margin:0}
+
+        @media(max-width:768px){.hero h1{font-size:2rem}.features-grid{grid-template-columns:1fr}.pricing-card.featured{transform:none}.pricing-grid{grid-template-columns:1fr}.steps{flex-direction:column;align-items:center}.lang-toggle{top:12px;left:12px}}
+    </style>
+</head>
+<body>
+
+<div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('he')">עברית</button>
+    <button class="lang-btn" onclick="setLang('en')">English</button>
+</div>
+
+<section class="hero">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+        <img src="app_icon.png" alt="PDF Merger Pro" class="hero-icon">
+        <div class="hero-badge"><span class="dot"></span>
+            <span data-lang="he">הורדה חינם ● ללא פרסומות</span>
+            <span data-lang="en">Free Download ● No Ads</span>
+        </div>
+        <h1>
+            <span data-lang="he">כל מה שצריך ל-PDF<br>ב<span class="accent">אפליקציה אחת</span></span>
+            <span data-lang="en">Everything You Need for PDF<br>in <span class="accent">One App</span></span>
+        </h1>
+        <p>
+            <span data-lang="he">מיזוג, עריכה, חתימה דיגיטלית, מילוי טפסים וחוברת מסמכים מקצועית — הכל מהטלפון. בלי מדפסת, בלי מחשב, בלי סורק.</span>
+            <span data-lang="en">Merge, edit, sign, fill forms & create professional document bundles — all from your phone. No printer, no computer needed.</span>
+        </p>
+        <a href="#" class="btn btn-orange">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 20.5v-17C3 2.67 3.67 2 4.5 2c.28 0 .55.08.79.22l14.22 8.5c.55.33.74 1.04.41 1.59-.11.18-.25.33-.41.41l-14.22 8.5c-.55.33-1.26.14-1.59-.41-.14-.24-.2-.5-.2-.79z"/></svg>
+            <span data-lang="he">הורדה חינם מ-Google Play</span>
+            <span data-lang="en">Free Download on Google Play</span>
+        </a>
+    </div>
+</section>
+
+<section class="reveal" style="background:linear-gradient(135deg,#f8faff 0%,#eef2ff 100%);padding:60px 24px">
+    <div class="container">
+        <h2 class="section-title">
+            <span data-lang="he">פשוט, נגיש, ובטוח — <span class="accent">לכל אחד</span></span>
+            <span data-lang="en">Simple, Accessible & Secure — <span class="accent">For Everyone</span></span>
+        </h2>
+        <p class="section-subtitle" style="font-size:1.15rem;font-weight:500;color:var(--navy);max-width:750px">
+            <span data-lang="he">ללא שרתים חיצוניים. ללא ענן. ללא התחייבויות נוספות.<br><strong>הכל שלך ואצלך.</strong></span>
+            <span data-lang="en">No external servers. No cloud. No hidden commitments.<br><strong>Everything stays on your device.</strong></span>
+        </p>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1000px;margin:0 auto">
+            <div style="background:white;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow-soft);border-right:4px solid var(--orange)">
+                <div style="font-size:32px;margin-bottom:12px">📝</div>
+                <h3 style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:10px"><span data-lang="he">מילוי טפסים וחתימה</span><span data-lang="en">Fill Forms & Sign</span></h3>
+                <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.7"><span data-lang="he">כל אחד יכול למלא כל טופס, להוסיף עליו טקסט, פרטים אישיים מזהים, ולחתום עליו בחתימה ידנית. אתה גם יכול לחתום מיידית על כל טופס או מסמך שנשלח אליך לחתימה — <strong>ללא ענן וללא שרתי ביניים — הכל מקומי.</strong></span><span data-lang="en">Anyone can fill any form, add text, personal details, and sign with a handwritten signature. You can also instantly sign any form or document sent to you — <strong>no cloud, no middleman servers — everything stays local.</strong></span></p>
+            </div>
+            <div style="background:white;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow-soft);border-right:4px solid var(--blue-accent)">
+                <div style="font-size:32px;margin-bottom:12px">📚</div>
+                <h3 style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:10px"><span data-lang="he">חוברת מסמכים מקצועית</span><span data-lang="en">Professional Document Bundles</span></h3>
+                <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.7"><span data-lang="he">צור חוברת מסמכים אקדמית או משפטית הכוללת תוכן עניינים אוטומטי, דפי שער, נספחים ממוספרים ועימוד מחדש — מוכנה להגשה.</span><span data-lang="en">Create academic or legal document bundles with automatic table of contents, cover pages, numbered appendices, and re-pagination — ready to submit.</span></p>
+            </div>
+            <div style="background:white;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow-soft);border-right:4px solid var(--green)">
+                <div style="font-size:32px;margin-bottom:12px">✂️</div>
+                <h3 style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:10px"><span data-lang="he">עריכה והשחרה</span><span data-lang="en">Edit & Redact</span></h3>
+                <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.7"><span data-lang="he">השחר, מחק שורה, מילה או קטע מסוים במסמך שאינך מעוניין בו. מחק עמודים, פצל, וצרף הכל לחוברת מסמכים עם נספחים.</span><span data-lang="en">Redact, delete a line, word, or specific section you don't want. Delete pages, split documents, and attach everything to a document bundle with appendices.</span></p>
+            </div>
+            <div style="background:white;border-radius:var(--radius);padding:28px 24px;box-shadow:var(--shadow-soft);border-right:4px solid var(--purple)">
+                <div style="font-size:32px;margin-bottom:12px">🖼️</div>
+                <h3 style="font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:10px"><span data-lang="he">תמונות ל-PDF ומיזוג</span><span data-lang="en">Images to PDF & Merge</span></h3>
+                <p style="color:var(--text-secondary);font-size:.95rem;line-height:1.7"><span data-lang="he">הפוך מספר תמונות לקובץ PDF אחד, מזג מסמכים, ושלב הכל בחוברת מקצועית — הכל מהטלפון, בלי מחשב.</span><span data-lang="en">Convert multiple images into one PDF, merge documents, and combine everything into a professional bundle — all from your phone, no computer needed.</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="who-section reveal">
+    <div class="container">
+        <h2 class="section-title"><span data-lang="he">למי זה מתאים?</span><span data-lang="en">Who Is It For?</span></h2>
+        <p class="section-subtitle"><span data-lang="he">לא צריך מדפסת, מחשב או סורק. הכל נעשה כאן, ישירות מהטלפון.</span><span data-lang="en">No printer or computer required. Everything happens right here, directly from your phone.</span></p>
+        <div class="who-grid">
+            <div class="who-card reveal"><span class="emoji">👨‍👩‍👧‍👦</span><h3><span data-lang="he">לכל אזרח</span><span data-lang="en">For Everyone</span></h3><p><span data-lang="he">מלא טפסים של הרשויות, ביטוח לאומי, עירייה, בנקים — ושלח חזרה ישירות מהטלפון. בלי מדפסת.</span><span data-lang="en">Fill government forms, insurance, municipality, bank documents — and send back directly from your phone. No printer needed.</span></p></div>
+            <div class="who-card reveal"><span class="emoji">⚖️</span><h3><span data-lang="he">עורכי דין</span><span data-lang="en">Lawyers</span></h3><p><span data-lang="he">חוברת מסמכים לפי התקנות עם תוכן עניינים, דפי שער לנספחים ועימוד מחדש אוטומטי. מוכן להגשה.</span><span data-lang="en">Court-ready document bundles with automatic TOC, appendix cover pages, and re-pagination. Ready to file.</span></p></div>
+            <div class="who-card reveal"><span class="emoji">🎓</span><h3><span data-lang="he">סטודנטים</span><span data-lang="en">Students</span></h3><p><span data-lang="he">הכן חוברת אקדמית מסודרת עם נספחים ממוספרים, תוכן עניינים וכריכה — להגשת עבודות ותזות.</span><span data-lang="en">Create organized academic bundles with numbered appendices, TOC, and cover pages — for thesis and paper submissions.</span></p></div>
+            <div class="who-card reveal"><span class="emoji">💼</span><h3><span data-lang="he">מנהלים ועצמאים</span><span data-lang="en">Managers & Freelancers</span></h3><p><span data-lang="he">אחד מסמכים, חתום דיגיטלית, ערוך ושלח — הכל בדרך לפגישה. חוסך זמן ומדפסת.</span><span data-lang="en">Merge documents, sign digitally, edit and send — all on the go. Saves time and a trip to the printer.</span></p></div>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="reveal">
+    <div class="container">
+        <h2 class="section-title"><span data-lang="he">6 כלים מקצועיים</span><span data-lang="en">6 Professional Tools</span></h2>
+        <p class="section-subtitle"><span data-lang="he">כל מה שצריך לניהול מסמכים — במקום אחד</span><span data-lang="en">Everything you need for document management — in one place</span></p>
+        <div class="features-grid">
+            <div class="feature-card reveal"><div class="feature-icon" style="background:rgba(33,150,243,0.1)">📝</div><h3><span data-lang="he">מילוי טפסים ועבודה על PDF</span><span data-lang="en">Fill Forms & Work on PDF</span></h3><p><span data-lang="he">מלא טפסי PDF של כל הרשויות — ביטוח לאומי, עירייה, בנקים, מס הכנסה — הוסף טקסט, חתימה, ושלח חזרה. הכל מהטלפון.</span><span data-lang="en">Fill PDF forms from any authority — government, banks, insurance — add text, signature, and send back. All from your phone.</span></p><span class="tag"><span data-lang="he">מתאים לכולם</span><span data-lang="en">For Everyone</span></span></div>
+            <div class="feature-card reveal"><div class="feature-icon" style="background:rgba(251,140,0,0.1)">📚</div><h3><span data-lang="he">חוברת מסמכים מקצועית</span><span data-lang="en">Professional Document Bundle</span></h3><p><span data-lang="he">יצירת חוברת עם תוכן עניינים אוטומטי, דפי שער לנספחים, מספור נספחים (א', ב', ג'...), עימוד מחדש — מתאים לבתי משפט, אקדמיה ועסקים.</span><span data-lang="en">Create bundles with automatic TOC, appendix cover pages, numbered appendices, re-pagination — perfect for courts, academia, and business.</span></p><span class="tag"><span data-lang="he">עורכי דין · סטודנטים · מנהלים</span><span data-lang="en">Lawyers · Students · Managers</span></span></div>
+            <div class="feature-card reveal"><div class="feature-icon" style="background:rgba(67,160,71,0.1)">✂️</div><h3><span data-lang="he">עריכה מתקדמת של PDF</span><span data-lang="en">Advanced PDF Editing</span></h3><p><span data-lang="he">מחיקת עמודים, חילוץ, סיבוב, גזירה, השחרה של מידע רגיש, פיצול לקבצים נפרדים ועוד — עריכה מלאה ישירות מהטלפון.</span><span data-lang="en">Delete pages, extract, rotate, crop, redact sensitive info, split into separate files and more — full editing directly from your phone.</span></p><span class="tag"><span data-lang="he">עריכה מלאה</span><span data-lang="en">Full Editing</span></span></div>
+            <div class="feature-card reveal"><div class="feature-icon" style="background:rgba(13,71,161,0.1)">🔗</div><h3><span data-lang="he">איחוד קבצים</span><span data-lang="en">Merge Files</span></h3><p><span data-lang="he">אחד מספר קבצי PDF לקובץ אחד. שנה סדר בגרירה, צפה בתצוגה מקדימה ושתף מיד.</span><span data-lang="en">Combine multiple PDF files into one. Reorder by dragging, preview the result, and share instantly.</span></p><span class="tag"><span data-lang="he">גרור ושחרר</span><span data-lang="en">Drag & Drop</span></span></div>
+            <div class="feature-card reveal"><div class="feature-icon" style="background:rgba(142,36,170,0.1)">✍️</div><h3><span data-lang="he">חתימה דיגיטלית</span><span data-lang="en">Digital Signature</span></h3><p><span data-lang="he">צייר חתימה בצבע כחול נייבי (כמו עט), מקם בדיוק על המסמך, שנה גודל ושמור לשימוש חוזר.</span><span data-lang="en">Draw your signature in navy blue (like a real pen), place precisely on documents, resize, and save for reuse.</span></p><span class="tag"><span data-lang="he">חתימה כמו עט אמיתי</span><span data-lang="en">Looks Like Real Ink</span></span></div>
+            <div class="feature-card reveal"><div class="feature-icon" style="background:rgba(121,85,72,0.1)">🖼️</div><h3><span data-lang="he">תמונות ל-PDF</span><span data-lang="en">Images to PDF</span></h3><p><span data-lang="he">המר תמונות מכל פורמט (JPG, PNG, HEIC) לקובץ PDF מקצועי. בחר מספר תמונות ואחד לקובץ אחד.</span><span data-lang="en">Convert images from any format (JPG, PNG, HEIC) to a professional PDF. Select multiple images and combine into one file.</span></p><span class="tag"><span data-lang="he">כל הפורמטים</span><span data-lang="en">All Formats</span></span></div>
+        </div>
+    </div>
+</section>
+
+<section class="steps-section reveal">
+    <div class="container">
+        <h2 class="section-title"><span data-lang="he">פשוט לשימוש</span><span data-lang="en">Simple to Use</span></h2>
+        <p class="section-subtitle"><span data-lang="he">שלושה צעדים — וסיימת</span><span data-lang="en">Three steps — and you're done</span></p>
+        <div class="steps">
+            <div class="step reveal"><div class="step-num">1</div><h3><span data-lang="he">בחר כלי</span><span data-lang="en">Choose a Tool</span></h3><p><span data-lang="he">6 כלים מקצועיים זמינים במסך הבית</span><span data-lang="en">6 professional tools available on the home screen</span></p></div>
+            <div class="step reveal"><div class="step-num">2</div><h3><span data-lang="he">בחר קבצים</span><span data-lang="en">Select Files</span></h3><p><span data-lang="he">העלה PDF או תמונות מהמכשיר</span><span data-lang="en">Upload PDF or images from your device</span></p></div>
+            <div class="step reveal"><div class="step-num">3</div><h3><span data-lang="he">שמור ושתף</span><span data-lang="en">Save & Share</span></h3><p><span data-lang="he">צפה בתוצאה, שמור או שלח ישירות</span><span data-lang="en">Preview the result, save or share directly</span></p></div>
+        </div>
+    </div>
+</section>
+
+<section id="pricing" class="reveal">
+    <div class="container">
+        <h2 class="section-title"><span data-lang="he">תוכניות ומחירים</span><span data-lang="en">Plans & Pricing</span></h2>
+        <p class="section-subtitle"><span data-lang="he">התחל בחינם — שדרג כשתרצה</span><span data-lang="en">Start free — upgrade when you want</span></p>
+        <div class="pricing-grid">
+
+            <div class="pricing-card reveal">
+                <h3><span data-lang="he">חינם</span><span data-lang="en">Free</span></h3>
+                <div class="pricing-price"><span data-lang="he">₪0</span><span data-lang="en">$0</span></div>
+                <div class="pricing-period"><span data-lang="he">לנצח</span><span data-lang="en">Forever</span></div>
+                <ul class="pricing-features">
+                    <li><span data-lang="he">שימוש בכל הכלים</span><span data-lang="en">Access all tools</span></li>
+                    <li><span data-lang="he">שימוש אחד לכל יומיים</span><span data-lang="en">One use per 48 hours</span></li>
+                    <li><span data-lang="he">חוברת מסמכים — פעם אחת</span><span data-lang="en">Document bundle — one time</span></li>
+                </ul>
+                <a href="#" class="pricing-btn secondary"><span data-lang="he">הורד חינם</span><span data-lang="en">Download Free</span></a>
+            </div>
+
+            <div class="pricing-card featured reveal">
+                <div class="pricing-badge"><span data-lang="he">משתלם ביותר</span><span data-lang="en">Best Value</span></div>
+                <h3><span data-lang="he">מנוי שנתי</span><span data-lang="en">Yearly</span></h3>
+                <div class="pricing-price"><span data-lang="he">₪110</span><span data-lang="en">$34.99</span></div>
+                <div class="pricing-period"><span data-lang="he">לשנה · פחות מ-₪9.20 לחודש</span><span data-lang="en">per year · less than $2.95/month</span></div>
+                <ul class="pricing-features">
+                    <li><span data-lang="he">גישה בלתי מוגבלת לכל הכלים</span><span data-lang="en">Unlimited access to all tools</span></li>
+                    <li><span data-lang="he">חוברות מסמכים ללא הגבלה</span><span data-lang="en">Unlimited document bundles</span></li>
+                    <li><span data-lang="he">תמיכה מועדפת</span><span data-lang="en">Priority support</span></li>
+                    <li><span data-lang="he">עדכונים חינם</span><span data-lang="en">Free updates</span></li>
+                </ul>
+                <a href="#" class="pricing-btn primary"><span data-lang="he">שדרג עכשיו</span><span data-lang="en">Upgrade Now</span></a>
+            </div>
+
+            <div class="pricing-card reveal">
+                <h3><span data-lang="he">מנוי חודשי</span><span data-lang="en">Monthly</span></h3>
+                <div class="pricing-price"><span data-lang="he">₪15</span><span data-lang="en">$4.99</span></div>
+                <div class="pricing-period"><span data-lang="he">לחודש · ללא התחייבות</span><span data-lang="en">per month · cancel anytime</span></div>
+                <ul class="pricing-features">
+                    <li><span data-lang="he">גישה מלאה לכל הכלים</span><span data-lang="en">Full access to all tools</span></li>
+                    <li><span data-lang="he">חוברות מסמכים ללא הגבלה</span><span data-lang="en">Unlimited document bundles</span></li>
+                    <li><span data-lang="he">ביטול בכל עת</span><span data-lang="en">Cancel anytime</span></li>
+                </ul>
+                <a href="#" class="pricing-btn secondary"><span data-lang="he">התחל מנוי</span><span data-lang="en">Start Subscription</span></a>
+            </div>
+
+            <div class="pricing-card reveal">
+                <h3><span data-lang="he">גישה ל-7 ימים</span><span data-lang="en">7-Day Pass</span></h3>
+                <div class="pricing-price"><span data-lang="he">₪30</span><span data-lang="en">$9.99</span></div>
+                <div class="pricing-period"><span data-lang="he">תשלום חד-פעמי</span><span data-lang="en">One-time payment</span></div>
+                <ul class="pricing-features">
+                    <li><span data-lang="he">גישה מלאה לכל הכלים</span><span data-lang="en">Full access to all tools</span></li>
+                    <li><span data-lang="he">7 ימים ללא הגבלה</span><span data-lang="en">7 days unlimited</span></li>
+                    <li><span data-lang="he">ללא חידוש אוטומטי</span><span data-lang="en">No auto-renewal</span></li>
+                </ul>
+                <a href="#" class="pricing-btn secondary"><span data-lang="he">קנה עכשיו</span><span data-lang="en">Buy Now</span></a>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="reveal" style="background:var(--bg-section)">
+    <div class="container">
+        <h2 class="section-title"><span data-lang="he">אבטחה ופרטיות</span><span data-lang="en">Security & Privacy</span></h2>
+        <div class="security-grid" style="margin-top:40px">
+            <div class="security-item reveal"><span class="icon">🔒</span><h4><span data-lang="he">עיבוד מקומי</span><span data-lang="en">Local Processing</span></h4><p><span data-lang="he">הכל מתבצע על המכשיר שלך. שום מסמך לא נשלח לשרת.</span><span data-lang="en">Everything runs on your device. No document is ever sent to a server.</span></p></div>
+            <div class="security-item reveal"><span class="icon">🛡️</span><h4><span data-lang="he">הצפנת AES</span><span data-lang="en">AES Encryption</span></h4><p><span data-lang="he">נתוני רכישה מוצפנים בהצפנה צבאית.</span><span data-lang="en">Purchase data encrypted with military-grade encryption.</span></p></div>
+            <div class="security-item reveal"><span class="icon">📵</span><h4><span data-lang="he">ללא מעקב</span><span data-lang="en">No Tracking</span></h4><p><span data-lang="he">אין אנליטיקס, אין פרסומות, אין איסוף מידע.</span><span data-lang="en">No analytics, no ads, no data collection.</span></p></div>
+            <div class="security-item reveal"><span class="icon">📱</span><h4><span data-lang="he">קישור למכשיר</span><span data-lang="en">Device Binding</span></h4><p><span data-lang="he">הרכישה מוצמדת למכשיר שלך לאבטחה מקסימלית.</span><span data-lang="en">Purchase tied to your device for maximum security.</span></p></div>
+        </div>
+    </div>
+</section>
+
+<section id="faq" class="reveal">
+    <div class="container">
+        <h2 class="section-title"><span data-lang="he">שאלות נפוצות</span><span data-lang="en">FAQ</span></h2>
+        <div class="faq-list" style="margin-top:40px">
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">אפשר למלא טפסים של ביטוח לאומי, עירייה וכו'?</span><span data-lang="en">Can I fill government forms (social security, municipality, etc.)?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">בהחלט! תפתח את הטופס בסביבת העבודה, תוסיף טקסט בכל מקום, תחתום ותשלח חזרה — הכל מהטלפון בלי צורך במדפסת.</span><span data-lang="en">Absolutely! Open the form in the workspace, add text anywhere, sign and send back — all from your phone without needing a printer.</span></p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">מה כוללת חוברת המסמכים?</span><span data-lang="en">What does the document bundle include?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">תוכן עניינים אוטומטי, דפי שער לנספחים, מספור נספחים (א', ב', ג'...), עימוד מחדש של כל העמודים, ותמיכה במסמך ראשי ומשני. מתאים להגשה לבתי משפט, לעבודות אקדמיות ולדוחות עסקיים.</span><span data-lang="en">Automatic table of contents, appendix cover pages, numbered appendices, full re-pagination, and support for primary and secondary documents. Perfect for court filings, academic papers, and business reports.</span></p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">מה ההבדל בין התוכניות?</span><span data-lang="en">What's the difference between plans?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">הגרסה החינמית נותנת גישה לכל הכלים עם שימוש אחד לכל יומיים (חוברת מסמכים — פעם אחת). המנוי מוריד את כל ההגבלות — שימוש ללא הגבלה בכל הכלים. יש גם גישה ל-7 ימים בתשלום חד-פעמי.</span><span data-lang="en">The free version gives access to all tools with one use per 48 hours (document bundle — one time only). The subscription removes all limits — unlimited use of all tools. A 7-day pass with a one-time payment is also available.</span></p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">אפשר לבטל מנוי?</span><span data-lang="en">Can I cancel my subscription?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">בוודאי. בטל דרך Google Play או App Store בכל עת. אחרי הביטול תמשיך ליהנות מגישה עד סוף התקופה ששילמת עליה.</span><span data-lang="en">Of course. Cancel through Google Play or the App Store anytime. After cancellation, you'll keep access until the end of your paid period.</span></p></div></div>
+            <div class="faq-item"><div class="faq-q" onclick="this.parentElement.classList.toggle('open')"><span><span data-lang="he">המסמכים שלי בטוחים?</span><span data-lang="en">Are my documents safe?</span></span><span class="arrow">▼</span></div><div class="faq-a"><p><span data-lang="he">לחלוטין. כל העיבוד מתבצע על המכשיר שלך בלבד. אין שרתים, אין ענן, אין מעקב. המסמכים שלך נשארים אצלך.</span><span data-lang="en">Absolutely. All processing happens on your device only. No servers, no cloud, no tracking. Your documents stay with you.</span></p></div></div>
+        </div>
+    </div>
+</section>
+
+<section id="privacy" class="privacy-section reveal">
+    <div class="container">
+        <h2 class="section-title"><span data-lang="he">מדיניות פרטיות</span><span data-lang="en">Privacy Policy</span></h2>
+        <div class="privacy-content">
+            <div class="privacy-date"><span data-lang="he">בתוקף מ: 17 בפברואר 2026</span><span data-lang="en">Effective: February 17, 2026</span></div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">מבוא</span><span data-lang="en">Introduction</span></h3>
+                <p><span data-lang="he">Pdf-LegalDan Pro ("האפליקציה"), זמינה גם בשם PDF Merger Pro ב-Google Play, פותחה ומופעלת על ידי LegalDan Software ("אנחנו"). מדיניות פרטיות זו מסבירה כיצד אנו מטפלים במידע כאשר אתם משתמשים באפליקציה שלנו.</span><span data-lang="en">Pdf-LegalDan Pro ("the App"), also available as PDF Merger Pro on Google Play, is developed and operated by LegalDan Software ("we", "us", or "our"). This Privacy Policy explains how we handle information when you use our App.</span></p>
+                <div class="privacy-highlight"><p><span data-lang="he">אנחנו לא אוספים, מאחסנים או מעבירים נתונים אישיים. כל עיבוד ה-PDF מתבצע במלואו על המכשיר שלכם.</span><span data-lang="en">We do not collect, store, or transmit any personal data. All PDF processing happens entirely on your device.</span></p></div>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">מידע שאנחנו לא אוספים</span><span data-lang="en">Information We Do Not Collect</span></h3>
+                <p><span data-lang="he">האפליקציה שלנו תוכננה בגישת פרטיות מלאה. אנחנו לא אוספים:</span><span data-lang="en">Our App is designed with a privacy-first approach. We do not collect:</span></p>
+                <ul>
+                    <li><span data-lang="he">מידע אישי (שם, אימייל, מספר טלפון)</span><span data-lang="en">Personal information (name, email, phone number)</span></li>
+                    <li><span data-lang="he">תוכן מסמכים או קבצי PDF</span><span data-lang="en">Document contents or PDF files</span></li>
+                    <li><span data-lang="he">נתוני שימוש או התנהגות</span><span data-lang="en">Usage analytics or behavioral data</span></li>
+                    <li><span data-lang="he">נתוני מיקום</span><span data-lang="en">Location data</span></li>
+                    <li><span data-lang="he">מזהי מכשיר למטרות מעקב</span><span data-lang="en">Device identifiers for tracking purposes</span></li>
+                    <li><span data-lang="he">אנשי קשר, תמונות או קבצים אישיים (מעבר לקבצים שאתם בוחרים במפורש)</span><span data-lang="en">Contacts, photos, or other personal files (beyond files you explicitly select)</span></li>
+                </ul>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">עיבוד מקומי בלבד</span><span data-lang="en">Local Processing Only</span></h3>
+                <p><span data-lang="he">כל פעולות ה-PDF — כולל מיזוג, פיצול, עריכה, חתימה וחיבור — מתבצעות במלואן על המכשיר שלכם. המסמכים שלכם לעולם אינם מועלים לשרתים חיצוניים או לשירותי ענן.</span><span data-lang="en">All PDF operations — including merging, splitting, editing, signing, and bundling — are performed entirely on your device. Your documents are never uploaded to external servers or cloud services.</span></p>
+                <p><span data-lang="he">האפליקציה אינה דורשת חיבור לאינטרנט לביצוע פונקציות ה-PDF המרכזיות.</span><span data-lang="en">The App does not require an internet connection to perform its core PDF functions.</span></p>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">אחסון במכשיר</span><span data-lang="en">Device Storage</span></h3>
+                <p><span data-lang="he">האפליקציה מאחסנת את הנתונים הבאים באופן מקומי על המכשיר שלכם:</span><span data-lang="en">The App stores the following data locally on your device:</span></p>
+                <ul>
+                    <li><span data-lang="he"><strong>סטטוס רכישה:</strong> רשומה מוצפנת של מצב המנוי, מאוחסנת בהצפנת AES.</span><span data-lang="en"><strong>Purchase status:</strong> Encrypted record of your subscription status, stored securely using AES encryption.</span></li>
+                    <li><span data-lang="he"><strong>העדפות אפליקציה:</strong> הגדרת שפה (עברית/אנגלית) והעדפות תצוגה.</span><span data-lang="en"><strong>App preferences:</strong> Language setting (Hebrew/English) and display preferences.</span></li>
+                    <li><span data-lang="he"><strong>חתימות שמורות:</strong> חתימות דיגיטליות שאתם יוצרים מאוחסנות מקומית ולעולם אינן מועברות.</span><span data-lang="en"><strong>Saved signatures:</strong> Digital signatures you create are stored locally and never transmitted.</span></li>
+                </ul>
+                <p><span data-lang="he">נתונים אלה נשארים על המכשיר שלכם ואינם נגישים לנו או לצד שלישי.</span><span data-lang="en">This data remains on your device and is not accessible to us or any third party.</span></p>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">רכישות בתוך האפליקציה</span><span data-lang="en">In-App Purchases</span></h3>
+                <p><span data-lang="he">האפליקציה מציעה מנויים וכרטיסיות אופציונליים דרך App Store של Apple ו-Google Play Store. כל עיבוד התשלומים מתבצע באופן מלא על ידי Apple או Google. אנחנו לא מקבלים, מעבדים או מאחסנים מידע על אמצעי תשלום.</span><span data-lang="en">The App offers optional subscriptions and passes through Apple's App Store and Google Play Store. All payment processing is handled entirely by Apple or Google. We do not receive, process, or store any payment information.</span></p>
+                <p><span data-lang="he">למידע נוסף:</span><span data-lang="en">For more information:</span>
+                    <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a> ·
+                    <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a>
+                </p>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">אבטחה</span><span data-lang="en">Security</span></h3>
+                <ul>
+                    <li><span data-lang="he">הצפנת AES-CBC עם אימות שלמות HMAC</span><span data-lang="en">AES-CBC encryption with HMAC integrity verification</span></li>
+                    <li><span data-lang="he">קישור למכשיר למניעת גישה לא מורשית</span><span data-lang="en">Device binding to prevent unauthorized access</span></li>
+                    <li><span data-lang="he">זיהוי Root/Jailbreak לאבטחה מוגברת</span><span data-lang="en">Root/jailbreak detection for enhanced security</span></li>
+                    <li><span data-lang="he">אין תקשורת רשת חיצונית לעיבוד PDF</span><span data-lang="en">No external network communication for PDF processing</span></li>
+                </ul>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">הרשאות גישה לקבצים</span><span data-lang="en">File Access Permissions</span></h3>
+                <p><span data-lang="he">האפליקציה עשויה לבקש הרשאה לגשת לגלריית התמונות שלכם. הרשאה זו משמשת אך ורק כדי לאפשר לכם לבחור תמונות להמרה ל-PDF.</span><span data-lang="en">The App may request permission to access your device's photo library. This permission is used solely to allow you to select images for PDF conversion.</span></p>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">פרטיות ילדים</span><span data-lang="en">Children's Privacy</span></h3>
+                <p><span data-lang="he">האפליקציה אינה אוספת ביודעין מידע מילדים מתחת לגיל 13. מכיוון שאנו לא אוספים נתונים אישיים, האפליקציה בטוחה לכל הגילאים (דירוג 4+).</span><span data-lang="en">Our App does not knowingly collect any information from children under 13. Since we do not collect any personal data, the App is safe for all ages (rated 4+).</span></p>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">שירותי צד שלישי</span><span data-lang="en">Third-Party Services</span></h3>
+                <p><span data-lang="he">האפליקציה אינה משלבת שירותי אנליטיקה, פרסום או מעקב של צד שלישי. האינטראקציה היחידה עם צד שלישי היא עם App Store של Apple או Google Play לעיבוד רכישות.</span><span data-lang="en">The App does not integrate any third-party analytics, advertising, or tracking services. The only third-party interaction is with Apple's App Store or Google Play for in-app purchase processing.</span></p>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">שינויים במדיניות</span><span data-lang="en">Changes to This Policy</span></h3>
+                <p><span data-lang="he">אנו עשויים לעדכן מדיניות פרטיות זו מעת לעת. כל שינוי יפורסם בדף זה עם תאריך תוקף מעודכן.</span><span data-lang="en">We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated effective date.</span></p>
+            </div>
+
+            <div class="privacy-block">
+                <h3><span data-lang="he">יצירת קשר</span><span data-lang="en">Contact Us</span></h3>
+                <p><span data-lang="he"><strong>אימייל:</strong> <a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a> · או <a href="#contact">טופס יצירת קשר</a><br><strong>מפתח:</strong> LegalDan Software</span><span data-lang="en"><strong>Email:</strong> <a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a> · or <a href="#contact">Contact Form</a><br><strong>Developer:</strong> LegalDan Software</span></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="reveal" style="background:var(--bg-section)">
+    <div class="container">
+        <h2 class="section-title"><span data-lang="he">צור קשר</span><span data-lang="en">Contact Us</span></h2>
+        <p class="section-subtitle"><span data-lang="he">שאלה? בעיה? הצעה? נשמח לשמוע ממך.</span><span data-lang="en">Question? Issue? Suggestion? We'd love to hear from you.</span></p>
+        <div class="contact-form" id="contactForm">
+            <input type="text" id="cf_name" required>
+            <input type="email" id="cf_email" required>
+            <textarea id="cf_message" required></textarea>
+            <button type="button" class="btn-send" id="cf_send" onclick="sendContact()">
+                <span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>
+            </button>
+            <div class="form-msg" id="cf_msg"></div>
+        </div>
+    </div>
+</section>
+
+<section class="cta-section">
+    <h2><span data-lang="he">מוכן להתחיל?</span><span data-lang="en">Ready to Get Started?</span></h2>
+    <p><span data-lang="he">הורד חינם ותראה בעצמך. בלי כרטיס אשראי, בלי התחייבות.</span><span data-lang="en">Download free and see for yourself. No credit card, no commitment.</span></p>
+    <a href="#" class="btn btn-white">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor"><path d="M3 20.5v-17C3 2.67 3.67 2 4.5 2c.28 0 .55.08.79.22l14.22 8.5c.55.33.74 1.04.41 1.59-.11.18-.25.33-.41.41l-14.22 8.5c-.55.33-1.26.14-1.59-.41-.14-.24-.2-.5-.2-.79z"/></svg>
+        <span data-lang="he">הורד עכשיו מ-Google Play</span>
+        <span data-lang="en">Download Now on Google Play</span>
+    </a>
+</section>
+
+<footer>
+    <div class="footer-logo"><img src="app_icon.png" alt="PDF Merger Pro" width="48" height="48" style="border-radius:12px;opacity:.8"></div>
+    <div style="margin-bottom:12px">
+        <a href="#contact"><span data-lang="he">צור קשר</span><span data-lang="en">Contact</span></a>
+        <a href="#features"><span data-lang="he">פיצ'רים</span><span data-lang="en">Features</span></a>
+        <a href="#pricing"><span data-lang="he">מחירים</span><span data-lang="en">Pricing</span></a>
+        <a href="#faq"><span data-lang="he">שאלות</span><span data-lang="en">FAQ</span></a>
+        <a href="#privacy"><span data-lang="he">מדיניות פרטיות</span><span data-lang="en">Privacy Policy</span></a>
+    </div>
+    <p>© 2026 LegalDan Software. All rights reserved.</p>
+    <p style="margin-top:8px;font-size:12px"><a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a></p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+emailjs.init('gYzAS2leEuEtGHSnr');
+
+function setLang(lang) {
+    const html = document.documentElement;
+    html.setAttribute('data-active-lang', lang);
+    html.setAttribute('lang', lang);
+    html.setAttribute('dir', lang === 'he' ? 'rtl' : 'ltr');
+    document.body.style.fontFamily = lang === 'he' ? "'Heebo', sans-serif" : "'DM Sans', sans-serif";
+    document.documentElement.style.setProperty('--font-display', lang === 'he' ? "'Rubik', sans-serif" : "'Plus Jakarta Sans', sans-serif");
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
+    document.querySelectorAll('.pricing-features').forEach(ul => ul.style.textAlign = lang === 'he' ? 'right' : 'left');
+    // Update form placeholders
+    const isHe = lang === 'he';
+    document.getElementById('cf_name').placeholder = isHe ? 'שם מלא' : 'Full Name';
+    document.getElementById('cf_email').placeholder = isHe ? 'כתובת אימייל' : 'Email Address';
+    document.getElementById('cf_message').placeholder = isHe ? 'ההודעה שלך...' : 'Your message...';
+}
+
+function sendContact() {
+    const name = document.getElementById('cf_name').value.trim();
+    const email = document.getElementById('cf_email').value.trim();
+    const message = document.getElementById('cf_message').value.trim();
+    const btn = document.getElementById('cf_send');
+    const msg = document.getElementById('cf_msg');
+    const isHe = document.documentElement.getAttribute('data-active-lang') === 'he';
+
+    if (!name || !email || !message) {
+        msg.style.color = '#e53e3e';
+        msg.textContent = isHe ? 'נא למלא את כל השדות' : 'Please fill in all fields';
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = isHe ? 'שולח...' : 'Sending...';
+
+    emailjs.send('service_c9e8sap', 'template_ojro51f', {
+        name: name,
+        email: email,
+        message: message,
+        title: 'PDF Merger Pro - ' + name
+    }).then(function() {
+        msg.style.color = '#38a169';
+        msg.textContent = isHe ? '✅ ההודעה נשלחה בהצלחה!' : '✅ Message sent successfully!';
+        document.getElementById('cf_name').value = '';
+        document.getElementById('cf_email').value = '';
+        document.getElementById('cf_message').value = '';
+        btn.disabled = false;
+        btn.innerHTML = isHe ? '<span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>' : '<span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>';
+        setLang(document.documentElement.getAttribute('data-active-lang'));
+    }, function(error) {
+        msg.style.color = '#e53e3e';
+        msg.textContent = isHe ? '❌ שגיאה בשליחה. נסה שוב.' : '❌ Error sending. Please try again.';
+        btn.disabled = false;
+        btn.innerHTML = isHe ? '<span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>' : '<span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>';
+        setLang(document.documentElement.getAttribute('data-active-lang'));
+    });
+}
+
+// Set initial placeholders
+document.getElementById('cf_name').placeholder = 'שם מלא';
+document.getElementById('cf_email').placeholder = 'כתובת אימייל';
+document.getElementById('cf_message').placeholder = 'ההודעה שלך...';
+
+const observer = new IntersectionObserver(e => { e.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') }) }, { threshold: .15 });
+document.querySelectorAll('.reveal').forEach(e => observer.observe(e));
+document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if(target) target.scrollIntoView({ behavior: 'smooth' });
+}) });
+document.querySelectorAll('.faq-q').forEach(q => { q.addEventListener('click', function() { this.parentElement.classList.toggle('open') }) });
+window.addEventListener('scroll', () => { document.body.classList.toggle('scrolled', window.scrollY > 50) });
+</script>
+</body>
+</html>
