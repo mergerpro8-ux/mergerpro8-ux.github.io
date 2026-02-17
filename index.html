@@ -109,6 +109,16 @@
         footer a{color:var(--blue);text-decoration:none;margin:0 12px}
         footer .footer-logo{margin-bottom:16px}
 
+        /* Contact Form */
+        .contact-form{max-width:500px;margin:0 auto}
+        .contact-form input,.contact-form textarea{width:100%;padding:14px 16px;border:1px solid var(--border,#e2e8f0);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:.95rem;margin-bottom:12px;transition:border .3s;background:var(--bg-section)}
+        .contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--blue-accent)}
+        .contact-form textarea{min-height:120px;resize:vertical}
+        .contact-form .btn-send{width:100%;padding:14px;border:none;border-radius:50px;background:linear-gradient(135deg,var(--blue),var(--blue-light));color:white;font-size:1rem;font-weight:600;cursor:pointer;transition:all .3s}
+        .contact-form .btn-send:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(13,71,161,0.3)}
+        .contact-form .btn-send:disabled{opacity:.6;cursor:not-allowed;transform:none}
+        .form-msg{text-align:center;margin-top:12px;font-size:.9rem;font-weight:500}
+
         /* Privacy Policy */
         .privacy-section{background:white}
         .privacy-content{max-width:800px;margin:0 auto}
@@ -412,8 +422,25 @@
 
             <div class="privacy-block">
                 <h3><span data-lang="he">יצירת קשר</span><span data-lang="en">Contact Us</span></h3>
-                <p><span data-lang="he"><strong>אימייל:</strong> <a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a><br><strong>מפתח:</strong> LegalDan Software</span><span data-lang="en"><strong>Email:</strong> <a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a><br><strong>Developer:</strong> LegalDan Software</span></p>
+                <p><span data-lang="he"><strong>אימייל:</strong> <a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a> · או <a href="#contact">טופס יצירת קשר</a><br><strong>מפתח:</strong> LegalDan Software</span><span data-lang="en"><strong>Email:</strong> <a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a> · or <a href="#contact">Contact Form</a><br><strong>Developer:</strong> LegalDan Software</span></p>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="reveal" style="background:var(--bg-section)">
+    <div class="container">
+        <h2 class="section-title"><span data-lang="he">צור קשר</span><span data-lang="en">Contact Us</span></h2>
+        <p class="section-subtitle"><span data-lang="he">שאלה? בעיה? הצעה? נשמח לשמוע ממך.</span><span data-lang="en">Question? Issue? Suggestion? We'd love to hear from you.</span></p>
+        <div class="contact-form" id="contactForm">
+            <input type="text" id="cf_name" required>
+            <input type="email" id="cf_email" required>
+            <textarea id="cf_message" required></textarea>
+            <button type="button" class="btn-send" id="cf_send" onclick="sendContact()">
+                <span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>
+            </button>
+            <div class="form-msg" id="cf_msg"></div>
         </div>
     </div>
 </section>
@@ -433,17 +460,21 @@
 <footer>
     <div class="footer-logo"><img src="app_icon.png" alt="PDF Merger Pro" width="48" height="48" style="border-radius:12px;opacity:.8"></div>
     <div style="margin-bottom:12px">
-        <a href="mailto:support@pdfmergerpro.co.il"><span data-lang="he">צור קשר</span><span data-lang="en">Contact</span></a>
+        <a href="#contact"><span data-lang="he">צור קשר</span><span data-lang="en">Contact</span></a>
         <a href="#features"><span data-lang="he">פיצ'רים</span><span data-lang="en">Features</span></a>
         <a href="#pricing"><span data-lang="he">מחירים</span><span data-lang="en">Pricing</span></a>
         <a href="#faq"><span data-lang="he">שאלות</span><span data-lang="en">FAQ</span></a>
         <a href="#privacy"><span data-lang="he">מדיניות פרטיות</span><span data-lang="en">Privacy Policy</span></a>
     </div>
     <p>© 2026 LegalDan Software. All rights reserved.</p>
-    <p style="margin-top:8px;font-size:12px"><a href="mailto:support@pdfmergerpro.co.il">support@pdfmergerpro.co.il</a></p>
+    <p style="margin-top:8px;font-size:12px"><a href="mailto:mergerpro8@gmail.com">mergerpro8@gmail.com</a></p>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
 <script>
+emailjs.init('gYzAS2leEuEtGHSnr');
+
 function setLang(lang) {
     const html = document.documentElement;
     html.setAttribute('data-active-lang', lang);
@@ -454,7 +485,58 @@ function setLang(lang) {
     document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
     document.querySelector('.lang-btn[onclick="setLang(\'' + lang + '\')"]').classList.add('active');
     document.querySelectorAll('.pricing-features').forEach(ul => ul.style.textAlign = lang === 'he' ? 'right' : 'left');
+    // Update form placeholders
+    const isHe = lang === 'he';
+    document.getElementById('cf_name').placeholder = isHe ? 'שם מלא' : 'Full Name';
+    document.getElementById('cf_email').placeholder = isHe ? 'כתובת אימייל' : 'Email Address';
+    document.getElementById('cf_message').placeholder = isHe ? 'ההודעה שלך...' : 'Your message...';
 }
+
+function sendContact() {
+    const name = document.getElementById('cf_name').value.trim();
+    const email = document.getElementById('cf_email').value.trim();
+    const message = document.getElementById('cf_message').value.trim();
+    const btn = document.getElementById('cf_send');
+    const msg = document.getElementById('cf_msg');
+    const isHe = document.documentElement.getAttribute('data-active-lang') === 'he';
+
+    if (!name || !email || !message) {
+        msg.style.color = '#e53e3e';
+        msg.textContent = isHe ? 'נא למלא את כל השדות' : 'Please fill in all fields';
+        return;
+    }
+
+    btn.disabled = true;
+    btn.textContent = isHe ? 'שולח...' : 'Sending...';
+
+    emailjs.send('service_c9e8sap', 'template_z50jf88', {
+        name: name,
+        email: email,
+        message: message,
+        title: 'PDF Merger Pro - ' + name
+    }).then(function() {
+        msg.style.color = '#38a169';
+        msg.textContent = isHe ? '✅ ההודעה נשלחה בהצלחה!' : '✅ Message sent successfully!';
+        document.getElementById('cf_name').value = '';
+        document.getElementById('cf_email').value = '';
+        document.getElementById('cf_message').value = '';
+        btn.disabled = false;
+        btn.innerHTML = isHe ? '<span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>' : '<span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>';
+        setLang(document.documentElement.getAttribute('data-active-lang'));
+    }, function(error) {
+        msg.style.color = '#e53e3e';
+        msg.textContent = isHe ? '❌ שגיאה בשליחה. נסה שוב.' : '❌ Error sending. Please try again.';
+        btn.disabled = false;
+        btn.innerHTML = isHe ? '<span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>' : '<span data-lang="he">שלח הודעה</span><span data-lang="en">Send Message</span>';
+        setLang(document.documentElement.getAttribute('data-active-lang'));
+    });
+}
+
+// Set initial placeholders
+document.getElementById('cf_name').placeholder = 'שם מלא';
+document.getElementById('cf_email').placeholder = 'כתובת אימייל';
+document.getElementById('cf_message').placeholder = 'ההודעה שלך...';
+
 const observer = new IntersectionObserver(e => { e.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') }) }, { threshold: .15 });
 document.querySelectorAll('.reveal').forEach(e => observer.observe(e));
 document.querySelectorAll('a[href^="#"]').forEach(a => { a.addEventListener('click', function(e) {
