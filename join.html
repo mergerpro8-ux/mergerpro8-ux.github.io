@@ -1,32 +1,37 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PDF Merger Pro — הצטרף עכשיו</title>
 
-  <!-- ═══════════════════════════════════════════════════════
-       Open Graph — preview יפה בווטסאפ, פייסבוק, טלגרם
-       ═══════════════════════════════════════════════════════ -->
-  <meta property="og:title"       content="PDF Merger Pro 📄">
-  <meta property="og:description" content="מיזוג, עריכה וניהול PDF מקצועי — עברית, ערבית ועוד 8 שפות">
-  <meta property="og:image"       content="https://mergerpro8-ux.github.io/preview.png">
-  <meta property="og:url"         content="https://mergerpro8-ux.github.io/join/">
-  <meta property="og:type"        content="website">
+  <meta property="og:title"       content="PDF Merger Pro — הצטרף עכשיו" />
+  <meta property="og:description" content="מיזוג, עריכה וחתימה על PDF — ישירות מהנייד. הורד בחינם!" />
+  <meta property="og:image"       content="https://mergerpro8-ux.github.io/app_icon.png" />
+  <meta property="og:url"         content="https://mergerpro8-ux.github.io/join.html" />
+  <meta property="og:type"        content="website" />
 
-  <!-- Twitter card -->
-  <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="PDF Merger Pro 📄">
-  <meta name="twitter:description" content="מיזוג, עריכה וניהול PDF מקצועי">
-  <meta name="twitter:image"       content="https://mergerpro8-ux.github.io/preview.png">
-
-  <title>PDF Merger Pro — הורד עכשיו</title>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;700;900&display=swap" rel="stylesheet" />
 
   <style>
+    :root {
+      --bg:     #0A1628;
+      --card:   #0F1E38;
+      --border: #1A2F52;
+      --blue1:  #1565C0;
+      --blue2:  #1E3A6E;
+      --accent-r: #E53935;
+      --accent-o: #FB8C00;
+      --accent-y: #FDD835;
+      --text:   #E8EEF8;
+      --muted:  #5A7AA8;
+    }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif;
-      background: linear-gradient(135deg, #0D47A1 0%, #1565C0 50%, #0D47A1 100%);
+      font-family: 'Rubik', sans-serif;
+      background: var(--bg);
       min-height: 100vh;
       display: flex;
       align-items: center;
@@ -34,201 +39,240 @@
       padding: 20px;
     }
 
+    /* כרטיס ראשי */
     .card {
-      background: white;
-      border-radius: 24px;
-      padding: 40px 32px;
-      max-width: 400px;
       width: 100%;
-      text-align: center;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      max-width: 360px;
+      background: var(--card);
+      border-radius: 24px;
+      border: 1px solid var(--border);
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.03);
+      animation: cardIn 0.6s cubic-bezier(.22,1,.36,1) both;
     }
 
-    .logo {
-      font-size: 64px;
-      margin-bottom: 16px;
-      display: block;
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* פס צבעוני דק בראש הכרטיס */
+    .top-stripe {
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent-r), var(--accent-o), var(--accent-y));
+    }
+
+    .card-body {
+      padding: 32px 28px 28px;
+      text-align: center;
+    }
+
+    /* אייקון — עיגול כחול עם ניצוץ כתום קטן */
+    .icon-wrap {
+      width: 76px; height: 76px;
+      margin: 0 auto 20px;
+      background: var(--blue2);
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 38px;
+      position: relative;
+      animation: iconIn 0.5s 0.2s cubic-bezier(.22,1,.36,1) both;
+    }
+
+    /* נקודה כתומה קטנה בפינה */
+    .icon-wrap::after {
+      content: '';
+      position: absolute;
+      top: 6px; left: 6px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--accent-o);
+      box-shadow: 0 0 8px var(--accent-o);
+    }
+
+    @keyframes iconIn {
+      from { opacity:0; transform: scale(0.7); }
+      to   { opacity:1; transform: scale(1); }
     }
 
     h1 {
-      font-size: 26px;
-      font-weight: 800;
-      color: #0D47A1;
-      margin-bottom: 8px;
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--text);
+      margin-bottom: 6px;
+      letter-spacing: -0.3px;
     }
 
-    .subtitle {
-      font-size: 14px;
-      color: #666;
-      margin-bottom: 32px;
-      line-height: 1.5;
-    }
-
-    .redirect-msg {
-      background: #E3F2FD;
-      border-radius: 12px;
-      padding: 16px;
+    .tagline {
+      font-size: 13px;
+      color: var(--muted);
       margin-bottom: 24px;
-      color: #0D47A1;
-      font-size: 14px;
-      font-weight: 600;
+      line-height: 1.6;
     }
 
-    .spinner {
-      display: inline-block;
-      width: 20px;
-      height: 20px;
-      border: 3px solid #BBDEFB;
-      border-top-color: #0D47A1;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      vertical-align: middle;
-      margin-left: 8px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-
-    .btn {
-      display: block;
-      background: #0D47A1;
-      color: white;
-      text-decoration: none;
-      padding: 16px;
-      border-radius: 14px;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 12px;
-      transition: background 0.2s, transform 0.1s;
-    }
-    .btn:hover { background: #1565C0; transform: translateY(-1px); }
-    .btn:active { transform: translateY(0); }
-
-    .btn-google {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .footer {
-      margin-top: 24px;
-      font-size: 11px;
-      color: #999;
-    }
-
+    /* פיצ'רים — תגיות קטנות כחולות עם אקסנט קטן */
     .features {
       display: flex;
       justify-content: center;
-      gap: 20px;
-      margin-bottom: 28px;
+      gap: 8px;
+      margin-bottom: 26px;
       flex-wrap: wrap;
     }
 
-    .feature {
-      text-align: center;
+    .feat {
+      background: rgba(21,101,192,0.15);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 5px 12px;
       font-size: 12px;
-      color: #555;
+      color: #7BA7D4;
     }
 
-    .feature-icon {
-      font-size: 24px;
+    /* כפתור — כחול רגיל, טקסט עם גרדיאנט חם קטן */
+    .btn {
       display: block;
-      margin-bottom: 4px;
+      width: 100%;
+      padding: 15px;
+      border-radius: 14px;
+      background: var(--blue1);
+      color: white;
+      font-family: 'Rubik', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(21,101,192,0.4);
+      transition: transform 0.15s, box-shadow 0.15s, background 0.2s;
+      position: relative;
+      overflow: hidden;
     }
+
+    /* ניצוץ צהוב-כתום קטן בצד שמאל של הכפתור */
+    .btn::before {
+      content: '▶';
+      position: absolute;
+      left: 18px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 11px;
+      background: linear-gradient(90deg, var(--accent-o), var(--accent-y));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn:hover  { background: #1976D2; transform: translateY(-2px); box-shadow: 0 6px 28px rgba(21,101,192,0.55); }
+    .btn:active { transform: translateY(0); }
+
+    /* ספירה לאחור */
+    .countdown {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .countdown span {
+      color: var(--accent-y);
+      font-weight: 700;
+    }
+
+    .ref-badge {
+      margin-top: 8px;
+      font-size: 11px;
+      color: #2A3F60;
+    }
+
+    /* קו מפריד תחתון */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 20px 0 16px;
+    }
+
+    .footer-note {
+      font-size: 11px;
+      color: #2A3F60;
+    }
+
+    /* 3 נקודות צבעוניות קטנות בתחתית */
+    .dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+    }
+
+    .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+    }
+    .dot1 { background: var(--accent-r); }
+    .dot2 { background: var(--accent-o); }
+    .dot3 { background: var(--accent-y); }
   </style>
 </head>
 <body>
 
-<div class="card">
-  <span class="logo">📄</span>
-  <h1>PDF Merger Pro</h1>
-  <p class="subtitle">מיזוג, עריכה וניהול PDF מקצועי<br>עברית, ערבית ועוד 8 שפות</p>
+  <div class="card">
+    <div class="top-stripe"></div>
 
-  <div class="features">
-    <div class="feature">
-      <span class="feature-icon">🔀</span>מיזוג
-    </div>
-    <div class="feature">
-      <span class="feature-icon">✏️</span>עריכה
-    </div>
-    <div class="feature">
-      <span class="feature-icon">🔒</span>הצפנה
-    </div>
-    <div class="feature">
-      <span class="feature-icon">📱</span>QR Code
+    <div class="card-body">
+      <div class="icon-wrap">📄</div>
+
+      <h1>PDF Merger Pro</h1>
+      <p class="tagline">מיזוג, עריכה, חתימה וסיסמה על PDF<br/>ישירות מהנייד — בקלות ובמהירות</p>
+
+      <div class="features">
+        <span class="feat">✂️ מיזוג</span>
+        <span class="feat">✍️ חתימה</span>
+        <span class="feat">🔒 הצפנה</span>
+      </div>
+
+      <a id="storeBtn" class="btn" href="#">הורד חינם ב-Google Play</a>
+
+      <div class="countdown">מעביר אוטומטית בעוד <span id="sec">3</span> שניות...</div>
+      <div class="ref-badge" id="refBadge"></div>
+
+      <div class="divider"></div>
+      <div class="footer-note">PDF Merger Pro · com.legaldan.pdfmergerpro</div>
+
+      <div class="dots">
+        <div class="dot dot1"></div>
+        <div class="dot dot2"></div>
+        <div class="dot dot3"></div>
+      </div>
     </div>
   </div>
 
-  <div class="redirect-msg" id="redirectMsg">
-    מעביר אותך ל-Google Play
-    <span class="spinner"></span>
-  </div>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    let marketerId = params.get('ref') || '';
 
-  <a href="#" class="btn btn-google" id="playBtn">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
-      <path d="M3.18 23.76c.3.17.64.24.99.2l13.9-11.66L14.16 8.4 3.18 23.76zm16.76-10.51L17.01 11.6l-2.86 2.4 2.86 2.4 2.96-1.72c.85-.48.85-1.71-.03-2.21zM3.06.26C2.75.43 2.5.77 2.5 1.2v21.6c0 .43.25.77.56.94l.1.06 12.1-12.1v-.28L3.16.2l-.1.06z"/>
-    </svg>
-    הורד ב-Google Play
-  </a>
-
-  <p class="footer">
-    בלחיצה על הורד תועבר ישירות ל-Google Play Store
-  </p>
-</div>
-
-<script>
-  // ═══════════════════════════════════════════════════════
-  // קרא marketer_id מה-URL ובנה קישור Play Store עם referrer
-  //
-  // תמיכה בשני פורמטים:
-  //   /join/john123          ← קישור נקי (recommended)
-  //   /join/?id=john123      ← query string
-  //   /join/?m=john123       ← קיצור נוסף
-  // ═══════════════════════════════════════════════════════
-
-  (function() {
-    const APP_ID = 'com.legaldan.pdfmergerpro';
-    const BASE_PLAY  = 'https://play.google.com/store/apps/details';
-    const BASE_SHORT = 'https://mergerpro8-ux.github.io/join/';
-
-    // חלץ marketer_id
-    function getMarketerId() {
-      // 1. נסה מ-pathname: /join/john123
-      const pathParts = window.location.pathname.replace(/\/$/, '').split('/');
-      const lastPart  = pathParts[pathParts.length - 1];
-      if (lastPart && lastPart !== 'join' && lastPart !== 'index.html') {
-        return lastPart;
-      }
-
-      // 2. נסה מ-query string: ?id=john123 או ?m=john123
-      const params = new URLSearchParams(window.location.search);
-      return params.get('id') || params.get('m') || null;
-    }
-
-    function buildPlayUrl(marketerId) {
-      let referrer = 'utm_source=affiliate';
-      if (marketerId) {
-        referrer += '&marketer_id=' + encodeURIComponent(marketerId);
-      }
-      return BASE_PLAY + '?id=' + APP_ID + '&referrer=' + encodeURIComponent(referrer);
-    }
-
-    const marketerId = getMarketerId();
-    const playUrl    = buildPlayUrl(marketerId);
-
-    // עדכן כפתור
-    document.getElementById('playBtn').href = playUrl;
-
-    // Redirect אוטומטי אחרי 1.5 שניות
-    setTimeout(function() {
-      window.location.href = playUrl;
-    }, 1500);
-
-    // אם אין ID — הסתר ספינר
     if (!marketerId) {
-      document.getElementById('redirectMsg').innerHTML = 'מעביר אותך ל-Google Play <span class="spinner"></span>';
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      const joinIdx = parts.indexOf('join');
+      if (joinIdx !== -1 && parts[joinIdx + 1]) marketerId = parts[joinIdx + 1];
     }
-  })();
-</script>
 
+    if (!marketerId) marketerId = 'direct';
+
+    const packageName = 'com.legaldan.pdfmergerpro';
+    const referrer    = encodeURIComponent('utm_source=affiliate&utm_medium=referral&utm_campaign=' + marketerId);
+    const playUrl     = `https://play.google.com/store/apps/details?id=${packageName}&referrer=${referrer}`;
+
+    document.getElementById('storeBtn').href = playUrl;
+
+    if (marketerId !== 'direct') {
+      document.getElementById('refBadge').textContent = '🔗 ref: ' + marketerId;
+    }
+
+    let sec = 3;
+    const secEl = document.getElementById('sec');
+    const timer = setInterval(() => {
+      sec--;
+      secEl.textContent = sec;
+      if (sec <= 0) { clearInterval(timer); window.location.href = playUrl; }
+    }, 1000);
+  </script>
 </body>
 </html>
