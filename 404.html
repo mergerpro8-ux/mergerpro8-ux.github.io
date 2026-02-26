@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+  // תופס /join/marik201 → join.html?ref=marik201
+  var path = window.location.pathname.split('/').filter(Boolean);
+  var joinIdx = path.indexOf('join');
+  var ref = (joinIdx !== -1 && path[joinIdx+1]) ? path[joinIdx+1] : 'direct';
+  window.location.replace('https://mergerpro8-ux.github.io/join.html?ref=' + ref);
+</script>
+</head>
+</html>
