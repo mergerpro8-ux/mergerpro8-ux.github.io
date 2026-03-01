@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service — PDF Merger Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-900: #0D47A1;
+            --blue-700: #1565C0;
+            --blue-100: #BBDEFB;
+            --blue-50: #E3F2FD;
+            --gray-900: #1a1a2e;
+            --gray-700: #374151;
+            --gray-500: #6B7280;
+            --gray-200: #E5E7EB;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Heebo', 'Inter', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.75;
+            font-size: 16px;
+        }
+        body.en { direction: ltr; font-family: 'Inter', 'Heebo', sans-serif; }
+        .header {
+            background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+            color: var(--white);
+            padding: 2.5rem 1.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .header .subtitle { font-size: 0.95rem; opacity: 0.85; font-weight: 300; }
+        .lang-toggle {
+            position: absolute; top: 1rem; left: 1rem;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+            color: var(--white); padding: 0.4rem 1rem; border-radius: 20px;
+            cursor: pointer; font-size: 0.85rem; font-family: inherit; transition: background 0.2s;
+        }
+        body.en .lang-toggle { left: auto; right: 1rem; }
+        .lang-toggle:hover { background: rgba(255,255,255,0.25); }
+        .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+        .effective-date {
+            text-align: center; color: var(--gray-500); font-size: 0.85rem;
+            margin-bottom: 2rem; padding-bottom: 1rem; border-bottom: 1px solid var(--gray-200);
+        }
+        h2 {
+            font-size: 1.2rem; font-weight: 700; color: var(--blue-900);
+            margin: 2rem 0 0.75rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--blue-100);
+        }
+        h2:first-of-type { margin-top: 0; }
+        p { margin-bottom: 1rem; color: var(--gray-700); }
+        .highlight-box {
+            background: var(--blue-50); border-right: 4px solid var(--blue-700);
+            padding: 1rem 1.25rem; border-radius: 0 8px 8px 0; margin: 1.25rem 0;
+            font-weight: 500; color: var(--blue-900);
+        }
+        body.en .highlight-box { border-right: none; border-left: 4px solid var(--blue-700); border-radius: 8px 0 0 8px; }
+        .data-grid { display: grid; gap: 0.6rem; margin: 1rem 0; }
+        .data-item { display: flex; align-items: flex-start; gap: 0.6rem; padding: 0.5rem 0; }
+        .data-item .icon { font-size: 1.1rem; flex-shrink: 0; width: 1.5rem; text-align: center; }
+        .data-item .text { color: var(--gray-700); font-size: 0.95rem; }
+        a { color: var(--blue-700); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer {
+            text-align: center; padding: 2rem; color: var(--gray-500);
+            font-size: 0.8rem; border-top: 1px solid var(--gray-200); margin-top: 2rem;
+        }
+        .he-content, .en-content { display: none; }
+        body:not(.en) .he-content { display: block; }
+        body.en .en-content { display: block; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <button class="lang-toggle" onclick="toggleLang()">English</button>
+    <h1>
+        <span class="he-content">תנאי שימוש</span>
+        <span class="en-content">Terms of Service</span>
+    </h1>
+    <div class="subtitle">PDF Merger Pro — LegalDan Software</div>
+</div>
+
+<div class="container">
+
+    <div class="effective-date">
+        <span class="he-content">עודכן לאחרונה: מרץ 2026</span>
+        <span class="en-content">Last updated: March 2026</span>
+    </div>
+
+    <!-- ═══════════════════ HEBREW ═══════════════════ -->
+    <div class="he-content">
+
+        <h2>1. הסכמה לתנאים</h2>
+        <p>בהורדת, התקנת או שימוש באפליקציית PDF Merger Pro ("האפליקציה"), אתם מסכימים לתנאי שימוש אלה. אם אינכם מסכימים, אנא אל תשתמשו באפליקציה.</p>
+
+        <h2>2. תיאור השירות</h2>
+        <p>PDF Merger Pro היא אפליקציה לניהול ועיבוד מסמכי PDF, הכוללת:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">📄</span><span class="text">מיזוג, פיצול ועריכת קבצי PDF</span></div>
+            <div class="data-item"><span class="icon">📷</span><span class="text">סריקת מסמכים באמצעות מצלמת המכשיר</span></div>
+            <div class="data-item"><span class="icon">🔒</span><span class="text">הגנת סיסמה על מסמכים (הצפנת AES-256)</span></div>
+            <div class="data-item"><span class="icon">✍️</span><span class="text">חתימה דיגיטלית על מסמכים</span></div>
+            <div class="data-item"><span class="icon">🖼️</span><span class="text">המרת תמונות ל-PDF</span></div>
+            <div class="data-item"><span class="icon">📊</span><span class="text">יצירת קודי QR</span></div>
+            <div class="data-item"><span class="icon">📅</span><span class="text">לוח שנה עם חגים</span></div>
+        </div>
+        <p>כל העיבוד מתבצע מקומית על המכשיר שלכם.</p>
+
+        <h2>3. גרסה חינמית ומנוי Pro</h2>
+        <p>האפליקציה מציעה שתי רמות שימוש:</p>
+        <div class="highlight-box">
+            <strong>גרסה חינמית:</strong> שימוש מוגבל בפיצ'רים עם תקופת צינון בין שימושים.<br>
+            <strong>מנוי Pro:</strong> גישה בלתי מוגבלת לכל הפיצ'רים — חודשי או שנתי.
+        </div>
+        <p>מנויים מנוהלים דרך Google Play או App Store בלבד. ביטול מנוי מתבצע דרך חנות האפליקציות בלבד:</p>
+        <p><strong>Google Play:</strong> Google Play ← תשלומים ומנויים ← מנויים ← PDF Merger Pro ← ביטול מנוי</p>
+
+        <h2>4. רישיון שימוש</h2>
+        <p>אנו מעניקים לכם רישיון מוגבל, לא בלעדי, לא ניתן להעברה ולא ניתן לרישיון משנה, לשימוש באפליקציה למטרות אישיות ועסקיות חוקיות.</p>
+        <p>אינכם רשאים:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">✗</span><span class="text">להנדס לאחור, לפרק או לנסות לחלץ את קוד המקור של האפליקציה</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">לעקוף או לנסות לעקוף מנגנוני אבטחה, רישוי או הגבלת שימוש</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">להפיץ, להשכיר או למכור עותקים של האפליקציה</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">להשתמש באפליקציה לכל מטרה בלתי חוקית</span></div>
+        </div>
+
+        <h2>5. קניין רוחני</h2>
+        <p>כל הזכויות באפליקציה, כולל קוד מקור, עיצוב, לוגו וסימני מסחר, שייכות ל-LegalDan Software. המסמכים שאתם יוצרים או מעבדים באמצעות האפליקציה נשארים בבעלותכם המלאה.</p>
+
+        <h2>6. הגבלת אחריות</h2>
+        <p>האפליקציה מסופקת "כמות שהיא" (AS IS). אנו שואפים לאיכות גבוהה אך אינם מתחייבים כי:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">⚠️</span><span class="text">האפליקציה תפעל ללא שגיאות או הפרעות</span></div>
+            <div class="data-item"><span class="icon">⚠️</span><span class="text">התוצאות יהיו מדויקות ב-100% בכל מצב</span></div>
+            <div class="data-item"><span class="icon">⚠️</span><span class="text">האפליקציה תתאים לכל מכשיר ומערכת הפעלה</span></div>
+        </div>
+        <p>LegalDan Software לא תישא באחריות לנזקים ישירים, עקיפים, מקריים או תוצאתיים הנובעים משימוש באפליקציה.</p>
+
+        <h2>7. אחריות המשתמש</h2>
+        <p>אתם אחראים לגיבוי המסמכים שלכם לפני עיבוד. מומלץ לשמור עותק מקורי של כל קובץ PDF לפני מיזוג, פיצול או עריכה.</p>
+
+        <h2>8. סיום</h2>
+        <p>אנו רשאים להפסיק או להשעות את הגישה שלכם לאפליקציה בכל עת, במיוחד במקרים של הפרת תנאים אלה, ניסיון לעקוף מנגנוני אבטחה, או שימוש לרעה.</p>
+
+        <h2>9. שינויים בתנאים</h2>
+        <p>אנו עשויים לעדכן תנאים אלה מעת לעת. המשך שימוש באפליקציה לאחר עדכון מהווה הסכמה לתנאים המעודכנים.</p>
+
+        <h2>10. דין חל וסמכות שיפוט</h2>
+        <p>תנאים אלה כפופים לחוקי מדינת ישראל. סמכות השיפוט הבלעדית נתונה לבתי המשפט המוסמכים בישראל.</p>
+
+        <h2>11. יצירת קשר</h2>
+        <p>לשאלות בנוגע לתנאי שימוש אלה, ניתן לפנות אלינו דרך טופס "צור קשר" באפליקציה.</p>
+
+    </div>
+
+    <!-- ═══════════════════ ENGLISH ═══════════════════ -->
+    <div class="en-content">
+
+        <h2>1. Acceptance of Terms</h2>
+        <p>By downloading, installing, or using the PDF Merger Pro application ("the App"), you agree to these Terms of Service. If you do not agree, please do not use the App.</p>
+
+        <h2>2. Description of Service</h2>
+        <p>PDF Merger Pro is an application for managing and processing PDF documents, including:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">📄</span><span class="text">Merging, splitting, and editing PDF files</span></div>
+            <div class="data-item"><span class="icon">📷</span><span class="text">Scanning documents using the device camera</span></div>
+            <div class="data-item"><span class="icon">🔒</span><span class="text">Password protection for documents (AES-256 encryption)</span></div>
+            <div class="data-item"><span class="icon">✍️</span><span class="text">Digital document signing</span></div>
+            <div class="data-item"><span class="icon">🖼️</span><span class="text">Converting images to PDF</span></div>
+            <div class="data-item"><span class="icon">📊</span><span class="text">QR code generation</span></div>
+            <div class="data-item"><span class="icon">📅</span><span class="text">Calendar with holidays</span></div>
+        </div>
+        <p>All processing is performed locally on your device.</p>
+
+        <h2>3. Free Version and Pro Subscription</h2>
+        <p>The App offers two usage tiers:</p>
+        <div class="highlight-box">
+            <strong>Free version:</strong> Limited feature usage with cooldown periods between uses.<br>
+            <strong>Pro subscription:</strong> Unlimited access to all features — monthly or yearly.
+        </div>
+        <p>Subscriptions are managed exclusively through Google Play or the App Store. Cancellation is done through the app store only:</p>
+        <p><strong>Google Play:</strong> Google Play → Payments &amp; subscriptions → Subscriptions → PDF Merger Pro → Cancel subscription</p>
+
+        <h2>4. License Grant</h2>
+        <p>We grant you a limited, non-exclusive, non-transferable, non-sublicensable license to use the App for lawful personal and business purposes.</p>
+        <p>You may not:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">✗</span><span class="text">Reverse engineer, decompile, or attempt to extract the App's source code</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">Bypass or attempt to bypass security, licensing, or usage restriction mechanisms</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">Distribute, rent, or sell copies of the App</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">Use the App for any unlawful purpose</span></div>
+        </div>
+
+        <h2>5. Intellectual Property</h2>
+        <p>All rights to the App, including source code, design, logo, and trademarks, belong to LegalDan Software. Documents you create or process using the App remain your full property.</p>
+
+        <h2>6. Limitation of Liability</h2>
+        <p>The App is provided "AS IS". While we strive for high quality, we do not guarantee that:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">⚠️</span><span class="text">The App will operate without errors or interruptions</span></div>
+            <div class="data-item"><span class="icon">⚠️</span><span class="text">Results will be 100% accurate in every situation</span></div>
+            <div class="data-item"><span class="icon">⚠️</span><span class="text">The App will be compatible with every device and operating system</span></div>
+        </div>
+        <p>LegalDan Software shall not be liable for any direct, indirect, incidental, or consequential damages arising from the use of the App.</p>
+
+        <h2>7. User Responsibility</h2>
+        <p>You are responsible for backing up your documents before processing. We recommend keeping an original copy of every PDF file before merging, splitting, or editing.</p>
+
+        <h2>8. Termination</h2>
+        <p>We may terminate or suspend your access to the App at any time, particularly in cases of violation of these terms, attempts to bypass security mechanisms, or misuse.</p>
+
+        <h2>9. Changes to Terms</h2>
+        <p>We may update these terms from time to time. Continued use of the App after an update constitutes acceptance of the updated terms.</p>
+
+        <h2>10. Governing Law and Jurisdiction</h2>
+        <p>These terms are governed by the laws of the State of Israel. Exclusive jurisdiction is granted to the competent courts in Israel.</p>
+
+        <h2>11. Contact Us</h2>
+        <p>For questions about these Terms of Service, please reach out through the "Contact Us" form in the App.</p>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    © 2026 LegalDan Software. All rights reserved.
+</div>
+
+<script>
+    function toggleLang() {
+        const body = document.body;
+        const btn = document.querySelector('.lang-toggle');
+        const html = document.documentElement;
+        if (body.classList.contains('en')) {
+            body.classList.remove('en');
+            html.setAttribute('dir', 'rtl');
+            html.setAttribute('lang', 'he');
+            btn.textContent = 'English';
+        } else {
+            body.classList.add('en');
+            html.setAttribute('dir', 'ltr');
+            html.setAttribute('lang', 'en');
+            btn.textContent = 'עברית';
+        }
+    }
+    if (navigator.language && !navigator.language.startsWith('he') && !navigator.language.startsWith('ar')) {
+        toggleLang();
+    }
+</script>
+
+</body>
+</html>

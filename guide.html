@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Guide — PDF Merger Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-900: #0D47A1;
+            --blue-700: #1565C0;
+            --blue-500: #2196F3;
+            --blue-100: #BBDEFB;
+            --blue-50: #E3F2FD;
+            --gray-900: #1a1a2e;
+            --gray-700: #374151;
+            --gray-500: #6B7280;
+            --gray-200: #E5E7EB;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --green-600: #16A34A;
+            --green-50: #F0FDF4;
+            --amber-600: #D97706;
+            --amber-50: #FFFBEB;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Heebo', 'Inter', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.75;
+            font-size: 16px;
+        }
+        body.en { direction: ltr; font-family: 'Inter', 'Heebo', sans-serif; }
+        .header {
+            background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+            color: var(--white);
+            padding: 2.5rem 1.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+        .header h1 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .header .subtitle { font-size: 0.95rem; opacity: 0.85; font-weight: 300; }
+        .lang-toggle {
+            position: absolute; top: 1rem; left: 1rem;
+            background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3);
+            color: var(--white); padding: 0.4rem 1rem; border-radius: 20px;
+            cursor: pointer; font-size: 0.85rem; font-family: inherit; transition: background 0.2s;
+        }
+        body.en .lang-toggle { left: auto; right: 1rem; }
+        .lang-toggle:hover { background: rgba(255,255,255,0.25); }
+        .container { max-width: 720px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+        /* Table of Contents */
+        .toc {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .toc h3 {
+            font-size: 1rem; font-weight: 700; color: var(--blue-900);
+            margin-bottom: 0.75rem;
+        }
+        .toc-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.4rem;
+        }
+        @media (max-width: 500px) { .toc-grid { grid-template-columns: 1fr; } }
+        .toc a {
+            display: flex; align-items: center; gap: 0.5rem;
+            color: var(--gray-700); text-decoration: none; font-size: 0.9rem;
+            padding: 0.4rem 0.6rem; border-radius: 6px; transition: background 0.15s;
+        }
+        .toc a:hover { background: var(--blue-50); color: var(--blue-700); }
+        .toc a .toc-icon { font-size: 1.1rem; width: 1.5rem; text-align: center; flex-shrink: 0; }
+
+        /* Feature Sections */
+        .feature-section {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.25rem;
+        }
+        .feature-header {
+            display: flex; align-items: center; gap: 0.75rem;
+            margin-bottom: 1rem; padding-bottom: 0.75rem;
+            border-bottom: 2px solid var(--blue-50);
+        }
+        .feature-icon {
+            width: 48px; height: 48px; border-radius: 12px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; flex-shrink: 0;
+        }
+        .feature-header h2 { font-size: 1.15rem; font-weight: 700; color: var(--gray-900); margin: 0; border: none; padding: 0; }
+        .feature-header .badge {
+            font-size: 0.7rem; font-weight: 600; padding: 0.15rem 0.5rem;
+            border-radius: 10px; margin-right: 0.5rem;
+        }
+        body.en .feature-header .badge { margin-right: 0; margin-left: 0.5rem; }
+        .badge-free { background: var(--green-50); color: var(--green-600); }
+        .badge-pro { background: var(--amber-50); color: var(--amber-600); }
+
+        p { margin-bottom: 0.75rem; color: var(--gray-700); }
+        .steps { counter-reset: step; margin: 0.75rem 0; }
+        .step {
+            counter-increment: step;
+            display: flex; align-items: flex-start; gap: 0.75rem;
+            padding: 0.5rem 0;
+        }
+        .step::before {
+            content: counter(step);
+            background: var(--blue-700); color: var(--white);
+            width: 26px; height: 26px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 0.8rem; font-weight: 700; flex-shrink: 0; margin-top: 2px;
+        }
+        .step-text { color: var(--gray-700); font-size: 0.95rem; }
+        .step-text strong { color: var(--gray-900); }
+
+        .tip-box {
+            background: var(--green-50);
+            border-right: 3px solid var(--green-600);
+            padding: 0.75rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+            color: var(--green-600);
+        }
+        body.en .tip-box { border-right: none; border-left: 3px solid var(--green-600); border-radius: 8px 0 0 8px; }
+
+        .warn-box {
+            background: var(--amber-50);
+            border-right: 3px solid var(--amber-600);
+            padding: 0.75rem 1rem;
+            border-radius: 0 8px 8px 0;
+            margin: 0.75rem 0;
+            font-size: 0.9rem;
+            color: var(--amber-600);
+        }
+        body.en .warn-box { border-right: none; border-left: 3px solid var(--amber-600); border-radius: 8px 0 0 8px; }
+
+        a { color: var(--blue-700); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .footer {
+            text-align: center; padding: 2rem; color: var(--gray-500);
+            font-size: 0.8rem; border-top: 1px solid var(--gray-200); margin-top: 2rem;
+        }
+        .he-content, .en-content { display: none; }
+        body:not(.en) .he-content { display: block; }
+        body.en .en-content { display: block; }
+
+        .bg-merge { background: linear-gradient(135deg, #E3F2FD, #BBDEFB); }
+        .bg-scan { background: linear-gradient(135deg, #E8F5E9, #C8E6C9); }
+        .bg-split { background: linear-gradient(135deg, #FFF3E0, #FFE0B2); }
+        .bg-edit { background: linear-gradient(135deg, #F3E5F5, #E1BEE7); }
+        .bg-sign { background: linear-gradient(135deg, #E0F2F1, #B2DFDB); }
+        .bg-lock { background: linear-gradient(135deg, #FCE4EC, #F8BBD0); }
+        .bg-img { background: linear-gradient(135deg, #FFF8E1, #FFECB3); }
+        .bg-qr { background: linear-gradient(135deg, #E8EAF6, #C5CAE9); }
+        .bg-cal { background: linear-gradient(135deg, #E0F7FA, #B2EBF2); }
+        .bg-file { background: linear-gradient(135deg, #EFEBE9, #D7CCC8); }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <button class="lang-toggle" onclick="toggleLang()">English</button>
+    <h1>
+        <span class="he-content">מדריך למשתמש</span>
+        <span class="en-content">User Guide</span>
+    </h1>
+    <div class="subtitle">PDF Merger Pro — LegalDan Software</div>
+</div>
+
+<div class="container">
+
+<!-- ═══════════════════ HEBREW ═══════════════════ -->
+<div class="he-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>📋 תוכן עניינים</h3>
+        <div class="toc-grid">
+            <a href="#he-merge"><span class="toc-icon">📄</span>מיזוג PDF</a>
+            <a href="#he-scan"><span class="toc-icon">📷</span>סריקת מסמכים</a>
+            <a href="#he-split"><span class="toc-icon">✂️</span>פיצול PDF</a>
+            <a href="#he-edit"><span class="toc-icon">✏️</span>עריכת PDF</a>
+            <a href="#he-sign"><span class="toc-icon">✍️</span>חתימה דיגיטלית</a>
+            <a href="#he-lock"><span class="toc-icon">🔒</span>הגנת סיסמה</a>
+            <a href="#he-img"><span class="toc-icon">🖼️</span>תמונות ל-PDF</a>
+            <a href="#he-qr"><span class="toc-icon">📊</span>יצירת QR</a>
+            <a href="#he-cal"><span class="toc-icon">📅</span>לוח שנה</a>
+            <a href="#he-file"><span class="toc-icon">📁</span>מנהל קבצים</a>
+            <a href="#he-sub"><span class="toc-icon">⭐</span>מנוי Pro</a>
+        </div>
+    </div>
+
+    <!-- MERGE -->
+    <div class="feature-section" id="he-merge">
+        <div class="feature-header">
+            <div class="feature-icon bg-merge">📄</div>
+            <div><h2>מיזוג PDF</h2><span class="badge badge-pro">Pro / חינמי מוגבל</span></div>
+        </div>
+        <p>חברו מספר קבצי PDF לקובץ אחד.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">לחצו על <strong>"מיזוג PDF"</strong> במסך הראשי</div></div>
+            <div class="step"><div class="step-text">בחרו 2 קבצים או יותר מהמכשיר</div></div>
+            <div class="step"><div class="step-text">גררו לשינוי סדר (אופציונלי)</div></div>
+            <div class="step"><div class="step-text">לחצו <strong>"מזג"</strong> — הקובץ המאוחד יישמר בתיקיית ההורדות</div></div>
+        </div>
+        <div class="tip-box">💡 ניתן לבחור עד 20 קבצים בפעולה אחת</div>
+    </div>
+
+    <!-- SCAN -->
+    <div class="feature-section" id="he-scan">
+        <div class="feature-header">
+            <div class="feature-icon bg-scan">📷</div>
+            <div><h2>סריקת מסמכים</h2><span class="badge badge-pro">Pro / חינמי מוגבל</span></div>
+        </div>
+        <p>סרקו מסמכים פיזיים ישירות ל-PDF באיכות מקצועית.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">לחצו על <strong>"סריקה"</strong> במסך הראשי</div></div>
+            <div class="step"><div class="step-text">כוונו את המצלמה למסמך — זיהוי גבולות אוטומטי יסמן את הדף</div></div>
+            <div class="step"><div class="step-text">צלמו — האפליקציה תיישר, תחדד ותשפר את התמונה אוטומטית</div></div>
+            <div class="step"><div class="step-text">הוסיפו עמודים נוספים או לחצו <strong>"צור PDF"</strong></div></div>
+        </div>
+        <div class="tip-box">💡 לתוצאות מיטביות: סרקו במקום מואר עם רקע כהה מאחורי הדף</div>
+        <div class="warn-box">⚠️ הסורק דורש הרשאת מצלמה. ניתן לאשר בהפעלה הראשונה.</div>
+    </div>
+
+    <!-- SPLIT -->
+    <div class="feature-section" id="he-split">
+        <div class="feature-header">
+            <div class="feature-icon bg-split">✂️</div>
+            <div><h2>פיצול PDF</h2><span class="badge badge-pro">Pro / חינמי מוגבל</span></div>
+        </div>
+        <p>חלקו קובץ PDF לקבצים נפרדים.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">לחצו <strong>"פיצול"</strong> ובחרו קובץ PDF</div></div>
+            <div class="step"><div class="step-text">בחרו את העמודים שתרצו לחלץ</div></div>
+            <div class="step"><div class="step-text">לחצו <strong>"פצל"</strong> — הקבצים החדשים יישמרו בתיקיית ההורדות</div></div>
+        </div>
+    </div>
+
+    <!-- EDIT -->
+    <div class="feature-section" id="he-edit">
+        <div class="feature-header">
+            <div class="feature-icon bg-edit">✏️</div>
+            <div><h2>סביבת עריכה</h2><span class="badge badge-pro">Pro / חינמי מוגבל</span></div>
+        </div>
+        <p>הוסיפו טקסט, מספרים ואלמנטים על גבי מסמך PDF קיים.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">לחצו <strong>"עריכה"</strong> ובחרו קובץ PDF</div></div>
+            <div class="step"><div class="step-text">נווטו לעמוד הרצוי</div></div>
+            <div class="step"><div class="step-text">הוסיפו טקסט או מספרים — גררו למיקום הרצוי</div></div>
+            <div class="step"><div class="step-text">לחצו <strong>"שמור"</strong> לייצוא הקובץ</div></div>
+        </div>
+        <div class="tip-box">💡 תומך בעברית, ערבית ואנגלית — כולל טקסט דו-כיווני (RTL)</div>
+    </div>
+
+    <!-- SIGN -->
+    <div class="feature-section" id="he-sign">
+        <div class="feature-header">
+            <div class="feature-icon bg-sign">✍️</div>
+            <div><h2>חתימה דיגיטלית</h2><span class="badge badge-pro">Pro / חינמי מוגבל</span></div>
+        </div>
+        <p>חתמו על מסמכים ישירות מהמכשיר.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">צרו חתימה בציור ידני או בחרו חתימה שמורה</div></div>
+            <div class="step"><div class="step-text">בחרו את קובץ ה-PDF</div></div>
+            <div class="step"><div class="step-text">מקמו את החתימה על הדף וכוונו את הגודל</div></div>
+            <div class="step"><div class="step-text">שמרו — החתימה מוטמעת בקובץ</div></div>
+        </div>
+        <div class="tip-box">💡 החתימות נשמרות מקומית בלבד ולעולם לא נשלחות לשרת</div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="feature-section" id="he-lock">
+        <div class="feature-header">
+            <div class="feature-icon bg-lock">🔒</div>
+            <div><h2>הגנת סיסמה</h2><span class="badge badge-pro">Pro / חינמי מוגבל</span></div>
+        </div>
+        <p>הצפינו קבצי PDF עם סיסמה (הצפנת AES-256).</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">בחרו קובץ PDF</div></div>
+            <div class="step"><div class="step-text">הגדירו סיסמה (מינימום 4 תווים)</div></div>
+            <div class="step"><div class="step-text">בחרו הרשאות: הדפסה, העתקה, עריכה</div></div>
+            <div class="step"><div class="step-text">לחצו <strong>"הצפן"</strong> — הקובץ המוגן יישמר</div></div>
+        </div>
+        <div class="warn-box">⚠️ שמרו את הסיסמה במקום בטוח — אין אפשרות לשחזר אותה</div>
+    </div>
+
+    <!-- IMAGES -->
+    <div class="feature-section" id="he-img">
+        <div class="feature-header">
+            <div class="feature-icon bg-img">🖼️</div>
+            <div><h2>תמונות ל-PDF</h2><span class="badge badge-pro">Pro / חינמי מוגבל</span></div>
+        </div>
+        <p>המירו תמונות מהגלריה לקובץ PDF.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">לחצו <strong>"תמונות"</strong> ובחרו תמונה אחת או יותר</div></div>
+            <div class="step"><div class="step-text">שנו סדר (אופציונלי)</div></div>
+            <div class="step"><div class="step-text">לחצו <strong>"צור PDF"</strong></div></div>
+        </div>
+    </div>
+
+    <!-- QR -->
+    <div class="feature-section" id="he-qr">
+        <div class="feature-header">
+            <div class="feature-icon bg-qr">📊</div>
+            <div><h2>יצירת QR</h2><span class="badge badge-free">חינמי</span></div>
+        </div>
+        <p>צרו קוד QR מכתובת URL, טקסט, או מספר טלפון.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">לחצו <strong>"QR"</strong> במסך הראשי</div></div>
+            <div class="step"><div class="step-text">הזינו את התוכן</div></div>
+            <div class="step"><div class="step-text">שמרו כתמונה או שתפו</div></div>
+        </div>
+    </div>
+
+    <!-- CALENDAR -->
+    <div class="feature-section" id="he-cal">
+        <div class="feature-header">
+            <div class="feature-icon bg-cal">📅</div>
+            <div><h2>לוח שנה ומועדים</h2><span class="badge badge-free">חינמי</span></div>
+        </div>
+        <p>לוח שנה הכולל חגי האסלאם עם תאריכים היג'ריים וגרגוריאניים ל-24 מדינות. תמיכה בערבית, עברית ואנגלית.</p>
+    </div>
+
+    <!-- FILE MANAGER -->
+    <div class="feature-section" id="he-file">
+        <div class="feature-header">
+            <div class="feature-icon bg-file">📁</div>
+            <div><h2>מנהל קבצים</h2><span class="badge badge-free">חינמי</span></div>
+        </div>
+        <p>גשו לכל קבצי ה-PDF שנוצרו ונשמרו באפליקציה. שתפו, מחקו או שנו שם של קבצים.</p>
+    </div>
+
+    <!-- SUBSCRIPTION -->
+    <div class="feature-section" id="he-sub">
+        <div class="feature-header">
+            <div class="feature-icon" style="background: linear-gradient(135deg, #FFF9C4, #FFF176);">⭐</div>
+            <div><h2>מנוי Pro</h2></div>
+        </div>
+        <p>גרסה חינמית מאפשרת שימוש בכל הפיצ'רים עם תקופת צינון. מנוי Pro מסיר את כל ההגבלות.</p>
+        <p><strong>אפשרויות מנוי:</strong></p>
+        <div class="steps">
+            <div class="step"><div class="step-text"><strong>חודשי</strong> — ₪15/חודש, מתחדש אוטומטית</div></div>
+            <div class="step"><div class="step-text"><strong>שנתי</strong> — ₪110/שנה (חיסכון של 39%)</div></div>
+        </div>
+        <p><strong>ביטול מנוי:</strong></p>
+        <p>Google Play → תשלומים ומנויים → מנויים → PDF Merger Pro → ביטול מנוי</p>
+        <div class="warn-box">⚠️ ביטול דרך מחיקת האפליקציה לא מבטל את המנוי. יש לבטל דרך Google Play.</div>
+    </div>
+
+</div>
+
+<!-- ═══════════════════ ENGLISH ═══════════════════ -->
+<div class="en-content">
+
+    <!-- TOC -->
+    <div class="toc">
+        <h3>📋 Table of Contents</h3>
+        <div class="toc-grid">
+            <a href="#en-merge"><span class="toc-icon">📄</span>Merge PDFs</a>
+            <a href="#en-scan"><span class="toc-icon">📷</span>Document Scanner</a>
+            <a href="#en-split"><span class="toc-icon">✂️</span>Split PDF</a>
+            <a href="#en-edit"><span class="toc-icon">✏️</span>Edit PDF</a>
+            <a href="#en-sign"><span class="toc-icon">✍️</span>Digital Signature</a>
+            <a href="#en-lock"><span class="toc-icon">🔒</span>Password Protection</a>
+            <a href="#en-img"><span class="toc-icon">🖼️</span>Images to PDF</a>
+            <a href="#en-qr"><span class="toc-icon">📊</span>QR Generator</a>
+            <a href="#en-cal"><span class="toc-icon">📅</span>Calendar</a>
+            <a href="#en-file"><span class="toc-icon">📁</span>File Manager</a>
+            <a href="#en-sub"><span class="toc-icon">⭐</span>Pro Subscription</a>
+        </div>
+    </div>
+
+    <!-- MERGE -->
+    <div class="feature-section" id="en-merge">
+        <div class="feature-header">
+            <div class="feature-icon bg-merge">📄</div>
+            <div><h2>Merge PDFs</h2><span class="badge badge-pro">Pro / Limited Free</span></div>
+        </div>
+        <p>Combine multiple PDF files into a single document.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">Tap <strong>"Merge PDF"</strong> on the home screen</div></div>
+            <div class="step"><div class="step-text">Select 2 or more files from your device</div></div>
+            <div class="step"><div class="step-text">Drag to reorder (optional)</div></div>
+            <div class="step"><div class="step-text">Tap <strong>"Merge"</strong> — the combined file is saved to Downloads</div></div>
+        </div>
+        <div class="tip-box">💡 You can select up to 20 files in a single operation</div>
+    </div>
+
+    <!-- SCAN -->
+    <div class="feature-section" id="en-scan">
+        <div class="feature-header">
+            <div class="feature-icon bg-scan">📷</div>
+            <div><h2>Document Scanner</h2><span class="badge badge-pro">Pro / Limited Free</span></div>
+        </div>
+        <p>Scan physical documents directly to professional-quality PDFs.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">Tap <strong>"Scan"</strong> on the home screen</div></div>
+            <div class="step"><div class="step-text">Point the camera at a document — auto edge detection will highlight the page</div></div>
+            <div class="step"><div class="step-text">Capture — the app will automatically align, sharpen, and enhance the image</div></div>
+            <div class="step"><div class="step-text">Add more pages or tap <strong>"Create PDF"</strong></div></div>
+        </div>
+        <div class="tip-box">💡 For best results: scan in a well-lit area with a dark background behind the page</div>
+        <div class="warn-box">⚠️ The scanner requires camera permission, which can be granted on first launch.</div>
+    </div>
+
+    <!-- SPLIT -->
+    <div class="feature-section" id="en-split">
+        <div class="feature-header">
+            <div class="feature-icon bg-split">✂️</div>
+            <div><h2>Split PDF</h2><span class="badge badge-pro">Pro / Limited Free</span></div>
+        </div>
+        <p>Divide a PDF file into separate files.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">Tap <strong>"Split"</strong> and select a PDF file</div></div>
+            <div class="step"><div class="step-text">Choose the pages you want to extract</div></div>
+            <div class="step"><div class="step-text">Tap <strong>"Split"</strong> — new files are saved to Downloads</div></div>
+        </div>
+    </div>
+
+    <!-- EDIT -->
+    <div class="feature-section" id="en-edit">
+        <div class="feature-header">
+            <div class="feature-icon bg-edit">✏️</div>
+            <div><h2>PDF Editor</h2><span class="badge badge-pro">Pro / Limited Free</span></div>
+        </div>
+        <p>Add text, numbers, and elements on top of existing PDF documents.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">Tap <strong>"Edit"</strong> and select a PDF file</div></div>
+            <div class="step"><div class="step-text">Navigate to the desired page</div></div>
+            <div class="step"><div class="step-text">Add text or numbers — drag to position</div></div>
+            <div class="step"><div class="step-text">Tap <strong>"Save"</strong> to export the file</div></div>
+        </div>
+        <div class="tip-box">💡 Supports Hebrew, Arabic, and English — including bidirectional text (RTL)</div>
+    </div>
+
+    <!-- SIGN -->
+    <div class="feature-section" id="en-sign">
+        <div class="feature-header">
+            <div class="feature-icon bg-sign">✍️</div>
+            <div><h2>Digital Signature</h2><span class="badge badge-pro">Pro / Limited Free</span></div>
+        </div>
+        <p>Sign documents directly from your device.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">Create a signature by drawing or select a saved one</div></div>
+            <div class="step"><div class="step-text">Select the PDF file</div></div>
+            <div class="step"><div class="step-text">Position the signature on the page and adjust size</div></div>
+            <div class="step"><div class="step-text">Save — the signature is embedded in the file</div></div>
+        </div>
+        <div class="tip-box">💡 Signatures are stored locally and are never sent to any server</div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="feature-section" id="en-lock">
+        <div class="feature-header">
+            <div class="feature-icon bg-lock">🔒</div>
+            <div><h2>Password Protection</h2><span class="badge badge-pro">Pro / Limited Free</span></div>
+        </div>
+        <p>Encrypt PDF files with a password (AES-256 encryption).</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">Select a PDF file</div></div>
+            <div class="step"><div class="step-text">Set a password (minimum 4 characters)</div></div>
+            <div class="step"><div class="step-text">Choose permissions: printing, copying, editing</div></div>
+            <div class="step"><div class="step-text">Tap <strong>"Encrypt"</strong> — the protected file is saved</div></div>
+        </div>
+        <div class="warn-box">⚠️ Keep your password in a safe place — there is no way to recover it</div>
+    </div>
+
+    <!-- IMAGES -->
+    <div class="feature-section" id="en-img">
+        <div class="feature-header">
+            <div class="feature-icon bg-img">🖼️</div>
+            <div><h2>Images to PDF</h2><span class="badge badge-pro">Pro / Limited Free</span></div>
+        </div>
+        <p>Convert gallery images into a PDF file.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">Tap <strong>"Images"</strong> and select one or more photos</div></div>
+            <div class="step"><div class="step-text">Reorder if needed</div></div>
+            <div class="step"><div class="step-text">Tap <strong>"Create PDF"</strong></div></div>
+        </div>
+    </div>
+
+    <!-- QR -->
+    <div class="feature-section" id="en-qr">
+        <div class="feature-header">
+            <div class="feature-icon bg-qr">📊</div>
+            <div><h2>QR Generator</h2><span class="badge badge-free">Free</span></div>
+        </div>
+        <p>Create QR codes from URLs, text, or phone numbers.</p>
+        <div class="steps">
+            <div class="step"><div class="step-text">Tap <strong>"QR"</strong> on the home screen</div></div>
+            <div class="step"><div class="step-text">Enter your content</div></div>
+            <div class="step"><div class="step-text">Save as image or share</div></div>
+        </div>
+    </div>
+
+    <!-- CALENDAR -->
+    <div class="feature-section" id="en-cal">
+        <div class="feature-header">
+            <div class="feature-icon bg-cal">📅</div>
+            <div><h2>Calendar &amp; Holidays</h2><span class="badge badge-free">Free</span></div>
+        </div>
+        <p>Calendar featuring Islamic holidays with Hijri and Gregorian dates for 24 countries. Supports Arabic, Hebrew, and English.</p>
+    </div>
+
+    <!-- FILE MANAGER -->
+    <div class="feature-section" id="en-file">
+        <div class="feature-header">
+            <div class="feature-icon bg-file">📁</div>
+            <div><h2>File Manager</h2><span class="badge badge-free">Free</span></div>
+        </div>
+        <p>Access all PDFs created and saved by the app. Share, delete, or rename files.</p>
+    </div>
+
+    <!-- SUBSCRIPTION -->
+    <div class="feature-section" id="en-sub">
+        <div class="feature-header">
+            <div class="feature-icon" style="background: linear-gradient(135deg, #FFF9C4, #FFF176);">⭐</div>
+            <div><h2>Pro Subscription</h2></div>
+        </div>
+        <p>The free version allows use of all features with a cooldown period. A Pro subscription removes all limitations.</p>
+        <p><strong>Subscription options:</strong></p>
+        <div class="steps">
+            <div class="step"><div class="step-text"><strong>Monthly</strong> — ₪15/month, auto-renewing</div></div>
+            <div class="step"><div class="step-text"><strong>Yearly</strong> — ₪110/year (save 39%)</div></div>
+        </div>
+        <p><strong>Cancel subscription:</strong></p>
+        <p>Google Play → Payments &amp; subscriptions → Subscriptions → PDF Merger Pro → Cancel subscription</p>
+        <div class="warn-box">⚠️ Deleting the app does not cancel your subscription. You must cancel through Google Play.</div>
+    </div>
+
+</div>
+
+</div>
+
+<div class="footer">
+    © 2026 LegalDan Software. All rights reserved.
+</div>
+
+<script>
+    function toggleLang() {
+        const body = document.body;
+        const btn = document.querySelector('.lang-toggle');
+        const html = document.documentElement;
+        if (body.classList.contains('en')) {
+            body.classList.remove('en');
+            html.setAttribute('dir', 'rtl');
+            html.setAttribute('lang', 'he');
+            btn.textContent = 'English';
+        } else {
+            body.classList.add('en');
+            html.setAttribute('dir', 'ltr');
+            html.setAttribute('lang', 'en');
+            btn.textContent = 'עברית';
+        }
+    }
+    if (navigator.language && !navigator.language.startsWith('he') && !navigator.language.startsWith('ar')) {
+        toggleLang();
+    }
+</script>
+
+</body>
+</html>

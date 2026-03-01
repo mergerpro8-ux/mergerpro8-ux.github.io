@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy — PDF Merger Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --blue-900: #0D47A1;
+            --blue-700: #1565C0;
+            --blue-100: #BBDEFB;
+            --blue-50: #E3F2FD;
+            --gray-900: #1a1a2e;
+            --gray-700: #374151;
+            --gray-500: #6B7280;
+            --gray-200: #E5E7EB;
+            --gray-50: #F9FAFB;
+            --white: #FFFFFF;
+            --red-600: #DC2626;
+            --green-600: #16A34A;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Heebo', 'Inter', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-900);
+            line-height: 1.75;
+            font-size: 16px;
+        }
+
+        body.en { direction: ltr; font-family: 'Inter', 'Heebo', sans-serif; }
+
+        .header {
+            background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 100%);
+            color: var(--white);
+            padding: 2.5rem 1.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+
+        .header .subtitle {
+            font-size: 0.95rem;
+            opacity: 0.85;
+            font-weight: 300;
+        }
+
+        .lang-toggle {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: var(--white);
+            padding: 0.4rem 1rem;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-family: inherit;
+            transition: background 0.2s;
+        }
+
+        body.en .lang-toggle { left: auto; right: 1rem; }
+        .lang-toggle:hover { background: rgba(255,255,255,0.25); }
+
+        .container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem 4rem;
+        }
+
+        .effective-date {
+            text-align: center;
+            color: var(--gray-500);
+            font-size: 0.85rem;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--blue-900);
+            margin: 2rem 0 0.75rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid var(--blue-100);
+        }
+
+        h2:first-of-type { margin-top: 0; }
+
+        p { margin-bottom: 1rem; color: var(--gray-700); }
+
+        .highlight-box {
+            background: var(--blue-50);
+            border-right: 4px solid var(--blue-700);
+            padding: 1rem 1.25rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.25rem 0;
+            font-weight: 500;
+            color: var(--blue-900);
+        }
+
+        body.en .highlight-box {
+            border-right: none;
+            border-left: 4px solid var(--blue-700);
+            border-radius: 8px 0 0 8px;
+        }
+
+        .data-grid {
+            display: grid;
+            gap: 0.6rem;
+            margin: 1rem 0;
+        }
+
+        .data-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            padding: 0.5rem 0;
+        }
+
+        .data-item .icon {
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            width: 1.5rem;
+            text-align: center;
+        }
+
+        .data-item .text {
+            color: var(--gray-700);
+            font-size: 0.95rem;
+        }
+
+        .security-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 500px) {
+            .security-grid { grid-template-columns: 1fr; }
+        }
+
+        .security-item {
+            background: var(--white);
+            border: 1px solid var(--gray-200);
+            border-radius: 8px;
+            padding: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray-700);
+        }
+
+        .security-item .icon { font-size: 1.1rem; }
+
+        .third-party-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .third-party-table th {
+            background: var(--blue-50);
+            color: var(--blue-900);
+            padding: 0.6rem 0.75rem;
+            text-align: right;
+            font-weight: 600;
+            border-bottom: 2px solid var(--blue-100);
+        }
+
+        body.en .third-party-table th { text-align: left; }
+
+        .third-party-table td {
+            padding: 0.6rem 0.75rem;
+            border-bottom: 1px solid var(--gray-200);
+            color: var(--gray-700);
+        }
+
+        .third-party-table tr:last-child td { border-bottom: none; }
+
+        a { color: var(--blue-700); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        .footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray-500);
+            font-size: 0.8rem;
+            border-top: 1px solid var(--gray-200);
+            margin-top: 2rem;
+        }
+
+        .he-content, .en-content { display: none; }
+        body:not(.en) .he-content { display: block; }
+        body.en .en-content { display: block; }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <button class="lang-toggle" onclick="toggleLang()">English</button>
+    <h1>
+        <span class="he-content">מדיניות פרטיות</span>
+        <span class="en-content">Privacy Policy</span>
+    </h1>
+    <div class="subtitle">PDF Merger Pro — LegalDan Software</div>
+</div>
+
+<div class="container">
+
+    <div class="effective-date">
+        <span class="he-content">עודכן לאחרונה: מרץ 2026 · גרסה 1.0.0+9</span>
+        <span class="en-content">Last updated: March 2026 · Version 1.0.0+9</span>
+    </div>
+
+    <!-- ═══════════════════ HEBREW ═══════════════════ -->
+    <div class="he-content">
+
+        <h2>מבוא</h2>
+        <p>PDF Merger Pro ("האפליקציה"), פותחה ומופעלת על ידי LegalDan Software ("אנחנו"). מדיניות פרטיות זו מסבירה כיצד אנו מטפלים במידע כאשר אתם משתמשים באפליקציה שלנו.</p>
+
+        <div class="highlight-box">
+            כל עיבוד ה-PDF מתבצע במלואו על המכשיר שלכם. מסמכים לעולם אינם מועלים לשרתים חיצוניים.
+        </div>
+
+        <h2>מידע שאנחנו לא אוספים</h2>
+        <p>האפליקציה תוכננה בגישת פרטיות מלאה. אנחנו לא אוספים:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">✗</span><span class="text">תוכן מסמכים או קבצי PDF</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">נתוני מיקום</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">אנשי קשר, תמונות או קבצים שלא בחרתם במפורש</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">נתוני פרסום או מעקב</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">ניתוח שימוש (analytics) של צד שלישי</span></div>
+        </div>
+
+        <h2>הרשאות האפליקציה</h2>
+        <p>האפליקציה עשויה לבקש את ההרשאות הבאות:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">📷</span><span class="text"><strong>מצלמה</strong> — לסריקת מסמכים בלבד. התמונות מעובדות מקומית ולעולם אינן נשלחות לשרת.</span></div>
+            <div class="data-item"><span class="icon">📁</span><span class="text"><strong>אחסון / גלריה</strong> — לבחירת קבצי PDF ותמונות לעיבוד, ולשמירת קבצים מוגמרים.</span></div>
+        </div>
+
+        <h2>אחסון מקומי במכשיר</h2>
+        <p>האפליקציה מאחסנת את הנתונים הבאים באופן מקומי בלבד:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">🔐</span><span class="text"><strong>סטטוס רכישה</strong> — רשומה מוצפנת (AES-CBC) של מצב המנוי.</span></div>
+            <div class="data-item"><span class="icon">⚙️</span><span class="text"><strong>העדפות</strong> — שפה (10 שפות נתמכות), ערכת נושא, והגדרות תצוגה.</span></div>
+            <div class="data-item"><span class="icon">✍️</span><span class="text"><strong>חתימות</strong> — חתימות דיגיטליות שיצרתם, מאוחסנות מקומית בלבד.</span></div>
+            <div class="data-item"><span class="icon">⏱️</span><span class="text"><strong>מונה שימוש</strong> — חותמת זמן של שימוש אחרון בכל פיצ'ר (לניהול מכסת שימוש חינמי). לא נשלח לשום שרת.</span></div>
+            <div class="data-item"><span class="icon">📲</span><span class="text"><strong>מזהה התקנה (Referrer)</strong> — אם התקנתם דרך קישור שיווקי, מזהה המשווק נשמר מקומית לצורך ייחוס עמלות. לא כולל מידע אישי עליכם.</span></div>
+        </div>
+        <p>נתונים אלה נשארים על המכשיר שלכם ואינם נגישים לנו או לצד שלישי.</p>
+
+        <h2>מזהי מכשיר — שימוש לאבטחה בלבד</h2>
+        <p>האפליקציה קוראת מזהי חומרה בסיסיים (דגם המכשיר, יצרן, מזהה מערכת) <strong>אך ורק</strong> לצורך:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">🔑</span><span class="text">יצירת מפתח הצפנה ייחודי למכשיר — להגנה על נתוני הרכישה שלכם.</span></div>
+            <div class="data-item"><span class="icon">🛡️</span><span class="text">קישור רכישות למכשיר — למניעת העתקה לא מורשית של מנויים.</span></div>
+        </div>
+        <p>מזהים אלה <strong>לא נשלחים</strong> לשום שרת. הם משמשים אך ורק לחישוב מקומי על המכשיר.</p>
+
+        <h2>שירותי צד שלישי</h2>
+        <p>האפליקציה משתמשת בשירותי צד שלישי הבאים:</p>
+        <table class="third-party-table">
+            <tr><th>שירות</th><th>מטרה</th><th>מידע שנשלח</th></tr>
+            <tr>
+                <td><strong>Google Play / App Store</strong></td>
+                <td>עיבוד רכישות ומנויים</td>
+                <td>מנוהל במלואו על ידי Google/Apple. אנחנו לא מקבלים פרטי תשלום.</td>
+            </tr>
+            <tr>
+                <td><strong>Google Play Install Referrer</strong></td>
+                <td>ייחוס התקנות לשותפים שיווקיים</td>
+                <td>מזהה משווק בלבד (לדוגמה: "john123"). לא כולל מידע אישי.</td>
+            </tr>
+            <tr>
+                <td><strong>EmailJS</strong></td>
+                <td>שליחת הודעות מטופס "צור קשר"</td>
+                <td>שם, אימייל וטקסט ההודעה שמילאתם בטופס — <strong>רק אם בחרתם לשלוח</strong>.</td>
+            </tr>
+        </table>
+        <p>האפליקציה <strong>אינה</strong> משלבת שירותי אנליטיקה, פרסום או מעקב.</p>
+
+        <h2>רכישות בתוך האפליקציה</h2>
+        <p>האפליקציה מציעה מנויים (חודשי / שנתי) דרך Google Play ו-App Store. כל עיבוד התשלומים מתבצע על ידי Google או Apple. אנחנו לא מקבלים, מעבדים או מאחסנים מידע על אמצעי תשלום.</p>
+        <p>קישורים: <a href="https://policies.google.com/privacy" target="_blank">מדיניות Google</a> · <a href="https://www.apple.com/legal/privacy/" target="_blank">מדיניות Apple</a></p>
+
+        <h2>אבטחה</h2>
+        <div class="security-grid">
+            <div class="security-item"><span class="icon">🔒</span>הצפנת AES-CBC עם HMAC</div>
+            <div class="security-item"><span class="icon">📱</span>קישור רכישות למכשיר</div>
+            <div class="security-item"><span class="icon">🛡️</span>זיהוי Root / Jailbreak</div>
+            <div class="security-item"><span class="icon">🚫</span>הגנה מפני פריצה (tamper detection)</div>
+            <div class="security-item"><span class="icon">✅</span>אימות חתימת APK</div>
+            <div class="security-item"><span class="icon">🔄</span>אימות רכישות מול Google Play</div>
+        </div>
+
+        <h2>פרטיות ילדים</h2>
+        <p>האפליקציה אינה אוספת ביודעין מידע מילדים מתחת לגיל 13. מכיוון שאנו לא אוספים נתונים אישיים ואין באפליקציה תוכן שאינו מתאים, היא בטוחה לכל הגילאים.</p>
+
+        <h2>שינויים במדיניות</h2>
+        <p>אנו עשויים לעדכן מדיניות זו מעת לעת. כל שינוי יפורסם בדף זה עם תאריך עדכון חדש.</p>
+
+        <h2>יצירת קשר</h2>
+        <p>לשאלות בנוגע למדיניות פרטיות זו, ניתן לפנות אלינו דרך טופס "צור קשר" באפליקציה.</p>
+
+    </div>
+
+    <!-- ═══════════════════ ENGLISH ═══════════════════ -->
+    <div class="en-content">
+
+        <h2>Introduction</h2>
+        <p>PDF Merger Pro ("the App") is developed and operated by LegalDan Software ("we", "us"). This Privacy Policy explains how we handle information when you use our App.</p>
+
+        <div class="highlight-box">
+            All PDF processing is performed entirely on your device. Your documents are never uploaded to external servers.
+        </div>
+
+        <h2>Information We Do Not Collect</h2>
+        <p>Our App is designed with a privacy-first approach. We do not collect:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">✗</span><span class="text">Document contents or PDF files</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">Location data</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">Contacts, photos, or files you have not explicitly selected</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">Advertising or tracking data</span></div>
+            <div class="data-item"><span class="icon">✗</span><span class="text">Third-party analytics</span></div>
+        </div>
+
+        <h2>App Permissions</h2>
+        <p>The App may request the following permissions:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">📷</span><span class="text"><strong>Camera</strong> — Used solely for document scanning. Photos are processed locally and are never sent to any server.</span></div>
+            <div class="data-item"><span class="icon">📁</span><span class="text"><strong>Storage / Gallery</strong> — To select PDF files and images for processing, and to save finished files.</span></div>
+        </div>
+
+        <h2>On-Device Storage</h2>
+        <p>The App stores the following data locally on your device only:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">🔐</span><span class="text"><strong>Purchase status</strong> — An AES-CBC encrypted record of your subscription status.</span></div>
+            <div class="data-item"><span class="icon">⚙️</span><span class="text"><strong>Preferences</strong> — Language (10 supported languages), theme, and display settings.</span></div>
+            <div class="data-item"><span class="icon">✍️</span><span class="text"><strong>Signatures</strong> — Digital signatures you create are stored locally only.</span></div>
+            <div class="data-item"><span class="icon">⏱️</span><span class="text"><strong>Usage counter</strong> — Timestamp of last use per feature (for managing free-tier limits). Never sent to any server.</span></div>
+            <div class="data-item"><span class="icon">📲</span><span class="text"><strong>Install referrer</strong> — If you installed via an affiliate link, the marketer ID is stored locally for commission attribution. It contains no personal information about you.</span></div>
+        </div>
+        <p>This data remains on your device and is not accessible to us or any third party.</p>
+
+        <h2>Device Identifiers — Security Use Only</h2>
+        <p>The App reads basic hardware identifiers (device model, manufacturer, system ID) <strong>solely</strong> for:</p>
+        <div class="data-grid">
+            <div class="data-item"><span class="icon">🔑</span><span class="text">Generating a device-unique encryption key — to protect your purchase data.</span></div>
+            <div class="data-item"><span class="icon">🛡️</span><span class="text">Binding purchases to your device — to prevent unauthorized copying of subscriptions.</span></div>
+        </div>
+        <p>These identifiers are <strong>never sent</strong> to any server. They are used exclusively for local computation on the device.</p>
+
+        <h2>Third-Party Services</h2>
+        <p>The App uses the following third-party services:</p>
+        <table class="third-party-table">
+            <tr><th>Service</th><th>Purpose</th><th>Data Shared</th></tr>
+            <tr>
+                <td><strong>Google Play / App Store</strong></td>
+                <td>Purchase and subscription processing</td>
+                <td>Handled entirely by Google/Apple. We do not receive payment details.</td>
+            </tr>
+            <tr>
+                <td><strong>Google Play Install Referrer</strong></td>
+                <td>Attribution of installs to marketing partners</td>
+                <td>Marketer ID only (e.g., "john123"). Contains no personal information.</td>
+            </tr>
+            <tr>
+                <td><strong>EmailJS</strong></td>
+                <td>Sending messages from the "Contact Us" form</td>
+                <td>Name, email, and message text you enter — <strong>only if you choose to send</strong>.</td>
+            </tr>
+        </table>
+        <p>The App does <strong>not</strong> integrate any analytics, advertising, or tracking services.</p>
+
+        <h2>In-App Purchases</h2>
+        <p>The App offers subscriptions (monthly / yearly) through Google Play and the App Store. All payment processing is handled by Google or Apple. We do not receive, process, or store any payment information.</p>
+        <p>Links: <a href="https://policies.google.com/privacy" target="_blank">Google Privacy Policy</a> · <a href="https://www.apple.com/legal/privacy/" target="_blank">Apple Privacy Policy</a></p>
+
+        <h2>Security</h2>
+        <div class="security-grid">
+            <div class="security-item"><span class="icon">🔒</span>AES-CBC encryption with HMAC</div>
+            <div class="security-item"><span class="icon">📱</span>Device-bound purchases</div>
+            <div class="security-item"><span class="icon">🛡️</span>Root / Jailbreak detection</div>
+            <div class="security-item"><span class="icon">🚫</span>Tamper detection</div>
+            <div class="security-item"><span class="icon">✅</span>APK signature verification</div>
+            <div class="security-item"><span class="icon">🔄</span>Store purchase revalidation</div>
+        </div>
+
+        <h2>Children's Privacy</h2>
+        <p>The App does not knowingly collect information from children under the age of 13. Since we do not collect personal data and the App contains no inappropriate content, it is safe for all ages.</p>
+
+        <h2>Changes to This Policy</h2>
+        <p>We may update this policy from time to time. Any changes will be posted on this page with an updated effective date.</p>
+
+        <h2>Contact Us</h2>
+        <p>For questions about this Privacy Policy, please reach out through the "Contact Us" form in the App.</p>
+
+    </div>
+
+</div>
+
+<div class="footer">
+    © 2026 LegalDan Software. All rights reserved.
+</div>
+
+<script>
+    function toggleLang() {
+        const body = document.body;
+        const btn = document.querySelector('.lang-toggle');
+        const html = document.documentElement;
+
+        if (body.classList.contains('en')) {
+            body.classList.remove('en');
+            html.setAttribute('dir', 'rtl');
+            html.setAttribute('lang', 'he');
+            btn.textContent = 'English';
+        } else {
+            body.classList.add('en');
+            html.setAttribute('dir', 'ltr');
+            html.setAttribute('lang', 'en');
+            btn.textContent = 'עברית';
+        }
+    }
+
+    // Auto-detect browser language
+    if (navigator.language && !navigator.language.startsWith('he') && !navigator.language.startsWith('ar')) {
+        toggleLang();
+    }
+</script>
+
+</body>
+</html>
